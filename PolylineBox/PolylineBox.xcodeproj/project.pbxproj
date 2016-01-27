@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEC2BA791C59197F005227C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA781C59197F005227C8 /* AppDelegate.swift */; };
+		CEC2BA7B1C59197F005227C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA7A1C59197F005227C8 /* ViewController.swift */; };
+		CEC2BA7E1C59197F005227C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC2BA7C1C59197F005227C8 /* Main.storyboard */; };
+		CEC2BA801C59197F005227C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC2BA7F1C59197F005227C8 /* Assets.xcassets */; };
+		CEC2BA831C59197F005227C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC2BA811C59197F005227C8 /* LaunchScreen.storyboard */; };
+		CEC2BA8B1C591AE1005227C8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC2BA8A1C591AE1005227C8 /* MainView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CEC2BA751C59197F005227C8 /* PolylineBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PolylineBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC2BA781C59197F005227C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEC2BA7A1C59197F005227C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEC2BA7D1C59197F005227C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CEC2BA7F1C59197F005227C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEC2BA821C59197F005227C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEC2BA841C59197F005227C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC2BA8A1C591AE1005227C8 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEC2BA721C59197F005227C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEC2BA6C1C59197F005227C8 = {
+			isa = PBXGroup;
+			children = (
+				CEC2BA771C59197F005227C8 /* PolylineBox */,
+				CEC2BA761C59197F005227C8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEC2BA761C59197F005227C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEC2BA751C59197F005227C8 /* PolylineBox.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEC2BA771C59197F005227C8 /* PolylineBox */ = {
+			isa = PBXGroup;
+			children = (
+				CEC2BA8A1C591AE1005227C8 /* MainView.swift */,
+				CEC2BA781C59197F005227C8 /* AppDelegate.swift */,
+				CEC2BA7A1C59197F005227C8 /* ViewController.swift */,
+				CEC2BA7C1C59197F005227C8 /* Main.storyboard */,
+				CEC2BA7F1C59197F005227C8 /* Assets.xcassets */,
+				CEC2BA811C59197F005227C8 /* LaunchScreen.storyboard */,
+				CEC2BA841C59197F005227C8 /* Info.plist */,
+			);
+			path = PolylineBox;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEC2BA741C59197F005227C8 /* PolylineBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC2BA871C59197F005227C8 /* Build configuration list for PBXNativeTarget "PolylineBox" */;
+			buildPhases = (
+				CEC2BA711C59197F005227C8 /* Sources */,
+				CEC2BA721C59197F005227C8 /* Frameworks */,
+				CEC2BA731C59197F005227C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PolylineBox;
+			productName = PolylineBox;
+			productReference = CEC2BA751C59197F005227C8 /* PolylineBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEC2BA6D1C59197F005227C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = motoom;
+				TargetAttributes = {
+					CEC2BA741C59197F005227C8 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = CEC2BA701C59197F005227C8 /* Build configuration list for PBXProject "PolylineBox" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEC2BA6C1C59197F005227C8;
+			productRefGroup = CEC2BA761C59197F005227C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEC2BA741C59197F005227C8 /* PolylineBox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEC2BA731C59197F005227C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC2BA831C59197F005227C8 /* LaunchScreen.storyboard in Resources */,
+				CEC2BA801C59197F005227C8 /* Assets.xcassets in Resources */,
+				CEC2BA7E1C59197F005227C8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEC2BA711C59197F005227C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC2BA7B1C59197F005227C8 /* ViewController.swift in Sources */,
+				CEC2BA8B1C591AE1005227C8 /* MainView.swift in Sources */,
+				CEC2BA791C59197F005227C8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEC2BA7C1C59197F005227C8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC2BA7D1C59197F005227C8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CEC2BA811C59197F005227C8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC2BA821C59197F005227C8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEC2BA851C59197F005227C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CEC2BA861C59197F005227C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEC2BA881C59197F005227C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PolylineBox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.PolylineBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CEC2BA891C59197F005227C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PolylineBox/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.PolylineBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEC2BA701C59197F005227C8 /* Build configuration list for PBXProject "PolylineBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC2BA851C59197F005227C8 /* Debug */,
+				CEC2BA861C59197F005227C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEC2BA871C59197F005227C8 /* Build configuration list for PBXNativeTarget "PolylineBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC2BA881C59197F005227C8 /* Debug */,
+				CEC2BA891C59197F005227C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEC2BA6D1C59197F005227C8 /* Project object */;
+}
