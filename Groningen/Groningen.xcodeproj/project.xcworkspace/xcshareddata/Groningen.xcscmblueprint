@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1aec3621-0cd8-e211-8f8f-001d9247897e",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2DD5DD83-D13F-4D76-BE76-4DF7BFA6C37D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : "iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Groningen",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Xcode7\/Groningen\/Groningen.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/motoom.net\/iOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1aec3621-0cd8-e211-8f8f-001d9247897e"
+    }
+  ]
+}
