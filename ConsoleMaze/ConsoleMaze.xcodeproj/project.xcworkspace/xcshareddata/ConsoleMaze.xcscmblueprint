@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1aec3621-0cd8-e211-8f8f-001d9247897e",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "891017A3-70E7-4ABE-941B-2CFAB4E1754D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1aec3621-0cd8-e211-8f8f-001d9247897e" : "iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ConsoleMaze",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Xcode7\/ConsoleMaze\/ConsoleMaze.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/motoom.net\/iOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1aec3621-0cd8-e211-8f8f-001d9247897e"
+    }
+  ]
+}
