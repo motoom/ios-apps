@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0C8E1B1C6B60DB00FC9AD9 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C8E1A1C6B60DB00FC9AD9 /* Maze.swift */; };
 		CEC75C971C661D3100E2E848 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC75C961C661D3100E2E848 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE0C8E1A1C6B60DB00FC9AD9 /* Maze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		CEC75C931C661D3100E2E848 /* ConsoleMaze */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ConsoleMaze; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC75C961C661D3100E2E848 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC75C961C661D3100E2E848 /* main.swift */,
+				CE0C8E1A1C6B60DB00FC9AD9 /* Maze.swift */,
 			);
 			path = ConsoleMaze;
 			sourceTree = "<group>";
@@ -119,6 +122,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0C8E1B1C6B60DB00FC9AD9 /* Maze.swift in Sources */,
 				CEC75C971C661D3100E2E848 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +243,7 @@
 				CEC75C9C1C661D3100E2E848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
