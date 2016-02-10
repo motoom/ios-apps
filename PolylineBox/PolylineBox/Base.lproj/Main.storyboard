@@ -16,11 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="MainView" customModule="PolylineBox" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="github.com/motoom/ios-apps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLd-cd-Mli">
+                                <rect key="frame" x="171" y="289" width="259" height="22"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 view layout events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIC-t4-l3M">
+                                <rect key="frame" x="209" y="344" width="184" height="24"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xLd-cd-Mli" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0EB-GU-Eeg"/>
+                            <constraint firstItem="qIC-t4-l3M" firstAttribute="centerX" secondItem="xLd-cd-Mli" secondAttribute="centerX" id="5uJ-Wb-X83"/>
+                            <constraint firstItem="qIC-t4-l3M" firstAttribute="top" secondItem="xLd-cd-Mli" secondAttribute="bottom" constant="33" id="LL6-aN-EmU"/>
+                            <constraint firstItem="xLd-cd-Mli" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MmK-UM-Ze9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="rotationLabel" destination="qIC-t4-l3M" id="FiV-ga-DSW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="325" y="315"/>
         </scene>
     </scenes>
 </document>
