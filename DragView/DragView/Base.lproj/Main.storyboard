@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DragView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-bV-6qt" userLabel="FieldView">
+                                <rect key="frame" x="40" y="40" width="520" height="540"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yW-hF-ThK" userLabel="DragView">
+                                        <rect key="frame" x="52" y="49" width="90" height="90"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xye-67-h8f" userLabel="DragLabel">
+                                                <rect key="frame" x="0.0" y="8" width="90" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.71166565836673767" green="0.84367108585858586" blue="0.59206651261812049" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="xye-67-h8f" firstAttribute="centerX" secondItem="4yW-hF-ThK" secondAttribute="centerX" id="9aQ-Kt-Kwd"/>
+                                            <constraint firstAttribute="width" constant="90" id="Adu-T6-fut"/>
+                                            <constraint firstAttribute="height" constant="90" id="XbU-L8-6of"/>
+                                            <constraint firstItem="xye-67-h8f" firstAttribute="top" secondItem="4yW-hF-ThK" secondAttribute="top" constant="8" id="YYl-ge-5La"/>
+                                            <constraint firstItem="xye-67-h8f" firstAttribute="width" secondItem="4yW-hF-ThK" secondAttribute="width" id="nyz-3f-GwU"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Bdp-4I-Asl" appends="YES" id="iGH-EB-6BA"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.92891652960526316" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="4yW-hF-ThK" firstAttribute="top" secondItem="S1M-bV-6qt" secondAttribute="top" constant="49" id="Lcr-TX-jL5"/>
+                                    <constraint firstItem="4yW-hF-ThK" firstAttribute="leading" secondItem="S1M-bV-6qt" secondAttribute="leading" constant="52" id="QlU-HQ-tme"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S1M-bV-6qt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="AIV-NS-EML"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S1M-bV-6qt" secondAttribute="trailing" constant="20" id="ln7-gx-cEW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="S1M-bV-6qt" secondAttribute="bottom" constant="20" id="sP8-Lv-Wga"/>
+                            <constraint firstItem="S1M-bV-6qt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="x0N-Dr-Mm9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dragLabel" destination="xye-67-h8f" id="UNS-ft-AMc"/>
+                        <outlet property="dragView" destination="4yW-hF-ThK" id="uSo-qO-0AO"/>
+                        <outlet property="fieldView" destination="S1M-bV-6qt" id="mei-xA-Xi4"/>
+                        <outlet property="pan" destination="Bdp-4I-Asl" id="bd5-FO-NBi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Bdp-4I-Asl"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="387"/>
+        </scene>
+    </scenes>
+</document>
