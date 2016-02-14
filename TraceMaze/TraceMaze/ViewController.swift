@@ -4,7 +4,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var difficulty = 20 // Initial maze difficulty
+    var difficulty = minDifficulty + 10 // Initial maze difficulty
     var rows = 0  // Maze size in cells
     var cols = 0
     var maze: Maze?
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         else if sender.state == .Changed {
             let zoom = startpinchscale / Double(sender.scale)
             difficulty = Int(Double(startpinchdifficulty) * zoom)
-            difficulty = max(10, min(difficulty, 50))
+            difficulty = max(minDifficulty, min(difficulty, maxDifficulty))
             generateMaze()
             }
         }

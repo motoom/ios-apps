@@ -14,6 +14,8 @@
 		CE0C8E331C6B61D200FC9AD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE0C8E311C6B61D200FC9AD9 /* LaunchScreen.storyboard */; };
 		CE0C8E3B1C6B621500FC9AD9 /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C8E3A1C6B621500FC9AD9 /* Maze.swift */; };
 		CE0C8E3D1C6B649C00FC9AD9 /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0C8E3C1C6B649C00FC9AD9 /* MazeView.swift */; };
+		CE6F14D41C70A0B000BA175C /* Interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F14D31C70A0B000BA175C /* Interpolation.swift */; };
+		CE6F14D61C70A38B00BA175C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F14D51C70A38B00BA175C /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CE0C8E341C6B61D200FC9AD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE0C8E3A1C6B621500FC9AD9 /* Maze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		CE0C8E3C1C6B649C00FC9AD9 /* MazeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
+		CE6F14D31C70A0B000BA175C /* Interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interpolation.swift; sourceTree = "<group>"; };
+		CE6F14D51C70A38B00BA175C /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				CE0C8E311C6B61D200FC9AD9 /* LaunchScreen.storyboard */,
 				CE0C8E341C6B61D200FC9AD9 /* Info.plist */,
 				CE0C8E3C1C6B649C00FC9AD9 /* MazeView.swift */,
+				CE6F14D31C70A0B000BA175C /* Interpolation.swift */,
+				CE6F14D51C70A38B00BA175C /* Settings.swift */,
 			);
 			path = TraceMaze;
 			sourceTree = "<group>";
@@ -141,6 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6F14D61C70A38B00BA175C /* Settings.swift in Sources */,
+				CE6F14D41C70A0B000BA175C /* Interpolation.swift in Sources */,
 				CE0C8E2B1C6B61D200FC9AD9 /* ViewController.swift in Sources */,
 				CE0C8E3D1C6B649C00FC9AD9 /* MazeView.swift in Sources */,
 				CE0C8E291C6B61D200FC9AD9 /* AppDelegate.swift in Sources */,
@@ -294,6 +302,7 @@
 				CE0C8E391C6B61D200FC9AD9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
