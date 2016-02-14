@@ -10,23 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var fieldView: UIView!
-    @IBOutlet weak var dragView: UIView!
-    @IBOutlet var pan: UIPanGestureRecognizer!
+    @IBOutlet weak var fieldView: FieldView!
+    @IBOutlet weak var dragView: DragView!
     @IBOutlet weak var dragLabel: UILabel!
+    @IBOutlet var tap: UITapGestureRecognizer!
 
     var dragging: Int? // hashValue of UITouch dragging the view
     var dragoffset: CGPoint = CGPoint()
-    // var dragstart: CGPoint = CGPoint()
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if let touch = touches.first {
             if dragView == touch.view {
-                print("BEGAN", touch.locationInView(fieldView))
                 dragging = touch.hashValue
                 dragLabel.text = String(touch.hashValue)
                 dragoffset = touch.locationInView(dragView)
-                // dragstart = touch.locationInView(fieldView)
                 }
             }
         }
@@ -34,10 +31,13 @@ class ViewController: UIViewController {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             if touch.hashValue == dragging {
-                print("MOVE", touch.locationInView(fieldView))
                 let x = touch.locationInView(fieldView).x - dragoffset.x
                 let y = touch.locationInView(fieldView).y - dragoffset.y
                 dragView.frame.origin = CGPoint(x: x, y: y)
+                let middle = CGPoint(x: dragView.center.x, y: dragView.center.y)
+                let snapped = gridsnap(middle, CGPoint(x: 2, y: 2), CGPoint(x: 30, y: 30))
+                fieldView.registerPoint(snapped)
+                fieldView.setNeedsDisplay()
                 }
             }
         }
@@ -45,7 +45,6 @@ class ViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             if touch.hashValue == dragging {
-                print("END")
                 dragLabel.text = ""
                 dragging = nil
                 }
@@ -54,14 +53,14 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // pan.delaysTouchesEnded = false
-        pan.cancelsTouchesInView = false
+        tap.cancelsTouchesInView = false
         }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    @IBAction func tapped(sender: UITapGestureRecognizer) {
+        fieldView.reset()
+        fieldView.setNeedsDisplay()
+        }
+
 
 
 }

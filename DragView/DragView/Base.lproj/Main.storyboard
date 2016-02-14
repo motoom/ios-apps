@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-bV-6qt" userLabel="FieldView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-bV-6qt" userLabel="FieldView" customClass="FieldView" customModule="DragView">
                                 <rect key="frame" x="40" y="40" width="520" height="540"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yW-hF-ThK" userLabel="DragView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yW-hF-ThK" userLabel="DragView" customClass="DragView" customModule="DragView">
                                         <rect key="frame" x="52" y="49" width="90" height="90"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drag me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="xye-67-h8f" userLabel="DragLabel">
@@ -31,7 +31,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.71166565836673767" green="0.84367108585858586" blue="0.59206651261812049" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="xye-67-h8f" firstAttribute="centerX" secondItem="4yW-hF-ThK" secondAttribute="centerX" id="9aQ-Kt-Kwd"/>
@@ -41,7 +41,7 @@
                                             <constraint firstItem="xye-67-h8f" firstAttribute="width" secondItem="4yW-hF-ThK" secondAttribute="width" id="nyz-3f-GwU"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Bdp-4I-Asl" appends="YES" id="iGH-EB-6BA"/>
+                                            <outletCollection property="gestureRecognizers" destination="dgy-6f-qVm" appends="YES" id="36v-V6-87o"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -65,11 +65,15 @@
                         <outlet property="dragLabel" destination="xye-67-h8f" id="UNS-ft-AMc"/>
                         <outlet property="dragView" destination="4yW-hF-ThK" id="uSo-qO-0AO"/>
                         <outlet property="fieldView" destination="S1M-bV-6qt" id="mei-xA-Xi4"/>
-                        <outlet property="pan" destination="Bdp-4I-Asl" id="bd5-FO-NBi"/>
+                        <outlet property="tap" destination="dgy-6f-qVm" id="epN-as-pon"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Bdp-4I-Asl"/>
+                <tapGestureRecognizer id="dgy-6f-qVm">
+                    <connections>
+                        <action selector="tapped:" destination="BYZ-38-t0r" id="Bjd-FR-YJo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="305" y="387"/>
         </scene>
