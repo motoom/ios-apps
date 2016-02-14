@@ -18,37 +18,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woV-R6-Yfw" userLabel="MazeView" customClass="MazeView" customModule="TraceMaze">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nv9-35-Ih8">
-                                        <rect key="frame" x="0.0" y="550" width="600" height="30"/>
-                                        <state key="normal" title="github.com/motoom/ios-apps"/>
-                                        <connections>
-                                            <action selector="githubTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XMu-RB-lUz"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="20" width="600" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Nv9-35-Ih8" secondAttribute="trailing" id="1CH-zY-iDd"/>
-                                    <constraint firstAttribute="bottom" secondItem="Nv9-35-Ih8" secondAttribute="bottom" id="QHp-kA-9Ls"/>
-                                    <constraint firstItem="Nv9-35-Ih8" firstAttribute="width" secondItem="woV-R6-Yfw" secondAttribute="width" id="YMP-cM-fUK"/>
-                                    <constraint firstItem="Nv9-35-Ih8" firstAttribute="centerX" secondItem="woV-R6-Yfw" secondAttribute="centerX" id="tU1-DD-gqz"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NEf-Lk-yax" appends="YES" id="IiL-gZ-DZw"/>
                                     <outletCollection property="gestureRecognizers" destination="Kqm-nq-T9E" appends="YES" id="Kq8-ft-WgJ"/>
                                     <outletCollection property="gestureRecognizers" destination="RM0-BL-W3c" appends="YES" id="hTu-In-GPh"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGI-62-bft" userLabel="GithubLink">
+                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
+                                <state key="normal" title="github.com/motoom/ios-apps"/>
+                                <connections>
+                                    <action selector="githubTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yt9-jU-Ndn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yGI-62-bft" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Dbg-fG-qzc"/>
                             <constraint firstItem="woV-R6-Yfw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Hf2-LG-sSC"/>
+                            <constraint firstItem="yGI-62-bft" firstAttribute="top" secondItem="woV-R6-Yfw" secondAttribute="bottom" id="Kuq-Jt-eel"/>
                             <constraint firstItem="woV-R6-Yfw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eiF-nO-I6o"/>
+                            <constraint firstItem="yGI-62-bft" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="g4B-SJ-Spw"/>
+                            <constraint firstItem="yGI-62-bft" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pQq-nr-OfF"/>
                             <constraint firstItem="woV-R6-Yfw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rjm-84-pun"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="woV-R6-Yfw" secondAttribute="bottom" id="zrR-4x-uvf"/>
                         </constraints>
                     </view>
                     <connections>
@@ -72,6 +67,7 @@
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="325" y="387"/>
         </scene>
     </scenes>
 </document>

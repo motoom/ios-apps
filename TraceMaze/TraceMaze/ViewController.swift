@@ -48,9 +48,8 @@ class ViewController: UIViewController {
         }
 
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        aspect = Double(view.frame.width) / Double(view.frame.height)
+    override func viewDidLayoutSubviews() {
+        aspect = Double(mazeView.frame.width) / Double(mazeView.frame.height)
         generateMaze()
         }
 
@@ -59,12 +58,12 @@ class ViewController: UIViewController {
         if aspect < 1 {
             // portrait: more rows than columns
             rows = difficulty
-            cols = Int(Double(difficulty) * aspect * 1.2)
+            cols = Int(Double(difficulty) * aspect)
             }
         else {
             // landscape: more columns than rows
             cols = difficulty
-            rows = Int(Double(difficulty) * aspect * 1.2)
+            rows = Int(Double(difficulty) / aspect)
             }
         maze = Maze(rows, cols)
         mazeView.maze = maze

@@ -8,8 +8,17 @@ class MazeView: UIView {
         // Determine size of maze in points.
         let rw = Double(rect.width)
         let rh = Double(rect.height)
-        let ruimte = min(rw, rh) * 0.95
-        let cellsize = ruimte / Double(maze.colcount)
+        let perCellW = Double(rect.width) / Double(maze.colcount)
+        let perCellH = Double(rect.height) / Double(maze.rowcount)
+        var cellsize: Double
+        if perCellW < perCellH {
+            let ruimte = rw * 0.95
+            cellsize = ruimte / Double(maze.colcount)
+            }
+        else {
+            let ruimte = rh * 0.95
+            cellsize = ruimte / Double(maze.rowcount)
+            }
         let mazew = cellsize * Double(maze.colcount)
         let mazeh = cellsize * Double(maze.rowcount)
 
@@ -64,7 +73,7 @@ class MazeView: UIView {
         // UIColor(red: 0.09, green: 0.27, blue: 0.46, alpha: 1).setStroke() // Dark blue.
         // Thinner line width for more complex mazes.
         let busiest = max(Double(maze.rowcount), Double(maze.colcount))
-        p.lineWidth = CGFloat(lerp2d(Double(minDifficulty), 3,  Double(maxDifficulty), 1, busiest))
+        p.lineWidth = CGFloat(lerp2d(Double(minDifficulty), 5,  Double(maxDifficulty), 1, busiest))
 
         p.lineCapStyle = .Round
         p.lineJoinStyle = .Round
