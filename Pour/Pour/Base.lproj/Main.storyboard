@@ -185,7 +185,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="capacitySlider" destination="6Dr-BH-jsG" id="8iO-sh-H7f"/>
                         <outlet property="capacityValueLabel" destination="hlX-I2-JbO" id="Voq-Ky-Jnd"/>
+                        <outlet property="contentsSlider" destination="SLl-IP-oiW" id="bZ8-Md-k5P"/>
                         <outlet property="contentsValueLabel" destination="73g-aK-mCa" id="HeU-ay-pBH"/>
                         <outlet property="heightValueLabel" destination="qRg-1U-skJ" id="87j-QZ-Kif"/>
                         <outlet property="vesselHeightConstraint" destination="SDJ-6d-ZqE" id="N5J-P4-HR1"/>

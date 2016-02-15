@@ -4,6 +4,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var vesselView: VesselView!
+    @IBOutlet weak var capacitySlider: UISlider!
+    @IBOutlet weak var contentsSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,10 @@ class ViewController: UIViewController {
         let roundedValue = round(sender.value)
         sender.value = roundedValue
         vesselView.capacity = CGFloat(roundedValue)
+        if vesselView.capacity < vesselView.contents {
+            contentsSlider.value = roundedValue
+            vesselView.contents = vesselView.capacity
+            }
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         capacityValueLabel.text = String(Int(roundedValue)) + " litres"
@@ -56,6 +62,11 @@ class ViewController: UIViewController {
 
     @IBAction func adjustContents(sender: UISlider) {
         vesselView.contents = CGFloat(sender.value)
+        if vesselView.capacity < vesselView.contents {
+            let ceiledValue = ceil(sender.value)
+            capacitySlider.value = ceiledValue
+            vesselView.capacity = CGFloat(ceiledValue)
+            }
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         contentsValueLabel.text = String(format: "%.01f litres", sender.value) // note the printf-like formatting.
