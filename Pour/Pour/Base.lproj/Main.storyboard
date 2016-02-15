@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" red="0.9391769255050505" green="0.9391769255050505" blue="0.9391769255050505" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5RW-bY-JQD"/>
-                                    <constraint firstAttribute="height" constant="280" id="SDJ-6d-ZqE"/>
+                                    <constraint firstAttribute="height" constant="280" id="SDJ-6d-ZqE" userLabel="Vessel Height Constraint"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEg-GB-gJA" userLabel="Metrics View">
@@ -40,6 +40,12 @@
                                         <variation key="widthClass=regular" fixedFrame="YES">
                                             <rect key="frame" x="8" y="10" width="100" height="21"/>
                                         </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ef-nj-OLQ" userLabel="Width Value Label">
+                                        <rect key="frame" x="0.0" y="30" width="48" height="11"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="200" minValue="30" maxValue="270" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-Ud-afr" userLabel="Width Slider">
                                         <rect key="frame" x="66" y="5" width="128" height="31"/>
@@ -63,6 +69,12 @@
                                             <rect key="frame" x="8" y="60" width="100" height="21"/>
                                         </variation>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="280 points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRg-1U-skJ" userLabel="Height Value Label">
+                                        <rect key="frame" x="0.0" y="90" width="48" height="11"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="280" minValue="20" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="edO-4J-aeW" userLabel="Height Slider">
                                         <rect key="frame" x="66" y="65" width="128" height="31"/>
                                         <variation key="widthClass=regular" fixedFrame="YES">
@@ -84,6 +96,12 @@
                                         <variation key="widthClass=regular" fixedFrame="YES">
                                             <rect key="frame" x="8" y="110" width="100" height="21"/>
                                         </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="8 litres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-I2-JbO" userLabel="Capacity Value Label">
+                                        <rect key="frame" x="0.0" y="150" width="48" height="11"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="8" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="6Dr-BH-jsG" userLabel="Capacity Slider">
                                         <rect key="frame" x="66" y="125" width="128" height="31"/>
@@ -107,7 +125,13 @@
                                             <rect key="frame" x="8" y="160" width="100" height="21"/>
                                         </variation>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="SLl-IP-oiW" userLabel="Contents Slider">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4.0 litres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73g-aK-mCa" userLabel="Contents Value Label">
+                                        <rect key="frame" x="0.0" y="209" width="48" height="11"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="0.0" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="SLl-IP-oiW" userLabel="Contents Slider">
                                         <rect key="frame" x="66" y="185" width="128" height="31"/>
                                         <variation key="widthClass=regular" fixedFrame="YES">
                                             <rect key="frame" x="114" y="156" width="178" height="31"/>
@@ -123,11 +147,17 @@
                                     <constraint firstItem="Jwu-rv-b5r" firstAttribute="top" secondItem="Jtk-uX-o2G" secondAttribute="bottom" constant="39" id="1CC-yt-SkN"/>
                                     <constraint firstAttribute="trailing" secondItem="edO-4J-aeW" secondAttribute="trailing" constant="8" id="2Ai-Iu-wjT"/>
                                     <constraint firstAttribute="trailing" secondItem="SLl-IP-oiW" secondAttribute="trailing" constant="8" id="2bI-aq-7an"/>
+                                    <constraint firstItem="qRg-1U-skJ" firstAttribute="top" secondItem="Jwu-rv-b5r" secondAttribute="bottom" id="43U-I3-rih"/>
                                     <constraint firstItem="PWw-g2-Ptv" firstAttribute="top" secondItem="yFR-su-Fqe" secondAttribute="bottom" constant="39" id="7fa-iQ-asa"/>
                                     <constraint firstItem="yFR-su-Fqe" firstAttribute="top" secondItem="Jwu-rv-b5r" secondAttribute="bottom" constant="39" id="EhQ-qZ-W4g"/>
                                     <constraint firstItem="SLl-IP-oiW" firstAttribute="centerY" secondItem="PWw-g2-Ptv" secondAttribute="centerY" id="FPp-A4-5Ht"/>
+                                    <constraint firstItem="qRg-1U-skJ" firstAttribute="leading" secondItem="Jwu-rv-b5r" secondAttribute="leading" id="GCB-C7-TVc"/>
+                                    <constraint firstItem="73g-aK-mCa" firstAttribute="top" secondItem="PWw-g2-Ptv" secondAttribute="bottom" id="ItA-gN-UjM"/>
                                     <constraint firstItem="SLl-IP-oiW" firstAttribute="leading" secondItem="PWw-g2-Ptv" secondAttribute="trailing" constant="8" id="Jtk-go-gUF"/>
+                                    <constraint firstItem="4Ef-nj-OLQ" firstAttribute="leading" secondItem="Jtk-uX-o2G" secondAttribute="leading" id="M1H-vm-5bb"/>
+                                    <constraint firstItem="hlX-I2-JbO" firstAttribute="leading" secondItem="yFR-su-Fqe" secondAttribute="leading" id="MYc-tV-s4F"/>
                                     <constraint firstItem="PWw-g2-Ptv" firstAttribute="leading" secondItem="EEg-GB-gJA" secondAttribute="leading" id="Ms4-HL-97l"/>
+                                    <constraint firstItem="73g-aK-mCa" firstAttribute="leading" secondItem="PWw-g2-Ptv" secondAttribute="leading" id="REc-xe-Irh"/>
                                     <constraint firstItem="yFR-su-Fqe" firstAttribute="leading" secondItem="EEg-GB-gJA" secondAttribute="leading" id="RW9-B1-eBe"/>
                                     <constraint firstAttribute="trailing" secondItem="6Dr-BH-jsG" secondAttribute="trailing" constant="8" id="UIh-q8-FfK"/>
                                     <constraint firstItem="6Dr-BH-jsG" firstAttribute="leading" secondItem="yFR-su-Fqe" secondAttribute="trailing" constant="8" id="VbI-rr-cM8"/>
@@ -138,8 +168,10 @@
                                     <constraint firstItem="6Dr-BH-jsG" firstAttribute="centerY" secondItem="yFR-su-Fqe" secondAttribute="centerY" id="ghW-FM-VEv"/>
                                     <constraint firstAttribute="width" constant="200" id="hjZ-o5-TUk"/>
                                     <constraint firstItem="Jtk-uX-o2G" firstAttribute="leading" secondItem="EEg-GB-gJA" secondAttribute="leading" id="iBs-ol-rRR"/>
+                                    <constraint firstItem="hlX-I2-JbO" firstAttribute="top" secondItem="yFR-su-Fqe" secondAttribute="bottom" id="j5F-t5-mUZ"/>
                                     <constraint firstItem="Jtk-uX-o2G" firstAttribute="top" secondItem="EEg-GB-gJA" secondAttribute="top" constant="9" id="j8U-6R-T7x"/>
                                     <constraint firstAttribute="trailing" secondItem="cfR-Ud-afr" secondAttribute="trailing" constant="8" id="oTk-Sm-5Kx"/>
+                                    <constraint firstItem="4Ef-nj-OLQ" firstAttribute="top" secondItem="Jtk-uX-o2G" secondAttribute="bottom" id="ouI-lB-G0K"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -153,7 +185,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="capacityValueLabel" destination="hlX-I2-JbO" id="Voq-Ky-Jnd"/>
+                        <outlet property="contentsValueLabel" destination="73g-aK-mCa" id="HeU-ay-pBH"/>
+                        <outlet property="heightValueLabel" destination="qRg-1U-skJ" id="87j-QZ-Kif"/>
+                        <outlet property="vesselHeightConstraint" destination="SDJ-6d-ZqE" id="N5J-P4-HR1"/>
                         <outlet property="vesselView" destination="m9A-uw-bdE" id="Igq-ML-qEy"/>
+                        <outlet property="vesselWidthConstraint" destination="5RW-bY-JQD" id="XXC-ZZ-507"/>
+                        <outlet property="widthValueLabel" destination="4Ef-nj-OLQ" id="SEH-hy-Tzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
