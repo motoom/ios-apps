@@ -28,6 +28,14 @@ class VesselView: UIView
         recalcMetrics()
         }
 
+    func isEmpty() -> Bool {
+        return contents < CGFloat(1.0)
+        }
+
+    func isFull() -> Bool {
+        return contents >= capacity
+        }
+
     func recalcMetrics() {
         pointsperliter = (frame.height - tilt * 2 - insetmargin * 2) / maxcapacity
         tilt = pointsperliter * 1.5
