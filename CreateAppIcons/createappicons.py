@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
 
 # Software by Michiel Overtoom, motoom@xs4all.nl
 
-''' TODO naming:
+# TODO: Also include '-ipad-' and '-iphone-' in suffix
+# TODO: Also create subdirectory 'AppIconXyz.appiconset' with all images + accompagnying catalog 'Contents.json'
+
+''' Naming:
 
 iOS has a simple, beautiful solution for handling Retina and Retina HD graphics, and in fact it does almost all the work for you – all you have to do is name your assets correctly.
 
@@ -18,24 +22,33 @@ With that done, you just need to load taylor.png in your app, and iOS will autom
 import glob
 from PIL import Image # pip install pillow
 import sys
+import os
 
 resolutions = (
-    (180, "60x60_3x"),
-    (120, "60x60_2x"),
-    (120, "40x40_3x"),
-    (80, "40x40_2x"),
-    (87, "29x29_3x"),
-    (58, "29x29_2x"),
+    # iPhone icons
+    (180, "60@3x"),
+    (120, "60@2x"),
+    (120, "40@3x"),
+    (80, "40@2x"),
+    (87, "29@3x"),
+    (58, "29@2x"),
+    # additional iPad icons
+    (167, "83.5@2x"),
+    (152, "76@2x"),
+    (76, "76@1x"),
+    (40, "40@1x"),
+    (29, "29@1x"),
     )
         
 def createappicons(fn):
-    for resolution, prefix in resolutions:
+    for resolution, suffix in resolutions:
         im = Image.open(fn)
         im.thumbnail((resolution, resolution), Image.ANTIALIAS)
-        ofn = "%s_%s" % (prefix, fn)
+        basename, extension = os.path.splitext(fn)
+        ofn = "%s-%s%s" % (basename, suffix, extension)
         im.save(ofn, "png")
         
 if len(sys.argv) < 2:
-    print "Usage: %s <imagefilename> Make copies of image in 180, 120, 87, 80 and 58 pixels." % sys.args[0]
+    print "Usage: %s <imagefilename> Make copies of image in a diversity of sizes for iPhone and iPad icon sets." % sys.args[0]
 else:
     createappicons(sys.argv[1])
