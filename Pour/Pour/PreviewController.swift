@@ -1,7 +1,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PreviewController: UIViewController {
 
     @IBOutlet weak var vesselView: VesselView!
     @IBOutlet weak var capacitySlider: UISlider!
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         vesselView.recalcMetrics()
         vesselView.setNeedsDisplay()
         heightValueLabel.text = String(Int(roundedValue)) + " points"
-    }
+        }
 
 
     @IBOutlet weak var capacityValueLabel: UILabel!
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         capacityValueLabel.text = String(Int(roundedValue)) + " litres"
-    }
+        }
 
 
     @IBOutlet weak var contentsValueLabel: UILabel!
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         contentsValueLabel.text = String(format: "%.01f litres", sender.value) // note the printf-like formatting.
-    }
+        }
 
-}
+    }
 

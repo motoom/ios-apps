@@ -26,7 +26,7 @@ class VesselView: UIView
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         recalcMetrics()
-    }
+        }
 
     func recalcMetrics() {
         pointsperliter = (frame.height - tilt * 2 - insetmargin * 2) / maxcapacity
@@ -165,4 +165,4 @@ class VesselView: UIView
             }
         }
 
-}
+    }

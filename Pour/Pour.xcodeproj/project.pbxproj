@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57651C79F91F00B137D4 /* GameController.swift */; };
+		CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57671C79FA9000B137D4 /* MainController.swift */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
-		CEADDE431C715CFA00089E89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE421C715CFA00089E89 /* ViewController.swift */; };
+		CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE421C715CFA00089E89 /* PreviewController.swift */; };
 		CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE441C715CFA00089E89 /* Main.storyboard */; };
 		CEADDE481C715CFA00089E89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE471C715CFA00089E89 /* Assets.xcassets */; };
 		CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */; };
@@ -16,9 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5A57651C79F91F00B137D4 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		CE5A57671C79FA9000B137D4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEADDE401C715CFA00089E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEADDE421C715CFA00089E89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEADDE421C715CFA00089E89 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
 		CEADDE451C715CFA00089E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEADDE471C715CFA00089E89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEADDE4A1C715CFA00089E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,12 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				CEADDE401C715CFA00089E89 /* AppDelegate.swift */,
-				CEADDE421C715CFA00089E89 /* ViewController.swift */,
+				CEADDE421C715CFA00089E89 /* PreviewController.swift */,
+				CE5A57671C79FA9000B137D4 /* MainController.swift */,
 				CEADDE441C715CFA00089E89 /* Main.storyboard */,
 				CEADDE471C715CFA00089E89 /* Assets.xcassets */,
 				CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */,
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
 				CEADDE521C715DDC00089E89 /* VesselView.swift */,
+				CE5A57651C79F91F00B137D4 /* GameController.swift */,
 			);
 			path = Pour;
 			sourceTree = "<group>";
@@ -138,8 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEADDE431C715CFA00089E89 /* ViewController.swift in Sources */,
+				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
+				CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */,
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
+				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,
 				CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +298,7 @@
 				CEADDE511C715CFA00089E89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
