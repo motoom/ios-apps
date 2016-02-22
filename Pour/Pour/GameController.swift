@@ -12,11 +12,24 @@ class GameController: UIViewController {
     // Controller
     var activeVessels = 5
 
+    // GUI - for determining the height of the toolbar
     @IBOutlet weak var toolbar: UIToolbar!
+
+    // GUI - for positioning of the leftmost vessel view
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var top: NSLayoutConstraint!
     @IBOutlet weak var width: NSLayoutConstraint!
     @IBOutlet weak var height: NSLayoutConstraint!
+
+
+    var pouring: Bool = false
+    var litresPerTick: CGFloat = 0
+    var sourceVessel: VesselView?
+    var destinationVessel: VesselView?
+    var sourceFinalContents = 0
+    var destinationFinalContents = 0
+    var timer: NSTimer? = nil
+
 
     @IBAction func three(sender: UIBarButtonItem) {
         pouring = false
@@ -62,14 +75,6 @@ class GameController: UIViewController {
             }
         }
 
-    var pouring: Bool = false
-    var litresPerTick: CGFloat = 0
-    var sourceVessel: VesselView?
-    var destinationVessel: VesselView?
-    var sourceFinalContents = 0
-    var destinationFinalContents = 0
-    var timer: NSTimer? = nil
-
     func timerTick() {
         if !pouring {
             return
@@ -93,7 +98,7 @@ class GameController: UIViewController {
     func randomVesselWithContent() -> VesselView? {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
-            if !vesselViews[i].isEmpty() {
+            if !vesselViews[i].vessel.isEmpty() {
                 return vesselViews[i]
                 }
             }
@@ -103,7 +108,7 @@ class GameController: UIViewController {
     func randomVesselNotFull() -> VesselView? {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
-            if !vesselViews[i].isFull() {
+            if !vesselViews[i].vessel.isFull() {
                 return vesselViews[i]
                 }
             }
@@ -168,7 +173,7 @@ class GameController: UIViewController {
         height.constant = vesselh
         leading.constant = view.frame.width / 2 - vesselsw / 2 + 4
         top.constant = view.frame.height / 2 - toolbar.frame.height / 2 - vesselh / 2
-        // The other vessels will position them after the first one.
+        // The other vessel views will position them after the first one.
         }
 
 

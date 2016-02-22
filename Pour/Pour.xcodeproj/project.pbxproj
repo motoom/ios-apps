@@ -60,6 +60,24 @@
 			name = States;
 			sourceTree = "<group>";
 		};
+		CE1795881C7B22810011B274 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEADDE421C715CFA00089E89 /* PreviewController.swift */,
+				CE5A57671C79FA9000B137D4 /* MainController.swift */,
+				CE5A57651C79F91F00B137D4 /* GameController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE1795891C7B22CF0011B274 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEADDE521C715DDC00089E89 /* VesselView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		CEADDE341C715CFA00089E89 = {
 			isa = PBXGroup;
 			children = (
@@ -79,17 +97,15 @@
 		CEADDE3F1C715CFA00089E89 /* Pour */ = {
 			isa = PBXGroup;
 			children = (
+				CE1795891C7B22CF0011B274 /* Views */,
+				CE1795881C7B22810011B274 /* Controllers */,
 				CE1795831C7B12960011B274 /* States */,
 				CE1795821C7B128D0011B274 /* Models */,
 				CEADDE401C715CFA00089E89 /* AppDelegate.swift */,
-				CEADDE421C715CFA00089E89 /* PreviewController.swift */,
-				CE5A57671C79FA9000B137D4 /* MainController.swift */,
 				CEADDE441C715CFA00089E89 /* Main.storyboard */,
 				CEADDE471C715CFA00089E89 /* Assets.xcassets */,
 				CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */,
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
-				CEADDE521C715DDC00089E89 /* VesselView.swift */,
-				CE5A57651C79F91F00B137D4 /* GameController.swift */,
 				CE1795861C7B13390011B274 /* Design.swift */,
 			);
 			path = Pour;
