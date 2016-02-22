@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		CE1795851C7B12D20011B274 /* Vessel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795841C7B12D20011B274 /* Vessel.swift */; };
 		CE1795871C7B13390011B274 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795861C7B13390011B274 /* Design.swift */; };
+		CE1795A91C7B30EF0011B274 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795A81C7B30EF0011B274 /* GameState.swift */; };
+		CE1795AB1C7B313B0011B274 /* TitleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795AA1C7B313B0011B274 /* TitleState.swift */; };
+		CE1795AD1C7B31440011B274 /* FillingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795AC1C7B31440011B274 /* FillingState.swift */; };
+		CE1795AF1C7B31490011B274 /* SelectingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795AE1C7B31490011B274 /* SelectingState.swift */; };
+		CE1795B11C7B31500011B274 /* PouringState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B01C7B31500011B274 /* PouringState.swift */; };
+		CE1795B31C7B31630011B274 /* SolvedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B21C7B31630011B274 /* SolvedState.swift */; };
+		CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B41C7B316B0011B274 /* DrainingState.swift */; };
+		CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B61C7B31E50011B274 /* SetupState.swift */; };
 		CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57651C79F91F00B137D4 /* GameController.swift */; };
 		CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57671C79FA9000B137D4 /* MainController.swift */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
@@ -22,6 +30,14 @@
 /* Begin PBXFileReference section */
 		CE1795841C7B12D20011B274 /* Vessel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vessel.swift; sourceTree = "<group>"; };
 		CE1795861C7B13390011B274 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		CE1795A81C7B30EF0011B274 /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		CE1795AA1C7B313B0011B274 /* TitleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleState.swift; sourceTree = "<group>"; };
+		CE1795AC1C7B31440011B274 /* FillingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FillingState.swift; sourceTree = "<group>"; };
+		CE1795AE1C7B31490011B274 /* SelectingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectingState.swift; sourceTree = "<group>"; };
+		CE1795B01C7B31500011B274 /* PouringState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PouringState.swift; sourceTree = "<group>"; };
+		CE1795B21C7B31630011B274 /* SolvedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvedState.swift; sourceTree = "<group>"; };
+		CE1795B41C7B316B0011B274 /* DrainingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrainingState.swift; sourceTree = "<group>"; };
+		CE1795B61C7B31E50011B274 /* SetupState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupState.swift; sourceTree = "<group>"; };
 		CE5A57651C79F91F00B137D4 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		CE5A57671C79FA9000B137D4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +72,14 @@
 		CE1795831C7B12960011B274 /* States */ = {
 			isa = PBXGroup;
 			children = (
+				CE1795A81C7B30EF0011B274 /* GameState.swift */,
+				CE1795AA1C7B313B0011B274 /* TitleState.swift */,
+				CE1795AC1C7B31440011B274 /* FillingState.swift */,
+				CE1795AE1C7B31490011B274 /* SelectingState.swift */,
+				CE1795B01C7B31500011B274 /* PouringState.swift */,
+				CE1795B21C7B31630011B274 /* SolvedState.swift */,
+				CE1795B41C7B316B0011B274 /* DrainingState.swift */,
+				CE1795B61C7B31E50011B274 /* SetupState.swift */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -182,13 +206,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE1795AB1C7B313B0011B274 /* TitleState.swift in Sources */,
+				CE1795AF1C7B31490011B274 /* SelectingState.swift in Sources */,
+				CE1795B11C7B31500011B274 /* PouringState.swift in Sources */,
+				CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */,
 				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
 				CE1795851C7B12D20011B274 /* Vessel.swift in Sources */,
+				CE1795B31C7B31630011B274 /* SolvedState.swift in Sources */,
+				CE1795A91C7B30EF0011B274 /* GameState.swift in Sources */,
 				CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */,
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
+				CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */,
 				CE1795871C7B13390011B274 /* Design.swift in Sources */,
 				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,
 				CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */,
+				CE1795AD1C7B31440011B274 /* FillingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
