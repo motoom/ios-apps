@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1795851C7B12D20011B274 /* Vessel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795841C7B12D20011B274 /* Vessel.swift */; };
+		CE1795871C7B13390011B274 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795861C7B13390011B274 /* Design.swift */; };
 		CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57651C79F91F00B137D4 /* GameController.swift */; };
 		CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57671C79FA9000B137D4 /* MainController.swift */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1795841C7B12D20011B274 /* Vessel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vessel.swift; sourceTree = "<group>"; };
+		CE1795861C7B13390011B274 /* Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		CE5A57651C79F91F00B137D4 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		CE5A57671C79FA9000B137D4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +45,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE1795821C7B128D0011B274 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE1795841C7B12D20011B274 /* Vessel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CE1795831C7B12960011B274 /* States */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
 		CEADDE341C715CFA00089E89 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +79,8 @@
 		CEADDE3F1C715CFA00089E89 /* Pour */ = {
 			isa = PBXGroup;
 			children = (
+				CE1795831C7B12960011B274 /* States */,
+				CE1795821C7B128D0011B274 /* Models */,
 				CEADDE401C715CFA00089E89 /* AppDelegate.swift */,
 				CEADDE421C715CFA00089E89 /* PreviewController.swift */,
 				CE5A57671C79FA9000B137D4 /* MainController.swift */,
@@ -69,6 +90,7 @@
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
 				CEADDE521C715DDC00089E89 /* VesselView.swift */,
 				CE5A57651C79F91F00B137D4 /* GameController.swift */,
+				CE1795861C7B13390011B274 /* Design.swift */,
 			);
 			path = Pour;
 			sourceTree = "<group>";
@@ -145,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
+				CE1795851C7B12D20011B274 /* Vessel.swift in Sources */,
 				CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */,
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
+				CE1795871C7B13390011B274 /* Design.swift in Sources */,
 				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,
 				CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */,
 			);

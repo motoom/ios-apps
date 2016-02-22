@@ -3,20 +3,17 @@ import UIKit
 
 class VesselView: UIView
 {
+    // TODO: to model
     var capacity: CGFloat = 8
     var contents: CGFloat = 4
 
+    // Metrics dependent on view frame (calculated)
     var pointsperliter: CGFloat = 0
     var tilt: CGFloat = 0
     var rim: CGFloat = 0
     var tickwidth: CGFloat = 0
     var contentstextsize: CGFloat = 0
     var capacitytextsize: CGFloat = 0
-
-    // TODO: Naar globale settings
-    let maxcapacity: CGFloat = 15.0
-    let insetmargin: CGFloat = 4.0
-    let outlineWidth: CGFloat = 1.2
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,16 +34,16 @@ class VesselView: UIView
         }
 
     func recalcMetrics() {
-        pointsperliter = (frame.height - tilt * 2 - insetmargin * 2) / maxcapacity
-        tilt = pointsperliter * 1.5
-        rim = pointsperliter * 0.2
-        tickwidth = pointsperliter * 0.3
-        contentstextsize = pointsperliter * 2.0
-        capacitytextsize = pointsperliter
+        pointsperliter = (frame.height - tilt * 2 - Design.insetmargin * 2) / Design.maxcapacity
+        tilt = pointsperliter * Design.tiltFactor
+        rim = pointsperliter * Design.rimHeight
+        tickwidth = pointsperliter * Design.tickwidth
+        contentstextsize = pointsperliter * Design.contentsTextsizeFactor
+        capacitytextsize = pointsperliter * Design.capacityTextsizeFactor
         }
 
     override func drawRect(rect: CGRect) {
-        let paintrect = CGRectInset(rect, insetmargin, insetmargin)
+        let paintrect = CGRectInset(rect, Design.insetmargin, Design.insetmargin)
 
         var path: UIBezierPath!
 
@@ -95,55 +92,55 @@ class VesselView: UIView
             height: tilt * 2)
 
         // Draw bottom of vessel
-        path = UIBezierPath(ovalInRect: CGRectInset(bottomRect, outlineWidth, outlineWidth))
-        path.lineWidth = outlineWidth
+        path = UIBezierPath(ovalInRect: CGRectInset(bottomRect, Design.outlineWidth, Design.outlineWidth))
+        path.lineWidth = Design.outlineWidth
         UIColor.blackColor().setStroke()
         if contents > 0 {
             // Clear if empty, fluid color if not empty.
-            UIColor(red: 128.0/255.0, green: 0, blue: 0, alpha: 1).setFill()
+            Design.colorFluid.setFill()
             path.fill()
             }
         path.stroke()
 
         if contents > 0 {
             // Fluid
-            path = UIBezierPath(rect: CGRectInset(fluidRect, outlineWidth, outlineWidth))
-            UIColor(red: 128.0/255.0, green: 0, blue: 0, alpha: 1).setFill()
+            path = UIBezierPath(rect: CGRectInset(fluidRect, Design.outlineWidth, Design.outlineWidth))
+            Design.colorFluid.setFill()
             path.fill()
 
             // Draw top of fluid (with highlight)
-            path = UIBezierPath(ovalInRect: CGRectInset(fluidtopRect, outlineWidth, outlineWidth))
-            path.lineWidth = outlineWidth
-            UIColor(red: 192.0/255.0, green: 0, blue: 0, alpha: 1).setStroke()
-            UIColor(red: 128.0/255.0, green: 0, blue: 0, alpha: 1).setFill()
+            path = UIBezierPath(ovalInRect: CGRectInset(fluidtopRect, Design.outlineWidth, Design.outlineWidth))
+            path.lineWidth = Design.outlineWidth
+            Design.colorFluidMeniscus.setStroke()
+            Design.colorFluid.setFill()
             path.fill()
             path.stroke()
             }
 
         // Draw upper rim of vessel
-        path = UIBezierPath(ovalInRect: CGRectInset(topRect, outlineWidth, outlineWidth))
-        path.lineWidth = outlineWidth
+        path = UIBezierPath(ovalInRect: CGRectInset(topRect, Design.outlineWidth, Design.outlineWidth))
+        path.lineWidth = Design.outlineWidth
         UIColor.blackColor().setStroke()
         path.stroke()
 
         // Walls
         path = UIBezierPath()
         // Left wall
-        path.moveToPoint(CGPoint(x: topRect.origin.x + outlineWidth, y: topRect.origin.y + tilt))
-        path.addLineToPoint(CGPoint(x: topRect.origin.x + outlineWidth, y: bottomRect.origin.y + tilt))
+        path.moveToPoint(CGPoint(x: topRect.origin.x + Design.outlineWidth, y: topRect.origin.y + tilt))
+        path.addLineToPoint(CGPoint(x: topRect.origin.x + Design.outlineWidth, y: bottomRect.origin.y + tilt))
         // Right wall
-        path.moveToPoint(CGPoint(x: topRect.origin.x + topRect.width - outlineWidth, y: topRect.origin.y + tilt))
-        path.addLineToPoint(CGPoint(x: topRect.origin.x + topRect.width - outlineWidth, y: bottomRect.origin.y + tilt))
+        path.moveToPoint(CGPoint(x: topRect.origin.x + topRect.width - Design.outlineWidth, y: topRect.origin.y + tilt))
+        path.addLineToPoint(CGPoint(x: topRect.origin.x + topRect.width - Design.outlineWidth, y: bottomRect.origin.y + tilt))
 
         // Ticks
         var liter: CGFloat = 1
         while liter < capacity  {
-            path.moveToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - outlineWidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter))
+            path.moveToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - Design.outlineWidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter))
             path.addLineToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - tickwidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter + tickwidth))
             liter += 1
             }
 
-        path.lineWidth = outlineWidth
+        path.lineWidth = Design.outlineWidth
         UIColor.blackColor().setStroke()
         path.stroke()
 
