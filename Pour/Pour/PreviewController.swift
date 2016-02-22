@@ -3,12 +3,16 @@ import UIKit
 
 class PreviewController: UIViewController {
 
+    var vessel: Vessel!
+    
     @IBOutlet weak var vesselView: VesselView!
     @IBOutlet weak var capacitySlider: UISlider!
     @IBOutlet weak var contentsSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vessel = Vessel()
+        vesselView.vessel = vessel
         }
 
 /* When using AutoLayout you should not update the frame property, instead modify the contraints on a view.
