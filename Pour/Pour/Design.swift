@@ -2,6 +2,8 @@
 import UIKit
 
 struct Design {
+    static let maxVesselCount = 5
+    
     static let maxcapacity: CGFloat = 15.0
     static let insetmargin: CGFloat = 4.0
     static let outlineWidth: CGFloat = 1.2

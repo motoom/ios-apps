@@ -3,9 +3,8 @@ import UIKit
 
 class VesselView: UIView
 {
-    // TODO: to model
-    var capacity: CGFloat = 8
-    var contents: CGFloat = 4
+    // Associated model
+    var vessel: Vessel!
 
     // Metrics dependent on view frame (calculated)
     var pointsperliter: CGFloat = 0
@@ -25,12 +24,12 @@ class VesselView: UIView
         recalcMetrics()
         }
 
-    func isEmpty() -> Bool {
-        return contents < CGFloat(1.0)
+    func isEmpty() -> Bool { // TODO: naar model
+        return vessel.contents < CGFloat(1.0)
         }
 
     func isFull() -> Bool {
-        return contents >= capacity
+        return vessel.contents >= vessel.capacity
         }
 
     func recalcMetrics() {
@@ -58,14 +57,14 @@ class VesselView: UIView
         // Upper rim vessel
         let topRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - tilt * 2 - rim,
+            y: paintrect.origin.y + paintrect.height - vessel.capacity * pointsperliter - tilt * 2 - rim,
             width: paintrect.width,
             height: tilt * 2)
 
         // Textual capacity in liters
         let textCapacityRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - rim,
+            y: paintrect.origin.y + paintrect.height - vessel.capacity * pointsperliter - rim,
             width: paintrect.width,
             height: tilt * 2 // TODO: should be height of text string, in theory
             )
@@ -73,16 +72,16 @@ class VesselView: UIView
         // Top of fluid (only used when contents > 0)
         let fluidtopRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt * 2,
+            y: paintrect.origin.y + paintrect.height - vessel.contents * pointsperliter - tilt * 2,
             width: paintrect.width,
             height: tilt * 2)
 
         // Fluid (only used when contents > 0)
         let fluidRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt,
+            y: paintrect.origin.y + paintrect.height - vessel.contents * pointsperliter - tilt,
             width: paintrect.width,
-            height: contents * pointsperliter)
+            height: vessel.contents * pointsperliter)
 
         // Bottom of vessel
         let bottomRect = CGRect(
@@ -95,14 +94,14 @@ class VesselView: UIView
         path = UIBezierPath(ovalInRect: CGRectInset(bottomRect, Design.outlineWidth, Design.outlineWidth))
         path.lineWidth = Design.outlineWidth
         UIColor.blackColor().setStroke()
-        if contents > 0 {
+        if vessel.contents > 0 {
             // Clear if empty, fluid color if not empty.
             Design.colorFluid.setFill()
             path.fill()
             }
         path.stroke()
 
-        if contents > 0 {
+        if vessel.contents > 0 {
             // Fluid
             path = UIBezierPath(rect: CGRectInset(fluidRect, Design.outlineWidth, Design.outlineWidth))
             Design.colorFluid.setFill()
@@ -134,7 +133,7 @@ class VesselView: UIView
 
         // Ticks
         var liter: CGFloat = 1
-        while liter < capacity  {
+        while liter < vessel.capacity  {
             path.moveToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - Design.outlineWidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter))
             path.addLineToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - tickwidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter + tickwidth))
             liter += 1
@@ -145,11 +144,11 @@ class VesselView: UIView
         path.stroke()
 
         // Contents and capacity, in liters
-        let flooredCapacity = String(Int(floor(capacity)))
+        let flooredCapacity = String(Int(floor(vessel.capacity)))
         if flooredCapacity != "0" {
             drawString(textCapacityRect, text: flooredCapacity, fontSize: capacitytextsize)
             }
-        let flooredContents = String(Int(floor(contents)))
+        let flooredContents = String(Int(floor(vessel.contents)))
         if flooredContents != "0" {
             drawString(textContentsRect, text: flooredContents, fontSize: contentstextsize, fontColor: UIColor.grayColor())
             }

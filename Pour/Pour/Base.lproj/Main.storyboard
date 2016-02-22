@@ -226,7 +226,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TODO: This will become the title screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtz-9r-dYv">
                                 <rect key="frame" x="63" y="80" width="321" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -349,11 +349,11 @@
                         <outlet property="toolbar" destination="8AJ-vC-dxL" id="Qzb-ZA-zIC"/>
                         <outlet property="top" destination="qCP-MN-fVa" id="AD9-7q-aDV"/>
                         <outlet property="width" destination="mVk-uP-sQP" id="SK7-Xg-KUN"/>
-                        <outletCollection property="vessels" destination="yDT-XQ-SRg" collectionClass="NSMutableArray" id="9zY-G3-59A"/>
-                        <outletCollection property="vessels" destination="FJJ-FQ-J2g" collectionClass="NSMutableArray" id="tcH-PO-sJY"/>
-                        <outletCollection property="vessels" destination="uZo-vS-5Bj" collectionClass="NSMutableArray" id="x3n-lV-unf"/>
-                        <outletCollection property="vessels" destination="dAz-hh-E4X" collectionClass="NSMutableArray" id="kb6-SB-SSu"/>
-                        <outletCollection property="vessels" destination="Gh2-J6-lAq" collectionClass="NSMutableArray" id="oIc-no-mp7"/>
+                        <outletCollection property="vesselViews" destination="yDT-XQ-SRg" id="ebc-gI-rVf"/>
+                        <outletCollection property="vesselViews" destination="FJJ-FQ-J2g" id="fVN-rJ-VoR"/>
+                        <outletCollection property="vesselViews" destination="uZo-vS-5Bj" id="eQA-Fh-0fB"/>
+                        <outletCollection property="vesselViews" destination="dAz-hh-E4X" id="xtk-hr-6Wl"/>
+                        <outletCollection property="vesselViews" destination="Gh2-J6-lAq" id="H4H-Qp-5l2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6a-bu-kBm" userLabel="First Responder" sceneMemberID="firstResponder"/>

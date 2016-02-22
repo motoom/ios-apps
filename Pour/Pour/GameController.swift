@@ -3,10 +3,16 @@ import UIKit
 
 class GameController: UIViewController {
 
-    @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet var vessels: [VesselView]!
+    // Model
+    var vessels = [Vessel(), Vessel(), Vessel(), Vessel(), Vessel()]
+
+    // Views
+    @IBOutlet var vesselViews: [VesselView]!
+
+    // Controller
     var activeVessels = 5
 
+    @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var top: NSLayoutConstraint!
     @IBOutlet weak var width: NSLayoutConstraint!
@@ -14,8 +20,8 @@ class GameController: UIViewController {
 
     @IBAction func three(sender: UIBarButtonItem) {
         pouring = false
-        vessels[3].hidden = true
-        vessels[4].hidden = true
+        vesselViews[3].hidden = true
+        vesselViews[4].hidden = true
         activeVessels = 3
         positionVessels()
         view.setNeedsUpdateConstraints()
@@ -24,8 +30,8 @@ class GameController: UIViewController {
 
     @IBAction func four(sender: UIBarButtonItem) {
         pouring = false
-        vessels[3].hidden = false
-        vessels[4].hidden = true
+        vesselViews[3].hidden = false
+        vesselViews[4].hidden = true
         activeVessels = 4
         positionVessels()
         view.setNeedsUpdateConstraints()
@@ -34,8 +40,8 @@ class GameController: UIViewController {
 
     @IBAction func five(sender: UIBarButtonItem) {
         pouring = false
-        vessels[3].hidden = false
-        vessels[4].hidden = false
+        vesselViews[3].hidden = false
+        vesselViews[4].hidden = false
         activeVessels = 5
         positionVessels()
         view.setNeedsUpdateConstraints()
@@ -69,13 +75,13 @@ class GameController: UIViewController {
             return
             }
         if let src = sourceVessel, dst = destinationVessel {
-            src.contents -= litresPerTick
-            dst.contents += litresPerTick
+            src.vessel.contents -= litresPerTick
+            dst.vessel.contents += litresPerTick
             // Test end of pouring
-            if src.contents <= CGFloat(sourceFinalContents) ||
-                dst.contents >= CGFloat(destinationFinalContents) {
-                    src.contents = CGFloat(sourceFinalContents)
-                    dst.contents = CGFloat(destinationFinalContents)
+            if src.vessel.contents <= CGFloat(sourceFinalContents) ||
+                dst.vessel.contents >= CGFloat(destinationFinalContents) {
+                    src.vessel.contents = CGFloat(sourceFinalContents)
+                    dst.vessel.contents = CGFloat(destinationFinalContents)
                     pouring = false
                     }
             src.setNeedsDisplay()
@@ -87,8 +93,8 @@ class GameController: UIViewController {
     func randomVesselWithContent() -> VesselView? {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
-            if !vessels[i].isEmpty() {
-                return vessels[i]
+            if !vesselViews[i].isEmpty() {
+                return vesselViews[i]
                 }
             }
         }
@@ -97,8 +103,8 @@ class GameController: UIViewController {
     func randomVesselNotFull() -> VesselView? {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
-            if !vessels[i].isFull() {
-                return vessels[i]
+            if !vesselViews[i].isFull() {
+                return vesselViews[i]
                 }
             }
         }
@@ -111,39 +117,39 @@ class GameController: UIViewController {
             destinationVessel = randomVesselNotFull()
             } while (sourceVessel == destinationVessel)
         // How much can we pour?
-        let room = destinationVessel!.capacity - destinationVessel!.contents
-        var quantity = sourceVessel!.contents
+        let room = destinationVessel!.vessel.capacity - destinationVessel!.vessel.contents
+        var quantity = sourceVessel!.vessel.contents
         if quantity > room {
             quantity = room
             }
         //
         litresPerTick = quantity / 10
-        sourceFinalContents = Int(sourceVessel!.contents) - Int(quantity)
-        destinationFinalContents = Int(destinationVessel!.contents) + Int(quantity)
+        sourceFinalContents = Int(sourceVessel!.vessel.contents) - Int(quantity)
+        destinationFinalContents = Int(destinationVessel!.vessel.contents) + Int(quantity)
         pouring = true
         }
 
     func randomizeVessels() {
         var totalContents: CGFloat = 0
-        for vessel in vessels {
+        for vesselView in vesselViews {
             let cap = arc4random_uniform(12) + 4
-            vessel.capacity = CGFloat(cap)
+            vesselView.vessel.capacity = CGFloat(cap)
             let cont = CGFloat(arc4random_uniform(cap))
             totalContents += cont
-            vessel.contents = cont
-            vessel.setNeedsDisplay()
+            vesselView.vessel.contents = cont
+            vesselView.setNeedsDisplay()
             }
         // Make sure there is at least 1 litre of fluid in the system.
         if totalContents < 1 {
-            vessels[0].contents = 1
-            vessels[0].setNeedsDisplay()
+            vesselViews[0].vessel.contents = 1
+            vesselViews[0].setNeedsDisplay()
             }
         }
 
 
     func positionVessels() {
         var activevessels = 0
-        for vessel in vessels {
+        for vessel in vesselViews {
             if !vessel.hidden {
                 activevessels++
                 }
@@ -168,6 +174,9 @@ class GameController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        for i in 0 ..< Design.maxVesselCount {
+            vesselViews[i].vessel = vessels[i]
+            }
         positionVessels()
         randomizeVessels()
         }

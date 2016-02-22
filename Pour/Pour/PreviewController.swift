@@ -47,10 +47,10 @@ class PreviewController: UIViewController {
     @IBAction func adjustCapacity(sender: UISlider) {
         let roundedValue = round(sender.value)
         sender.value = roundedValue
-        vesselView.capacity = CGFloat(roundedValue)
-        if vesselView.capacity < vesselView.contents {
+        vesselView.vessel.capacity = CGFloat(roundedValue)
+        if vesselView.vessel.capacity < vesselView.vessel.contents {
             contentsSlider.value = roundedValue
-            vesselView.contents = vesselView.capacity
+            vesselView.vessel.contents = vesselView.vessel.capacity
             }
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
@@ -61,11 +61,11 @@ class PreviewController: UIViewController {
     @IBOutlet weak var contentsValueLabel: UILabel!
 
     @IBAction func adjustContents(sender: UISlider) {
-        vesselView.contents = CGFloat(sender.value)
-        if vesselView.capacity < vesselView.contents {
+        vesselView.vessel.contents = CGFloat(sender.value)
+        if vesselView.vessel.capacity < vesselView.vessel.contents {
             let ceiledValue = ceil(sender.value)
             capacitySlider.value = ceiledValue
-            vesselView.capacity = CGFloat(ceiledValue)
+            vesselView.vessel.capacity = CGFloat(ceiledValue)
             }
         vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
