@@ -3,6 +3,8 @@ import UIKit
 
 class PreviewController: UIViewController {
 
+    var vessel: Vessel!
+    
     @IBOutlet weak var vesselView: VesselView!
     @IBOutlet weak var capacitySlider: UISlider!
     @IBOutlet weak var contentsSlider: UISlider!
