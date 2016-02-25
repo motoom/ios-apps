@@ -9,6 +9,7 @@ class PreviewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vesselView.vessel = Vessel()
         }
 
 /* When using AutoLayout you should not update the frame property, instead modify the contraints on a view.
