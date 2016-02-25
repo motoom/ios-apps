@@ -3,8 +3,16 @@ import UIKit
 
 class VesselView: UIView
 {
-    // Associated model
-    var vessel: Vessel!
+    var capacity: CGFloat = 8 {
+        didSet {
+            self.setNeedsDisplay()
+            }
+        }
+    var contents: CGFloat = 4 {
+        didSet {
+            self.setNeedsDisplay()
+            }
+        }
 
     // Metrics dependent on view frame (calculated)
     var pointsperliter: CGFloat = 0
@@ -49,14 +57,14 @@ class VesselView: UIView
         // Upper rim vessel
         let topRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - vessel.capacity * pointsperliter - tilt * 2 - rim,
+            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - tilt * 2 - rim,
             width: paintrect.width,
             height: tilt * 2)
 
         // Textual capacity in liters
         let textCapacityRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - vessel.capacity * pointsperliter - rim,
+            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - rim,
             width: paintrect.width,
             height: tilt * 2 // TODO: should be height of text string, in theory
             )
@@ -64,16 +72,16 @@ class VesselView: UIView
         // Top of fluid (only used when contents > 0)
         let fluidtopRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - vessel.contents * pointsperliter - tilt * 2,
+            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt * 2,
             width: paintrect.width,
             height: tilt * 2)
 
         // Fluid (only used when contents > 0)
         let fluidRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - vessel.contents * pointsperliter - tilt,
+            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt,
             width: paintrect.width,
-            height: vessel.contents * pointsperliter)
+            height: contents * pointsperliter)
 
         // Bottom of vessel
         let bottomRect = CGRect(
@@ -86,14 +94,14 @@ class VesselView: UIView
         path = UIBezierPath(ovalInRect: CGRectInset(bottomRect, Design.outlineWidth, Design.outlineWidth))
         path.lineWidth = Design.outlineWidth
         UIColor.blackColor().setStroke()
-        if vessel.contents > 0 {
+        if contents > 0 {
             // Clear if empty, fluid color if not empty.
             Design.colorFluid.setFill()
             path.fill()
             }
         path.stroke()
 
-        if vessel.contents > 0 {
+        if contents > 0 {
             // Fluid
             path = UIBezierPath(rect: CGRectInset(fluidRect, Design.outlineWidth, Design.outlineWidth))
             Design.colorFluid.setFill()
@@ -125,7 +133,7 @@ class VesselView: UIView
 
         // Ticks
         var liter: CGFloat = 1
-        while liter < vessel.capacity  {
+        while liter < capacity  {
             path.moveToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - Design.outlineWidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter))
             path.addLineToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - tickwidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter + tickwidth))
             liter += 1
@@ -136,11 +144,11 @@ class VesselView: UIView
         path.stroke()
 
         // Contents and capacity, in liters
-        let flooredCapacity = String(Int(floor(vessel.capacity)))
+        let flooredCapacity = String(Int(floor(capacity)))
         if flooredCapacity != "0" {
             drawString(textCapacityRect, text: flooredCapacity, fontSize: capacitytextsize)
             }
-        let flooredContents = String(Int(floor(vessel.contents)))
+        let flooredContents = String(Int(floor(contents)))
         if flooredContents != "0" {
             drawString(textContentsRect, text: flooredContents, fontSize: contentstextsize, fontColor: UIColor.grayColor())
             }

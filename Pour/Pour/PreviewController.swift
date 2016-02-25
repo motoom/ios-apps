@@ -11,7 +11,6 @@ class PreviewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vesselView.vessel = Vessel()
         }
 
 /* When using AutoLayout you should not update the frame property, instead modify the contraints on a view.
@@ -50,12 +49,12 @@ class PreviewController: UIViewController {
     @IBAction func adjustCapacity(sender: UISlider) {
         let roundedValue = round(sender.value)
         sender.value = roundedValue
-        vesselView.vessel.capacity = CGFloat(roundedValue)
-        if vesselView.vessel.capacity < vesselView.vessel.contents {
+        vesselView.capacity = CGFloat(roundedValue)
+        if vesselView.capacity < vesselView.contents {
             contentsSlider.value = roundedValue
-            vesselView.vessel.contents = vesselView.vessel.capacity
+            vesselView.contents = vesselView.capacity
             }
-        vesselView.setNeedsDisplay()
+        // vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         capacityValueLabel.text = String(Int(roundedValue)) + " litres"
         }
@@ -64,13 +63,13 @@ class PreviewController: UIViewController {
     @IBOutlet weak var contentsValueLabel: UILabel!
 
     @IBAction func adjustContents(sender: UISlider) {
-        vesselView.vessel.contents = CGFloat(sender.value)
-        if vesselView.vessel.capacity < vesselView.vessel.contents {
+        vesselView.contents = CGFloat(sender.value)
+        if vesselView.capacity < vesselView.contents {
             let ceiledValue = ceil(sender.value)
             capacitySlider.value = ceiledValue
-            vesselView.vessel.capacity = CGFloat(ceiledValue)
+            vesselView.capacity = CGFloat(ceiledValue)
             }
-        vesselView.setNeedsDisplay()
+        // vesselView.setNeedsDisplay()
         vesselView.recalcMetrics()
         contentsValueLabel.text = String(format: "%.01f litres", sender.value) // note the printf-like formatting.
         }
