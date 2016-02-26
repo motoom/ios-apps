@@ -24,6 +24,8 @@ class GameController: UIViewController {
     @IBOutlet weak var width: NSLayoutConstraint!
     @IBOutlet weak var height: NSLayoutConstraint!
 
+    // GUI - for goal content
+    @IBOutlet weak var targetLabel: UILabel!
 
     var pouring: Bool = false
     var litresPerTick: CGFloat = 0
@@ -42,7 +44,6 @@ class GameController: UIViewController {
         positionVessels()
         view.setNeedsUpdateConstraints()
         let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
-        // targetContent
         updateVesselViews(puzzle)
         }
 
@@ -54,7 +55,6 @@ class GameController: UIViewController {
         positionVessels()
         view.setNeedsUpdateConstraints()
         let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
-        // targetContent
         updateVesselViews(puzzle)
         }
 
@@ -66,7 +66,6 @@ class GameController: UIViewController {
         positionVessels()
         view.setNeedsUpdateConstraints()
         let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
-        // targetContent
         updateVesselViews(puzzle)
         }
 
@@ -169,6 +168,7 @@ class GameController: UIViewController {
 
 
     func updateVesselViews(puzzle: Puzzle) {
+        targetLabel.text = "Your goal is to measure \(puzzle.targetContent) litres"
         for i in 0 ..< puzzle.capacity.count {
             vessels[i].capacity = CGFloat(puzzle.capacity[i])
             vessels[i].contents = CGFloat(puzzle.content[i])

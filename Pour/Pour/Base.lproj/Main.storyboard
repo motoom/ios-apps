@@ -317,15 +317,23 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your goal is to measure X litres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f0-yD-jq9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="leading" secondItem="uZo-vS-5Bj" secondAttribute="trailing" constant="4" id="481-7Y-dT1"/>
                             <constraint firstItem="FJJ-FQ-J2g" firstAttribute="top" secondItem="yDT-XQ-SRg" secondAttribute="top" id="AcG-nZ-Rul"/>
+                            <constraint firstItem="2f0-yD-jq9" firstAttribute="width" secondItem="uvI-ls-1Kg" secondAttribute="width" id="AuP-6h-KHI"/>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="width" secondItem="uZo-vS-5Bj" secondAttribute="width" id="B2D-y7-ad4"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="height" secondItem="FJJ-FQ-J2g" secondAttribute="height" id="Dn7-vT-frL"/>
                             <constraint firstItem="8AJ-vC-dxL" firstAttribute="centerX" secondItem="uvI-ls-1Kg" secondAttribute="centerX" id="FTa-Rb-zmb"/>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="top" secondItem="uZo-vS-5Bj" secondAttribute="top" id="HBY-yA-jc6"/>
+                            <constraint firstItem="2f0-yD-jq9" firstAttribute="top" secondItem="sbI-zn-5Wd" secondAttribute="bottom" id="Qg8-WV-KAo"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="width" secondItem="FJJ-FQ-J2g" secondAttribute="width" id="QwS-sw-eHf"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="top" secondItem="FJJ-FQ-J2g" secondAttribute="top" id="Rq1-Dq-ohY"/>
                             <constraint firstItem="Gh2-J6-lAq" firstAttribute="width" secondItem="dAz-hh-E4X" secondAttribute="width" id="SCD-IW-XGW"/>
@@ -337,6 +345,7 @@
                             <constraint firstItem="Dij-tU-16q" firstAttribute="top" secondItem="8AJ-vC-dxL" secondAttribute="bottom" id="iUI-ZW-0sk"/>
                             <constraint firstItem="yDT-XQ-SRg" firstAttribute="leading" secondItem="uvI-ls-1Kg" secondAttribute="leading" id="iaP-ZH-NCK"/>
                             <constraint firstItem="Gh2-J6-lAq" firstAttribute="leading" secondItem="dAz-hh-E4X" secondAttribute="trailing" constant="4" id="jEu-uJ-ZpD"/>
+                            <constraint firstItem="2f0-yD-jq9" firstAttribute="centerX" secondItem="uvI-ls-1Kg" secondAttribute="centerX" id="k4S-PH-Qiq"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="leading" secondItem="FJJ-FQ-J2g" secondAttribute="trailing" constant="4" id="lh1-A1-oPG"/>
                             <constraint firstItem="yDT-XQ-SRg" firstAttribute="top" secondItem="sbI-zn-5Wd" secondAttribute="bottom" constant="136" id="qCP-MN-fVa"/>
                             <constraint firstItem="Gh2-J6-lAq" firstAttribute="top" secondItem="dAz-hh-E4X" secondAttribute="top" id="vOE-4C-lwp"/>
@@ -346,19 +355,20 @@
                     <connections>
                         <outlet property="height" destination="otl-tf-SNx" id="PCM-dk-GFh"/>
                         <outlet property="leading" destination="iaP-ZH-NCK" id="Ep4-Bq-yOr"/>
+                        <outlet property="targetLabel" destination="2f0-yD-jq9" id="GO6-yH-sor"/>
                         <outlet property="toolbar" destination="8AJ-vC-dxL" id="Qzb-ZA-zIC"/>
                         <outlet property="top" destination="qCP-MN-fVa" id="AD9-7q-aDV"/>
                         <outlet property="width" destination="mVk-uP-sQP" id="SK7-Xg-KUN"/>
-                        <outletCollection property="vesselViews" destination="yDT-XQ-SRg" id="ebc-gI-rVf"/>
-                        <outletCollection property="vesselViews" destination="FJJ-FQ-J2g" id="fVN-rJ-VoR"/>
-                        <outletCollection property="vesselViews" destination="uZo-vS-5Bj" id="eQA-Fh-0fB"/>
-                        <outletCollection property="vesselViews" destination="dAz-hh-E4X" id="xtk-hr-6Wl"/>
-                        <outletCollection property="vesselViews" destination="Gh2-J6-lAq" id="H4H-Qp-5l2"/>
+                        <outletCollection property="vesselViews" destination="yDT-XQ-SRg" collectionClass="NSMutableArray" id="ebc-gI-rVf"/>
+                        <outletCollection property="vesselViews" destination="FJJ-FQ-J2g" collectionClass="NSMutableArray" id="fVN-rJ-VoR"/>
+                        <outletCollection property="vesselViews" destination="uZo-vS-5Bj" collectionClass="NSMutableArray" id="eQA-Fh-0fB"/>
+                        <outletCollection property="vesselViews" destination="dAz-hh-E4X" collectionClass="NSMutableArray" id="xtk-hr-6Wl"/>
+                        <outletCollection property="vesselViews" destination="Gh2-J6-lAq" collectionClass="NSMutableArray" id="H4H-Qp-5l2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6a-bu-kBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266" y="906"/>
+            <point key="canvasLocation" x="264" y="906"/>
         </scene>
     </scenes>
 </document>
