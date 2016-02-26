@@ -2,7 +2,8 @@ import Foundation
 
 class Puzzle
 {
-    var targetContent: Int = 0
+    var vesselCount = 0
+    var targetContent = 0
     var capacity: [Int] = []
     var content: [Int] = []
 }
@@ -72,11 +73,10 @@ class Puzzles
         }
 
     func extractPuzzle(line: String) -> Puzzle {
-        var puzzle = Puzzle()
-        var vesselCount = 0
+        let puzzle = Puzzle()
         for (nr, c) in line.characters.enumerate() {
             if nr == 1 {
-                vesselCount = unhex(c)
+                puzzle.vesselCount = unhex(c)
                 }
             else if nr == 3 {
                 puzzle.targetContent = unhex(c)
@@ -85,19 +85,13 @@ class Puzzles
                 break
                 }
             }
-        var i = 0
-        while (i < vesselCount) {
+        for i in 0 ..< puzzle.vesselCount {
             let index = 4 + i * 2
             let contentDigit = line.substringWithRange(Range<String.Index>(start: line.startIndex.advancedBy(index), end: line.startIndex.advancedBy(index + 1)))
             let capacityDigit = line.substringWithRange(Range<String.Index>(start: line.startIndex.advancedBy(index + 1), end: line.startIndex.advancedBy(index + 2)))
             puzzle.content.append(unhex(Character(contentDigit)))
             puzzle.capacity.append(unhex(Character(capacityDigit)))
-            i++
             }
-        for i in 0..<2 {
-            print(puzzle.content[i])
-            }
-
         return puzzle
         }
 

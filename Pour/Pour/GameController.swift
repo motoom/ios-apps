@@ -40,10 +40,9 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = true
         vesselViews[4].hidden = true
-        activeVessels = 3
+        let puzzle = puzzles.randomPuzzle(3, difficulty: 5)
         positionVessels()
         view.setNeedsUpdateConstraints()
-        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
         updateVesselViews(puzzle)
         }
 
@@ -51,10 +50,9 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = true
-        activeVessels = 4
+        let puzzle = puzzles.randomPuzzle(4, difficulty: 5)
         positionVessels()
         view.setNeedsUpdateConstraints()
-        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
         updateVesselViews(puzzle)
         }
 
@@ -62,12 +60,28 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = false
-        activeVessels = 5
+        let puzzle = puzzles.randomPuzzle(5, difficulty: 5)
         positionVessels()
         view.setNeedsUpdateConstraints()
-        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
         updateVesselViews(puzzle)
         }
+
+    func updateVesselViews(puzzle: Puzzle) {
+        activeVessels = puzzle.vesselCount
+
+        targetLabel.text = "measure \(puzzle.targetContent) litres"
+        for i in 0 ..< puzzle.vesselCount {
+            vessels[i].capacity = CGFloat(puzzle.capacity[i])
+            vessels[i].contents = CGFloat(puzzle.content[i])
+            }
+
+        for i in 0 ..< puzzle.vesselCount {
+            vesselViews[i].capacity = vessels[i].capacity
+            vesselViews[i].contents = vessels[i].contents
+            }
+        }
+
+
 
     @IBAction func start(sender: UIBarButtonItem) {
         if timer == nil {
@@ -140,46 +154,6 @@ class GameController: UIViewController {
         pouring = true
         }
 
-    func randomizeVessels() {
-        var totalCapacity: CGFloat = 0
-        var totalContents: CGFloat = 0
-        for i in 0 ..< activeVessels {
-            let cap = arc4random_uniform(12) + 4
-            vessels[i].capacity = CGFloat(cap)
-            totalCapacity += CGFloat(cap)
-            let cont = CGFloat(arc4random_uniform(cap))
-            vessels[i].contents = CGFloat(cont)
-            totalContents += cont
-            }
-        // Make sure not all vessels are full
-        if totalContents >= totalCapacity {
-            vessels[0].contents -= 1
-            }
-        // Make sure there is at least 1 litre of fluid in the system.
-        if totalContents < 1 {
-            vessels[0].contents = 1
-            }
-        // Update views
-        for i in 0 ..< activeVessels {
-            vesselViews[i].capacity = vessels[i].capacity
-            vesselViews[i].contents = vessels[i].contents
-            }
-        }
-
-
-    func updateVesselViews(puzzle: Puzzle) {
-        targetLabel.text = "Your goal is to measure \(puzzle.targetContent) litres"
-        for i in 0 ..< puzzle.capacity.count {
-            vessels[i].capacity = CGFloat(puzzle.capacity[i])
-            vessels[i].contents = CGFloat(puzzle.content[i])
-            }
-
-        for i in 0 ..< activeVessels {
-            vesselViews[i].capacity = vessels[i].capacity
-            vesselViews[i].contents = vessels[i].contents
-            }
-        }
-
 
     func positionVessels() {
         var activevessels = 0
@@ -209,7 +183,7 @@ class GameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         positionVessels()
-        randomizeVessels()
+        three(UIBarButtonItem())
         }
 
 
