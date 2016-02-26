@@ -1,0 +1,22 @@
+
+Each text line in Puzzles.dat has 14 characters. These characters encode a puzzle:
+
+Character  Meaning
+
+0          Shaker (random letter a-z, A-Z)
+1          Nr. of vessels in this puzzle (hex digit: 3, 4 or 5)
+2          Difficulty; approx. mimimum nr. of steps necessary to solve this puzzle (hex digit)
+3          Target contents (hex digit)
+4          Initial contents of vessel 0 (hex digit)
+5          Capacity of vessel 0 (hex digit)
+6 and 7    Initial contents and capacity of vessel 1
+8 and 9    Initial contents and capacity of vessel 2
+10 and 11  Initial contents and capacity of vessel 3
+12 and 13  Initial contents and capacity of vessel 4
+
+Examples:
+
+A3312249270000
+n46D0E665E4C12
+X45D4A347F1400
+t3312249270000

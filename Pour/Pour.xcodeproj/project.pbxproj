@@ -19,6 +19,9 @@
 		CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B61C7B31E50011B274 /* SetupState.swift */; };
 		CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57651C79F91F00B137D4 /* GameController.swift */; };
 		CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57671C79FA9000B137D4 /* MainController.swift */; };
+		CE82C1761C7F973C000AD815 /* Puzzles.dat in Resources */ = {isa = PBXBuildFile; fileRef = CE82C1751C7F973C000AD815 /* Puzzles.dat */; };
+		CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1771C7F9CA5000AD815 /* Puzzles.swift */; };
+		CE82C17A1C7F9F4E000AD815 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1791C7F9F4E000AD815 /* String+subscript.swift */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
 		CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE421C715CFA00089E89 /* PreviewController.swift */; };
 		CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE441C715CFA00089E89 /* Main.storyboard */; };
@@ -40,6 +43,9 @@
 		CE1795B61C7B31E50011B274 /* SetupState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupState.swift; sourceTree = "<group>"; };
 		CE5A57651C79F91F00B137D4 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		CE5A57671C79FA9000B137D4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		CE82C1751C7F973C000AD815 /* Puzzles.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Puzzles.dat; sourceTree = "<group>"; };
+		CE82C1771C7F9CA5000AD815 /* Puzzles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzles.swift; sourceTree = "<group>"; };
+		CE82C1791C7F9F4E000AD815 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+subscript.swift"; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEADDE401C715CFA00089E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEADDE421C715CFA00089E89 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
@@ -64,7 +70,9 @@
 		CE1795821C7B128D0011B274 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE82C1751C7F973C000AD815 /* Puzzles.dat */,
 				CE1795841C7B12D20011B274 /* Vessel.swift */,
+				CE82C1771C7F9CA5000AD815 /* Puzzles.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -131,6 +139,7 @@
 				CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */,
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
 				CE1795861C7B13390011B274 /* Design.swift */,
+				CE82C1791C7F9F4E000AD815 /* String+subscript.swift */,
 			);
 			path = Pour;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE82C1761C7F973C000AD815 /* Puzzles.dat in Resources */,
 				CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */,
 				CEADDE481C715CFA00089E89 /* Assets.xcassets in Resources */,
 				CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */,
@@ -211,10 +221,12 @@
 				CE1795B11C7B31500011B274 /* PouringState.swift in Sources */,
 				CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */,
 				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
+				CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */,
 				CE1795851C7B12D20011B274 /* Vessel.swift in Sources */,
 				CE1795B31C7B31630011B274 /* SolvedState.swift in Sources */,
 				CE1795A91C7B30EF0011B274 /* GameState.swift in Sources */,
 				CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */,
+				CE82C17A1C7F9F4E000AD815 /* String+subscript.swift in Sources */,
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
 				CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */,
 				CE1795871C7B13390011B274 /* Design.swift in Sources */,

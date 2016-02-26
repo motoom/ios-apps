@@ -3,6 +3,9 @@ import UIKit
 
 class GameController: UIViewController {
 
+    // Database of puzzles
+    var puzzles = Puzzles()
+    
     // Model
     var vessels = [Vessel(), Vessel(), Vessel(), Vessel(), Vessel()]
 
@@ -38,7 +41,9 @@ class GameController: UIViewController {
         activeVessels = 3
         positionVessels()
         view.setNeedsUpdateConstraints()
-        randomizeVessels()
+        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
+        // targetContent
+        updateVesselViews(puzzle)
         }
 
     @IBAction func four(sender: UIBarButtonItem) {
@@ -48,7 +53,9 @@ class GameController: UIViewController {
         activeVessels = 4
         positionVessels()
         view.setNeedsUpdateConstraints()
-        randomizeVessels()
+        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
+        // targetContent
+        updateVesselViews(puzzle)
         }
 
     @IBAction func five(sender: UIBarButtonItem) {
@@ -58,7 +65,9 @@ class GameController: UIViewController {
         activeVessels = 5
         positionVessels()
         view.setNeedsUpdateConstraints()
-        randomizeVessels()
+        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: 5)
+        // targetContent
+        updateVesselViews(puzzle)
         }
 
     @IBAction func start(sender: UIBarButtonItem) {
@@ -152,6 +161,19 @@ class GameController: UIViewController {
             vessels[0].contents = 1
             }
         // Update views
+        for i in 0 ..< activeVessels {
+            vesselViews[i].capacity = vessels[i].capacity
+            vesselViews[i].contents = vessels[i].contents
+            }
+        }
+
+
+    func updateVesselViews(puzzle: Puzzle) {
+        for i in 0 ..< puzzle.capacity.count {
+            vessels[i].capacity = CGFloat(puzzle.capacity[i])
+            vessels[i].contents = CGFloat(puzzle.content[i])
+            }
+
         for i in 0 ..< activeVessels {
             vesselViews[i].capacity = vessels[i].capacity
             vesselViews[i].contents = vessels[i].contents
