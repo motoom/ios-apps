@@ -74,5 +74,32 @@ class PreviewController: UIViewController {
         contentsValueLabel.text = String(format: "%.01f litres", sender.value) // note the printf-like formatting.
         }
 
+    @IBAction func sourceAnim(sender: UIButton) {
+        let origFrame: CGRect = self.vesselView.frame
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.vesselView.frame=origFrame.insetBy(dx: 5, dy: 5)
+            }) { (done) -> Void in
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.vesselView.frame=origFrame
+                }, completion: { (done) -> Void in
+                    self.vesselView.frame=origFrame
+            })
+            }
+        }
+
+    @IBAction func destAnim(sender: UIButton) {
+          let origFrame: CGRect = self.vesselView.frame
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            self.vesselView.frame=origFrame.insetBy(dx: -5, dy: -5)
+            }) { (done) -> Void in
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.vesselView.frame=origFrame
+                }, completion: { (done) -> Void in
+                    self.vesselView.frame=origFrame
+            })
+            }
+        }
+
+
     }
 
