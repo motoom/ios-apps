@@ -275,19 +275,19 @@
                                     <constraint firstAttribute="height" constant="135" id="otl-tf-SNx"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJJ-FQ-J2g" userLabel="Vessel 1 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJJ-FQ-J2g" userLabel="Vessel 1 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
                                 <rect key="frame" x="86" y="156" width="82" height="135"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZo-vS-5Bj" userLabel="Vessel 2 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
+                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZo-vS-5Bj" userLabel="Vessel 2 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
                                 <rect key="frame" x="172" y="156" width="82" height="135"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hh-E4X" userLabel="Vessel 3 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-hh-E4X" userLabel="Vessel 3 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
                                 <rect key="frame" x="258" y="156" width="82" height="135"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-J6-lAq" userLabel="Vessel 4 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
+                            <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-J6-lAq" userLabel="Vessel 4 View" customClass="VesselView" customModule="Pour" customModuleProvider="target">
                                 <rect key="frame" x="344" y="156" width="82" height="135"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -322,12 +322,6 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="w7D-mu-1gK"/>
-                                    <barButtonItem systemItem="pause" id="PQA-Tl-dAw" userLabel="Stop">
-                                        <connections>
-                                            <action selector="stop:" destination="2m1-Jn-KGc" id="TY4-dE-yDa"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pId-SQ-qoD"/>
                                     <barButtonItem title="Preview" id="GuD-IT-fVk" userLabel="Preview Item">
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="flipHorizontal" id="PNi-Vh-OE0"/>
@@ -335,22 +329,31 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your goal is to measure X litres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f0-yD-jq9">
-                                <rect key="frame" x="0.0" y="20" width="600" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="measure 5 litres" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f0-yD-jq9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="36"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLO-Lm-KOo">
+                                <rect key="frame" x="0.0" y="535" width="600" height="21"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="leading" secondItem="uZo-vS-5Bj" secondAttribute="trailing" constant="4" id="481-7Y-dT1"/>
+                            <constraint firstItem="DLO-Lm-KOo" firstAttribute="bottom" secondItem="8AJ-vC-dxL" secondAttribute="top" id="AS2-Ix-jgf"/>
                             <constraint firstItem="FJJ-FQ-J2g" firstAttribute="top" secondItem="yDT-XQ-SRg" secondAttribute="top" id="AcG-nZ-Rul"/>
                             <constraint firstItem="2f0-yD-jq9" firstAttribute="width" secondItem="uvI-ls-1Kg" secondAttribute="width" id="AuP-6h-KHI"/>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="width" secondItem="uZo-vS-5Bj" secondAttribute="width" id="B2D-y7-ad4"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="height" secondItem="FJJ-FQ-J2g" secondAttribute="height" id="Dn7-vT-frL"/>
                             <constraint firstItem="8AJ-vC-dxL" firstAttribute="centerX" secondItem="uvI-ls-1Kg" secondAttribute="centerX" id="FTa-Rb-zmb"/>
                             <constraint firstItem="dAz-hh-E4X" firstAttribute="top" secondItem="uZo-vS-5Bj" secondAttribute="top" id="HBY-yA-jc6"/>
+                            <constraint firstItem="DLO-Lm-KOo" firstAttribute="centerX" secondItem="uvI-ls-1Kg" secondAttribute="centerX" id="McQ-ul-PwT"/>
                             <constraint firstItem="2f0-yD-jq9" firstAttribute="top" secondItem="sbI-zn-5Wd" secondAttribute="bottom" id="Qg8-WV-KAo"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="width" secondItem="FJJ-FQ-J2g" secondAttribute="width" id="QwS-sw-eHf"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="top" secondItem="FJJ-FQ-J2g" secondAttribute="top" id="Rq1-Dq-ohY"/>
@@ -365,14 +368,20 @@
                             <constraint firstItem="Gh2-J6-lAq" firstAttribute="leading" secondItem="dAz-hh-E4X" secondAttribute="trailing" constant="4" id="jEu-uJ-ZpD"/>
                             <constraint firstItem="2f0-yD-jq9" firstAttribute="centerX" secondItem="uvI-ls-1Kg" secondAttribute="centerX" id="k4S-PH-Qiq"/>
                             <constraint firstItem="uZo-vS-5Bj" firstAttribute="leading" secondItem="FJJ-FQ-J2g" secondAttribute="trailing" constant="4" id="lh1-A1-oPG"/>
+                            <constraint firstItem="DLO-Lm-KOo" firstAttribute="width" secondItem="uvI-ls-1Kg" secondAttribute="width" id="nED-is-mEH"/>
                             <constraint firstItem="yDT-XQ-SRg" firstAttribute="top" secondItem="sbI-zn-5Wd" secondAttribute="bottom" constant="136" id="qCP-MN-fVa"/>
                             <constraint firstItem="Gh2-J6-lAq" firstAttribute="top" secondItem="dAz-hh-E4X" secondAttribute="top" id="vOE-4C-lwp"/>
                             <constraint firstItem="8AJ-vC-dxL" firstAttribute="width" secondItem="uvI-ls-1Kg" secondAttribute="width" id="yPw-Kf-KHa"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="f9Y-ev-Kww" appends="YES" id="cgj-zl-5t0"/>
+                            <outletCollection property="gestureRecognizers" destination="LT3-jl-fgW" appends="YES" id="qql-Pr-RKy"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="height" destination="otl-tf-SNx" id="PCM-dk-GFh"/>
                         <outlet property="leading" destination="iaP-ZH-NCK" id="Ep4-Bq-yOr"/>
+                        <outlet property="stateLabel" destination="DLO-Lm-KOo" id="2ji-Hd-YuG"/>
                         <outlet property="targetLabel" destination="2f0-yD-jq9" id="GO6-yH-sor"/>
                         <outlet property="toolbar" destination="8AJ-vC-dxL" id="Qzb-ZA-zIC"/>
                         <outlet property="top" destination="qCP-MN-fVa" id="AD9-7q-aDV"/>
@@ -385,6 +394,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6a-bu-kBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="f9Y-ev-Kww">
+                    <connections>
+                        <action selector="tap:" destination="2m1-Jn-KGc" id="jso-2e-d5y"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="LT3-jl-fgW">
+                    <connections>
+                        <action selector="pan:" destination="2m1-Jn-KGc" id="HqM-Ui-0mV"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="264" y="906"/>
         </scene>

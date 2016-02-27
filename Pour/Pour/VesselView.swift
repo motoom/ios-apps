@@ -21,6 +21,7 @@ class VesselView: UIView
     var tickwidth: CGFloat = 0
     var contentstextsize: CGFloat = 0
     var capacitytextsize: CGFloat = 0
+    var origBounds: CGRect!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -168,5 +169,35 @@ class VesselView: UIView
             text.drawInRect(rect, withAttributes: fontAttributes)
             }
         }
+
+
+        func animShrink()
+        {
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.bounds = self.origBounds.insetBy(dx: 5, dy: 5)
+                }) { (done) -> Void in
+                self.bounds = self.origBounds.insetBy(dx: 5, dy: 5)
+                }
+        }
+
+        func animGrow()
+        {
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
+                self.bounds = self.origBounds.insetBy(dx: -5, dy: -5)
+                }) { (done) -> Void in
+                self.bounds = self.origBounds.insetBy(dx: -5, dy: -5)
+                }
+        }
+
+        func animNormal(duration: NSTimeInterval = 0.2)
+        {
+            UIView.animateWithDuration(duration, animations: { () -> Void in
+                self.bounds = self.origBounds
+                }) { (done) -> Void in
+                self.bounds = self.origBounds
+                }
+        }
+
+
 
     }
