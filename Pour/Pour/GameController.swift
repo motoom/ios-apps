@@ -28,6 +28,7 @@ class GameController: UIViewController {
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
 
+    var settingDifficulty = 6
     var firstRun = true
     var needPositioning = true
     var sourceTapped: Int?
@@ -85,7 +86,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = true
         vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(3, difficulty: 4)
+        let puzzle = puzzles.randomPuzzle(3, difficulty: settingDifficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)
@@ -95,7 +96,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(4, difficulty: 4)
+        let puzzle = puzzles.randomPuzzle(4, difficulty: settingDifficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)
@@ -105,7 +106,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = false
-        let puzzle = puzzles.randomPuzzle(5, difficulty: 4)
+        let puzzle = puzzles.randomPuzzle(5, difficulty: settingDifficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)
@@ -202,6 +203,7 @@ class GameController: UIViewController {
 
     @IBAction func pan(sender: UIPanGestureRecognizer) {
         // TODO: Maybe dragging from source to destination vessel is better than tapping them?
+        print("pan")
         }
 
 
