@@ -22,6 +22,7 @@
 		CE82C1761C7F973C000AD815 /* Puzzles.dat in Resources */ = {isa = PBXBuildFile; fileRef = CE82C1751C7F973C000AD815 /* Puzzles.dat */; };
 		CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1771C7F9CA5000AD815 /* Puzzles.swift */; };
 		CE82C17A1C7F9F4E000AD815 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1791C7F9F4E000AD815 /* String+subscript.swift */; };
+		CE8BCBBC1C8349B400C1E26A /* String+extents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCBBB1C8349B400C1E26A /* String+extents.swift */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
 		CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE421C715CFA00089E89 /* PreviewController.swift */; };
 		CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE441C715CFA00089E89 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		CE82C1751C7F973C000AD815 /* Puzzles.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Puzzles.dat; sourceTree = "<group>"; };
 		CE82C1771C7F9CA5000AD815 /* Puzzles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzles.swift; sourceTree = "<group>"; };
 		CE82C1791C7F9F4E000AD815 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+subscript.swift"; sourceTree = "<group>"; };
+		CE8BCBBB1C8349B400C1E26A /* String+extents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extents.swift"; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEADDE401C715CFA00089E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEADDE421C715CFA00089E89 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
 				CE1795861C7B13390011B274 /* Design.swift */,
 				CE82C1791C7F9F4E000AD815 /* String+subscript.swift */,
+				CE8BCBBB1C8349B400C1E26A /* String+extents.swift */,
 			);
 			path = Pour;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */,
 				CE82C17A1C7F9F4E000AD815 /* String+subscript.swift in Sources */,
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
+				CE8BCBBC1C8349B400C1E26A /* String+extents.swift in Sources */,
 				CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */,
 				CE1795871C7B13390011B274 /* Design.swift in Sources */,
 				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,

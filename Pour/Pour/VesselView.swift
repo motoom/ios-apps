@@ -20,7 +20,9 @@ class VesselView: UIView
     var rim: CGFloat = 0
     var tickwidth: CGFloat = 0
     var contentstextsize: CGFloat = 0
+    var heightContentsText: CGFloat = 0
     var capacitytextsize: CGFloat = 0
+    var heightCapacityText: CGFloat = 0
     var origBounds: CGRect!
 
     override init(frame: CGRect) {
@@ -34,60 +36,70 @@ class VesselView: UIView
         }
 
     func recalcMetrics() {
-        pointsperliter = (frame.height - tilt * 2 - Design.insetmargin * 2) / Design.maxcapacity
-        tilt = pointsperliter * Design.tiltFactor
+        tickwidth = frame.width * Design.tickwidth
+        tilt = frame.width * Design.tiltFactor
+        contentstextsize = frame.height * Design.contentsTextsizeFactor
+        capacitytextsize = frame.height * Design.capacityTextsizeFactor
+        heightContentsText = contentstextsize // fontLineHeight(fontSize: contentstextsize)
+        heightCapacityText = capacitytextsize // fontLineHeight(fontSize: capacitytextsize)
+        pointsperliter = (frame.height - tilt * 2 - Design.insetmargin * 2 - heightContentsText - heightCapacityText) / Design.maxcapacity
         rim = pointsperliter * Design.rimHeight
-        tickwidth = pointsperliter * Design.tickwidth
-        contentstextsize = pointsperliter * Design.contentsTextsizeFactor
-        capacitytextsize = pointsperliter * Design.capacityTextsizeFactor
+        }
+
+    func debugRect(rect: CGRect, color: UIColor) {
+        let dp = UIBezierPath.init(rect: rect)
+        color.setStroke()
+        dp.lineWidth = 0.5
+        dp.stroke()
         }
 
     override func drawRect(rect: CGRect) {
         let paintrect = CGRectInset(rect, Design.insetmargin, Design.insetmargin)
+        // debugRect(paintrect, color: UIColor.brownColor())
 
         var path: UIBezierPath!
 
         // Textual contents in liters
         let textContentsRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y,
+            y: paintrect.origin.y  + paintrect.height + Design.insetmargin - heightContentsText,
             width: paintrect.width,
-            height: tilt * 2 // TODO: should be height of text string, in theory
+            height: heightContentsText
             )
 
         // Upper rim vessel
         let topRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - tilt * 2 - rim,
+            y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt * 2 - capacity * pointsperliter - rim,
             width: paintrect.width,
             height: tilt * 2)
 
         // Textual capacity in liters
         let textCapacityRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - capacity * pointsperliter - rim,
+            y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt * 2 - capacity * pointsperliter - rim - heightCapacityText,
             width: paintrect.width,
-            height: tilt * 2 // TODO: should be height of text string, in theory
+            height: heightCapacityText
             )
 
         // Top of fluid (only used when contents > 0)
         let fluidtopRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt * 2,
+            y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt * 2 - contents * pointsperliter,
             width: paintrect.width,
             height: tilt * 2)
 
         // Fluid (only used when contents > 0)
         let fluidRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - contents * pointsperliter - tilt,
+            y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt - contents * pointsperliter,
             width: paintrect.width,
             height: contents * pointsperliter)
 
         // Bottom of vessel
         let bottomRect = CGRect(
             x: paintrect.origin.x,
-            y: paintrect.origin.y + paintrect.height - tilt * 2,
+            y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt * 2,
             width: paintrect.width,
             height: tilt * 2)
 
@@ -123,7 +135,7 @@ class VesselView: UIView
         UIColor.blackColor().setStroke()
         path.stroke()
 
-        // Walls
+        // Walls and ticks
         path = UIBezierPath()
         // Left wall
         path.moveToPoint(CGPoint(x: topRect.origin.x + Design.outlineWidth, y: topRect.origin.y + tilt))
@@ -135,8 +147,12 @@ class VesselView: UIView
         // Ticks
         var liter: CGFloat = 1
         while liter < capacity  {
-            path.moveToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - Design.outlineWidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter))
-            path.addLineToPoint(CGPoint(x: bottomRect.origin.x + bottomRect.width - tickwidth, y: bottomRect.origin.y + bottomRect.height - tilt - liter * pointsperliter + tickwidth))
+            path.moveToPoint(CGPoint(
+                x: bottomRect.origin.x + bottomRect.width / 2 - tickwidth,
+                y: bottomRect.origin.y + tilt * 2 - liter * pointsperliter))
+            path.addLineToPoint(CGPoint(
+                x: bottomRect.origin.x + bottomRect.width / 2 + tickwidth,
+                y: bottomRect.origin.y + tilt * 2 - liter * pointsperliter))
             liter += 1
             }
 
@@ -144,17 +160,24 @@ class VesselView: UIView
         UIColor.blackColor().setStroke()
         path.stroke()
 
-        // Contents and capacity, in liters
-        let flooredCapacity = String(Int(floor(capacity)))
+        // Textual contents and capacity, in liters
+        let flooredCapacity = String(Int(floor(capacity + 0.2)))
         if flooredCapacity != "0" {
             drawString(textCapacityRect, text: flooredCapacity, fontSize: capacitytextsize)
             }
-        let flooredContents = String(Int(floor(contents)))
+
+        let flooredContents = String(Int(floor(contents + 0.2)))
         if flooredContents != "0" {
             drawString(textContentsRect, text: flooredContents, fontSize: contentstextsize, fontColor: UIColor.grayColor())
             }
         }
 
+    func fontLineHeight(fontName: String = "AppleSDGothicNeo-Bold", fontSize: CGFloat = 18.0) -> CGFloat {
+        if let font = UIFont(name: fontName, size: fontSize) {
+            return font.lineHeight
+            }
+        return 0
+        }
 
     func drawString(rect: CGRect, text: String, fontName: String = "AppleSDGothicNeo-Bold", fontSize: CGFloat = 18.0, fontColor: UIColor = UIColor.blackColor()) {
         // Also nice: "IowanOldStyle-Bold", "ArialRoundedMTBold", "Avenir-Book", "Helvetica Neue"
@@ -166,10 +189,18 @@ class VesselView: UIView
                 NSForegroundColorAttributeName: fontColor,
                 NSParagraphStyleAttributeName: style
                 ]
-            text.drawInRect(rect, withAttributes: fontAttributes)
+            text.drawWithRect(rect, options: .UsesLineFragmentOrigin, attributes: fontAttributes, context: nil)
             }
         }
 
+    func textExtent(text: String, fontName: String = "AppleSDGothicNeo-Bold", fontSize: CGFloat = 18.0) -> CGRect {
+        if let font = UIFont(name: fontName, size: fontSize) {
+            let textString = text as NSString
+            let textAttributes = [NSFontAttributeName: font]
+            return textString.boundingRectWithSize(CGSizeMake(CGFloat.max, CGFloat.max), options: .UsesLineFragmentOrigin, attributes: textAttributes, context: nil)
+            }
+        return CGRectMake(0, 0, 0, 0)
+        }
 
         func animShrink()
         {
