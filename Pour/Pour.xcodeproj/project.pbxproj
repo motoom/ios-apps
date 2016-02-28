@@ -23,6 +23,13 @@
 		CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1771C7F9CA5000AD815 /* Puzzles.swift */; };
 		CE82C17A1C7F9F4E000AD815 /* String+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82C1791C7F9F4E000AD815 /* String+subscript.swift */; };
 		CE8BCBBC1C8349B400C1E26A /* String+extents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BCBBB1C8349B400C1E26A /* String+extents.swift */; };
+		CE8BCBC51C8387D200C1E26A /* Brook.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBBE1C8387D200C1E26A /* Brook.wav */; };
+		CE8BCBC61C8387D200C1E26A /* Eau.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBBF1C8387D200C1E26A /* Eau.wav */; };
+		CE8BCBC71C8387D200C1E26A /* Echoplop.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBC01C8387D200C1E26A /* Echoplop.wav */; };
+		CE8BCBC81C8387D200C1E26A /* Fillup.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBC11C8387D200C1E26A /* Fillup.wav */; };
+		CE8BCBC91C8387D200C1E26A /* Gong.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBC21C8387D200C1E26A /* Gong.wav */; };
+		CE8BCBCA1C8387D200C1E26A /* Silence.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBC31C8387D200C1E26A /* Silence.wav */; };
+		CE8BCBCB1C8387D200C1E26A /* Toilet.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BCBC41C8387D200C1E26A /* Toilet.wav */; };
 		CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE401C715CFA00089E89 /* AppDelegate.swift */; };
 		CEADDE431C715CFA00089E89 /* PreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE421C715CFA00089E89 /* PreviewController.swift */; };
 		CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE441C715CFA00089E89 /* Main.storyboard */; };
@@ -48,6 +55,13 @@
 		CE82C1771C7F9CA5000AD815 /* Puzzles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Puzzles.swift; sourceTree = "<group>"; };
 		CE82C1791C7F9F4E000AD815 /* String+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+subscript.swift"; sourceTree = "<group>"; };
 		CE8BCBBB1C8349B400C1E26A /* String+extents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+extents.swift"; sourceTree = "<group>"; };
+		CE8BCBBE1C8387D200C1E26A /* Brook.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Brook.wav; sourceTree = "<group>"; };
+		CE8BCBBF1C8387D200C1E26A /* Eau.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Eau.wav; sourceTree = "<group>"; };
+		CE8BCBC01C8387D200C1E26A /* Echoplop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Echoplop.wav; sourceTree = "<group>"; };
+		CE8BCBC11C8387D200C1E26A /* Fillup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Fillup.wav; sourceTree = "<group>"; };
+		CE8BCBC21C8387D200C1E26A /* Gong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gong.wav; sourceTree = "<group>"; };
+		CE8BCBC31C8387D200C1E26A /* Silence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Silence.wav; sourceTree = "<group>"; };
+		CE8BCBC41C8387D200C1E26A /* Toilet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Toilet.wav; sourceTree = "<group>"; };
 		CEADDE3D1C715CFA00089E89 /* Pour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEADDE401C715CFA00089E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEADDE421C715CFA00089E89 /* PreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewController.swift; sourceTree = "<group>"; };
@@ -112,6 +126,20 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		CE8BCBBD1C8387D200C1E26A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CE8BCBBE1C8387D200C1E26A /* Brook.wav */,
+				CE8BCBBF1C8387D200C1E26A /* Eau.wav */,
+				CE8BCBC01C8387D200C1E26A /* Echoplop.wav */,
+				CE8BCBC11C8387D200C1E26A /* Fillup.wav */,
+				CE8BCBC21C8387D200C1E26A /* Gong.wav */,
+				CE8BCBC31C8387D200C1E26A /* Silence.wav */,
+				CE8BCBC41C8387D200C1E26A /* Toilet.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		CEADDE341C715CFA00089E89 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +159,7 @@
 		CEADDE3F1C715CFA00089E89 /* Pour */ = {
 			isa = PBXGroup;
 			children = (
+				CE8BCBBD1C8387D200C1E26A /* Sounds */,
 				CE1795891C7B22CF0011B274 /* Views */,
 				CE1795881C7B22810011B274 /* Controllers */,
 				CE1795831C7B12960011B274 /* States */,
@@ -205,9 +234,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8BCBC61C8387D200C1E26A /* Eau.wav in Resources */,
+				CE8BCBCB1C8387D200C1E26A /* Toilet.wav in Resources */,
 				CE82C1761C7F973C000AD815 /* Puzzles.dat in Resources */,
+				CE8BCBC81C8387D200C1E26A /* Fillup.wav in Resources */,
+				CE8BCBC71C8387D200C1E26A /* Echoplop.wav in Resources */,
+				CE8BCBC91C8387D200C1E26A /* Gong.wav in Resources */,
 				CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */,
+				CE8BCBC51C8387D200C1E26A /* Brook.wav in Resources */,
 				CEADDE481C715CFA00089E89 /* Assets.xcassets in Resources */,
+				CE8BCBCA1C8387D200C1E26A /* Silence.wav in Resources */,
 				CEADDE461C715CFA00089E89 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
