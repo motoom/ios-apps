@@ -28,6 +28,10 @@ class GameController: UIViewController {
     @IBOutlet weak var targetLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
 
+    // Sounds
+    var soundManager = SoundManager()
+
+
     var settingDifficulty = 6
     var firstRun = true
     var needPositioning = true
@@ -230,6 +234,7 @@ class GameController: UIViewController {
         destination = dst
         litresPerTick = quantity / 10
         pouring = true
+        soundManager.sndPour()
 
         // Start pouring timer.
         if pourTimer == nil {
@@ -255,6 +260,7 @@ class GameController: UIViewController {
                     tim.invalidate()
                     pourTimer = nil
                     }
+                soundManager.sndStop()
                 }
         // Update views.
         vesselViews[source].contents = vessels[source].contents
