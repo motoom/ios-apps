@@ -13,7 +13,7 @@ class GameController: UIViewController {
     @IBOutlet var vesselViews: [VesselView]!
 
     // Controller
-    var activeVessels = 5
+    var activeVessels = 3
 
     // GUI - for determining the height of the toolbar
     @IBOutlet weak var toolbar: UIToolbar!
@@ -32,12 +32,15 @@ class GameController: UIViewController {
     var soundManager = SoundManager()
 
 
-    var settingDifficulty = 6
     var firstRun = true
+    var settingDifficulty = 6
+    var targetContent = 0
+
     var needPositioning = true
     var sourceSelected: Int? // index of source vessel selected by player, nil if not (yet) selected
     var destinationSelected: Int? // index of destination vessel selected by player, nil if not (yet) selected
     var instructionsGiven = false
+
     var pouring: Bool = false
     var litresPerTick: CGFloat = 0
     var source = 0 // index of source vessel during a pour
@@ -45,6 +48,10 @@ class GameController: UIViewController {
     var sourceFinalContents = 0
     var destinationFinalContents = 0
     var pourTimer: NSTimer? = nil
+
+    var initiateDrainTimer: NSTimer? = nil
+    var drainTimer: NSTimer? = nil
+
 
     // MARK: Vessel initialisation.
 
@@ -95,7 +102,8 @@ class GameController: UIViewController {
         if !instructionsGiven {
             stateLabel.text = "move your finger from source to destination"
             }
-        targetLabel.text = "measure \(puzzle.targetContent) litres"
+        targetContent = puzzle.targetContent
+        targetLabel.text = "measure \(targetContent) litres"
         for i in 0 ..< puzzle.vesselCount {
             vessels[i].capacity = CGFloat(puzzle.capacity[i])
             vessels[i].contents = CGFloat(puzzle.content[i])
@@ -183,7 +191,9 @@ class GameController: UIViewController {
                 if pourValid(src, dst) {
                     initiatePouring(src, dst)
                     stateLabel.text = ""
-                    if !instructionsGiven { instructionsGiven = true }
+                    if !instructionsGiven {
+                        instructionsGiven = true
+                        }
                     }
                 }
             sourceSelected = nil
@@ -250,6 +260,11 @@ class GameController: UIViewController {
             }
         vessels[source].contents -= litresPerTick
         vessels[destination].contents += litresPerTick
+
+        // Update views.
+        vesselViews[source].contents = vessels[source].contents
+        vesselViews[destination].contents = vessels[destination].contents
+
         // Test whether the end of the pour is reached.
         if vessels[source].contents <= CGFloat(sourceFinalContents) ||
             vessels[destination].contents >= CGFloat(destinationFinalContents) {
@@ -261,11 +276,60 @@ class GameController: UIViewController {
                     pourTimer = nil
                     }
                 soundManager.sndStop()
+                // Look if any vessel contains the target contents.
+                var winningVessel: Int?
+                for i in 0 ..< activeVessels {
+                    if Int(vessels[i].contents) == targetContent {
+                        winningVessel = i
+                        break
+                        }
+                    }
+
+                // If so, player solved the puzzle.
+                if let win = winningVessel {
+                    // Animate some winning animation on the vessel that contains the targetCapacity
+                    vesselViews[win].animGrow()
+                    initiateDrainTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "initiateDrain", userInfo: nil, repeats: false)
+                    }
                 }
-        // Update views.
-        vesselViews[source].contents = vessels[source].contents
-        vesselViews[destination].contents = vessels[destination].contents
         }
+
+
+    func initiateDrain() {
+        // Drain. Aim to complete in 4 seconds; the drain sound lasts 3 seconds.
+        soundManager.sndDrain()
+        var largestContents: CGFloat = 0
+        for i in 0 ..< activeVessels {
+            largestContents = max(vessels[i].contents, largestContents)
+            }
+        litresPerTick = largestContents / 20
+        drainTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "drainTick", userInfo: nil, repeats: true)
+        }
+
+
+    // Small animation step, called about 20 times per second.
+    func drainTick() {
+        // Drain a bit from all vessels
+        var totalContents: CGFloat = 0
+        for i in 0 ..< activeVessels {
+            vessels[i].contents -= litresPerTick
+            if vessels[i].contents < 0 {
+                vessels[i].contents = 0
+                }
+            vesselViews[i].contents = vessels[i].contents
+            totalContents += vessels[i].contents
+            }
+
+        // Test whether the end of the pour is reached.
+        if totalContents <= 0 {
+            if let tim = drainTimer {
+                tim.invalidate()
+                drainTimer = nil
+                }
+            }
+        }
+
+
 
 
     // MARK: Demo functions
