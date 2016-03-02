@@ -31,15 +31,15 @@ class GameController: UIViewController {
     var settingDifficulty = 6
     var firstRun = true
     var needPositioning = true
-    var sourceTapped: Int?
-    var destinationTapped: Int?
+    var sourceSelected: Int? // index of source vessel selected by player, nil if not (yet) selected
+    var destinationSelected: Int? // index of destination vessel selected by player, nil if not (yet) selected
+    var instructionsGiven = false
     var pouring: Bool = false
     var litresPerTick: CGFloat = 0
     var source = 0 // index of source vessel during a pour
     var destination = 0 // index of destination vessel during a pour
     var sourceFinalContents = 0
     var destinationFinalContents = 0
-    var prePourTimer: NSTimer? = nil
     var pourTimer: NSTimer? = nil
 
     // MARK: Vessel initialisation.
@@ -47,6 +47,7 @@ class GameController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         }
+
 
     // This also gets called if label texts change. Inconvenient!
     override func viewDidLayoutSubviews() {
@@ -63,6 +64,7 @@ class GameController: UIViewController {
             vesselViews[i].origBounds = vesselViews[i].bounds
             }
         }
+
 
     func positionVessels() {
         let spacing: CGFloat = 4
@@ -82,41 +84,13 @@ class GameController: UIViewController {
         // The other vessel views will position them after the first one.
         }
 
-    @IBAction func three(sender: UIBarButtonItem) {
-        pouring = false
-        vesselViews[3].hidden = true
-        vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(3, difficulty: settingDifficulty)
-        needPositioning = true
-        view.setNeedsUpdateConstraints()
-        updateVessels(fromPuzzle: puzzle)
-        }
-
-    @IBAction func four(sender: UIBarButtonItem) {
-        pouring = false
-        vesselViews[3].hidden = false
-        vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(4, difficulty: settingDifficulty)
-        needPositioning = true
-        view.setNeedsUpdateConstraints()
-        updateVessels(fromPuzzle: puzzle)
-        }
-
-    @IBAction func five(sender: UIBarButtonItem) {
-        pouring = false
-        vesselViews[3].hidden = false
-        vesselViews[4].hidden = false
-        let puzzle = puzzles.randomPuzzle(5, difficulty: settingDifficulty)
-        needPositioning = true
-        view.setNeedsUpdateConstraints()
-        updateVessels(fromPuzzle: puzzle)
-        }
-
 
     func updateVessels(fromPuzzle puzzle: Puzzle) {
         activeVessels = puzzle.vesselCount
 
-        stateLabel.text = "tap the source"
+        if !instructionsGiven {
+            stateLabel.text = "move your finger from source to destination"
+            }
         targetLabel.text = "measure \(puzzle.targetContent) litres"
         for i in 0 ..< puzzle.vesselCount {
             vessels[i].capacity = CGFloat(puzzle.capacity[i])
@@ -130,97 +104,148 @@ class GameController: UIViewController {
         }
 
 
-    // MARK: Gameplay logic
+    // MARK: Player input
 
-    func pourValid(source: Int, destination: Int) -> Bool {
-        if source == destination {
-            // Pouring a vessel into itself.
-            return false
-            }
-        if vessels[source].contents == 0 {
-            // Source vessel is empty.
-            return false
-            }
-        if vessels[destination].contents >= vessels[destination].capacity {
-            // Destination vessel is full.
-            return false
-            }
-        return true
+
+    @IBAction func three(sender: UIBarButtonItem) {
+        pouring = false
+        vesselViews[3].hidden = true
+        vesselViews[4].hidden = true
+        let puzzle = puzzles.randomPuzzle(3, difficulty: settingDifficulty)
+        needPositioning = true
+        view.setNeedsUpdateConstraints()
+        updateVessels(fromPuzzle: puzzle)
         }
 
-    func resetVesselSelection() {
-        if let sourceIndex = sourceTapped {
-            vesselViews[sourceIndex].animNormal()
-            sourceTapped = nil
-            }
-        if let destinationIndex = destinationTapped {
-            vesselViews[destinationIndex].animNormal()
-            destinationTapped = nil
-            }
-        stateLabel.text = "tap the source"
+
+    @IBAction func four(sender: UIBarButtonItem) {
+        pouring = false
+        vesselViews[3].hidden = false
+        vesselViews[4].hidden = true
+        let puzzle = puzzles.randomPuzzle(4, difficulty: settingDifficulty)
+        needPositioning = true
+        view.setNeedsUpdateConstraints()
+        updateVessels(fromPuzzle: puzzle)
         }
 
-    @IBAction func tap(sender: UITapGestureRecognizer) {
+
+    @IBAction func five(sender: UIBarButtonItem) {
+        pouring = false
+        vesselViews[3].hidden = false
+        vesselViews[4].hidden = false
+        let puzzle = puzzles.randomPuzzle(5, difficulty: settingDifficulty)
+        needPositioning = true
+        view.setNeedsUpdateConstraints()
+        updateVessels(fromPuzzle: puzzle)
+        }
+
+
+    @IBAction func pan(sender: UIPanGestureRecognizer) {
+        // Dragging from source to destination vessel
         if pouring {
             return
             }
-        let point = sender.locationOfTouch(0, inView: nil)
-        let subview = view.hitTest(point, withEvent: nil)
-        if let tappedView = subview as? VesselView {
-            // Tapped on a vessel
-            if sourceTapped == nil {
-                if vessels[tappedView.tag].contents > 0 {
-                    sourceTapped = tappedView.tag
-                    tappedView.animShrink()
-                    stateLabel.text = "tap the destination"
-                    }
-                }
-            else if destinationTapped == nil {
-                if vessels[tappedView.tag].contents >= vessels[tappedView.tag].capacity {
-                    prePourTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "resetVesselSelection", userInfo: nil, repeats: false)
-                    }
-                else {
-                    destinationTapped = tappedView.tag
-                    source = sourceTapped!
-                    destination = destinationTapped!
-                    if pourValid(source, destination: destination) {
-                        tappedView.animGrow()
-                        sourceTapped = nil
-                        destinationTapped = nil
-                        prePourTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "initiatePouring", userInfo: nil, repeats: false)
-                        }
-                    else {
-                        prePourTimer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "resetVesselSelection", userInfo: nil, repeats: false)
+        if sender.state == .Began {
+            let point = sender.locationOfTouch(0, inView: nil)
+            let subview = view.hitTest(point, withEvent: nil)
+            if let aboveVesselView = subview as? VesselView {
+                // Began dragging on a vessel
+                if vessels[aboveVesselView.tag].contents > 0 {
+                    sourceSelected = aboveVesselView.tag
+                    if !instructionsGiven {
+                        stateLabel.text = "point to the destination"
                         }
                     }
                 }
             }
-        else {
-            // Tapped on anything but a vessel.
-            resetVesselSelection()
+        else if sender.state == .Changed {
+            if sourceSelected == nil {
+                return
+                }
+            let point = sender.locationOfTouch(0, inView: nil)
+            let subview = view.hitTest(point, withEvent: nil)
+            if let aboveVesselView = subview as? VesselView {
+                destinationSelected = aboveVesselView.tag
+                }
+            else {
+                destinationSelected = nil
+                }
             }
-    }
-
-    @IBAction func pan(sender: UIPanGestureRecognizer) {
-        // TODO: Maybe dragging from source to destination vessel is better than tapping them?
-        print("pan")
+        else if sender.state == .Ended {
+            if sourceSelected == nil {
+                return
+                }
+            if let src = sourceSelected, dst = destinationSelected {
+                if pourValid(src, dst) {
+                    initiatePouring(src, dst)
+                    stateLabel.text = ""
+                    if !instructionsGiven { instructionsGiven = true }
+                    }
+                }
+            sourceSelected = nil
+            destinationSelected = nil
+            }
         }
-
-
-
 
 
     @IBAction func start(sender: UIBarButtonItem) {
         initiateRandomPouring()
         }
 
+
+    // MARK: Gameplay logic
+
+
+    func pourValid(src: Int, _ dst: Int) -> Bool {
+        if src == dst {
+            // Pouring a vessel into itself.
+            return false
+            }
+        if vessels[src].contents == 0 {
+            // Source vessel is empty.
+            return false
+            }
+        if vessels[dst].contents >= vessels[dst].capacity {
+            // Destination vessel is full.
+            return false
+            }
+        return true
+        }
+
+
+    func initiatePouring(src: Int, _ dst: Int) {
+        // How much can we pour?
+        let room = vessels[dst].capacity - vessels[dst].contents
+        var quantity = vessels[src].contents
+        if quantity > room {
+            quantity = room
+            }
+
+        // The goals, in integer, to avoid accumulating floating point roundoff errors.
+        sourceFinalContents = Int(vessels[src].contents) - Int(quantity)
+        destinationFinalContents = Int(vessels[dst].contents) + Int(quantity)
+
+        // Calculate how long should the pouring animation should take, and Go!
+        source = src
+        destination = dst
+        litresPerTick = quantity / 10
+        pouring = true
+
+        // Start pouring timer.
+        if pourTimer == nil {
+            pourTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "timerTick", userInfo: nil, repeats: true)
+            }
+        }
+
+
+    // Small animation step, called about 20 times per second.
     func timerTick() {
         if !pouring {
             return
             }
         vessels[source].contents -= litresPerTick
         vessels[destination].contents += litresPerTick
-        // Test end of pouring
+        // Test whether the end of the pour is reached.
         if vessels[source].contents <= CGFloat(sourceFinalContents) ||
             vessels[destination].contents >= CGFloat(destinationFinalContents) {
                 vessels[source].contents = CGFloat(sourceFinalContents)
@@ -231,11 +256,16 @@ class GameController: UIViewController {
                     pourTimer = nil
                     }
                 }
+        // Update views.
         vesselViews[source].contents = vessels[source].contents
         vesselViews[destination].contents = vessels[destination].contents
         }
 
 
+    // MARK: Demo functions
+
+
+    // Pick any vessel which has some fluid in it.
     func randomVesselWithContent() -> Int {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
@@ -246,6 +276,7 @@ class GameController: UIViewController {
         }
 
 
+    // Pick any vessel which is not entirely filled.
     func randomVesselNotFull() -> Int {
         while true {
             let i = Int(arc4random_uniform(UInt32(activeVessels)))
@@ -255,40 +286,18 @@ class GameController: UIViewController {
             }
         }
 
-    func initiatePouring() {
-        // Start pouring timer
-        if pourTimer == nil {
-            pourTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "timerTick", userInfo: nil, repeats: true)
-            }
-        // How much can we pour?
-        let room = vessels[destination].capacity - vessels[destination].contents
-        var quantity = vessels[source].contents
-        if quantity > room {
-            quantity = room
-            }
-        // Aim for one second
-        litresPerTick = quantity / 10
-        sourceFinalContents = Int(vessels[source].contents) - Int(quantity)
-        destinationFinalContents = Int(vessels[destination].contents) + Int(quantity)
-        vesselViews[source].animNormal(1.0)
-        vesselViews[destination].animNormal(1.0)
-        pouring = true
-        }
 
-
+    // Pick two eligible vessels, and pour between them.
     func initiateRandomPouring() {
-        // Pick two eligible vessels
         repeat {
             source = randomVesselWithContent()
             destination = randomVesselNotFull()
             } while (source == destination)
-        vesselViews[source].animShrink()
-        vesselViews[destination].animGrow()
-        prePourTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "initiatePouring", userInfo: nil, repeats: false)
+        initiatePouring(source, destination)
         }
-
 
 
     @IBAction func backFromPreview(segue: UIStoryboardSegue) {
         }
+
     }

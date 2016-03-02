@@ -422,7 +422,6 @@
                             <constraint firstItem="8AJ-vC-dxL" firstAttribute="width" secondItem="uvI-ls-1Kg" secondAttribute="width" id="yPw-Kf-KHa"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="f9Y-ev-Kww" appends="YES" id="cgj-zl-5t0"/>
                             <outletCollection property="gestureRecognizers" destination="LT3-jl-fgW" appends="YES" id="qql-Pr-RKy"/>
                         </connections>
                     </view>
@@ -442,11 +441,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6a-bu-kBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="f9Y-ev-Kww">
-                    <connections>
-                        <action selector="tap:" destination="2m1-Jn-KGc" id="jso-2e-d5y"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="LT3-jl-fgW">
                     <connections>
                         <action selector="pan:" destination="2m1-Jn-KGc" id="HqM-Ui-0mV"/>
