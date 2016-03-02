@@ -36,6 +36,7 @@
 		CEADDE481C715CFA00089E89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE471C715CFA00089E89 /* Assets.xcassets */; };
 		CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */; };
 		CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE521C715DDC00089E89 /* VesselView.swift */; };
+		CEDDB0EA1C87401000849016 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDB0E91C87401000849016 /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		CEADDE4A1C715CFA00089E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEADDE4C1C715CFA00089E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEADDE521C715DDC00089E89 /* VesselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselView.swift; sourceTree = "<group>"; };
+		CEDDB0E91C87401000849016 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				CE8BCBC21C8387D200C1E26A /* Gong.wav */,
 				CE8BCBC31C8387D200C1E26A /* Silence.wav */,
 				CE8BCBC41C8387D200C1E26A /* Toilet.wav */,
+				CEDDB0E91C87401000849016 /* SoundManager.swift */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				CE1795871C7B13390011B274 /* Design.swift in Sources */,
 				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,
 				CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */,
+				CEDDB0EA1C87401000849016 /* SoundManager.swift in Sources */,
 				CE1795AD1C7B31440011B274 /* FillingState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

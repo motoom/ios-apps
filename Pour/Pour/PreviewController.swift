@@ -1,18 +1,17 @@
 
 import UIKit
-import AVFoundation
 
 class PreviewController: UIViewController {
 
     var vessel: Vessel!
-    
+    var soundManager = SoundManager()
+
     @IBOutlet weak var vesselView: VesselView!
     @IBOutlet weak var capacitySlider: UISlider!
     @IBOutlet weak var contentsSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initSounds()
         }
 
 /* When using AutoLayout you should not update the frame property, instead modify the contraints on a view.
@@ -103,67 +102,21 @@ class PreviewController: UIViewController {
         }
 
     // MARK: Sounds
-
-    var playersInitialized = false
-    var fillPlayer: AVAudioPlayer! // TODO Map from soundname -> initialised AVAudioPlayer instances
-    var pourPlayer: AVAudioPlayer!
-    var drainPlayer: AVAudioPlayer!
-
-    func initSounds() {
-        if !playersInitialized {
-            playersInitialized = true
-            // TODO: Loop
-            let fillUrl = NSBundle.mainBundle().URLForResource("Fillup.wav", withExtension: nil)
-            do {
-                try fillPlayer = AVAudioPlayer(contentsOfURL: fillUrl!)
-                fillPlayer.prepareToPlay()
-                }
-            catch {
-                print("Fillup.wav not playable")
-                }
-            //
-            let pourUrl = NSBundle.mainBundle().URLForResource("Eau.wav", withExtension: nil)
-            do {
-                try pourPlayer = AVAudioPlayer(contentsOfURL: pourUrl!)
-                pourPlayer.prepareToPlay()
-                }
-            catch {
-                print("Eau.wav not playable")
-                }
-            //
-            let drainUrl = NSBundle.mainBundle().URLForResource("Toilet.wav", withExtension: nil)
-            do {
-                try drainPlayer = AVAudioPlayer(contentsOfURL: drainUrl!)
-                drainPlayer.prepareToPlay()
-                }
-            catch {
-                print("Toilet.wav not playable")
-                }
-            }
-        }
-
-
     @IBAction func sndFill(sender: UIButton) {
-        fillPlayer.currentTime = 0
-        fillPlayer.play()
+        soundManager.sndFill()
         }
 
     @IBAction func sndPour(sender: UIButton) {
-        pourPlayer.currentTime = 0
-        pourPlayer.play()
+        soundManager.sndPour()
         }
 
     @IBAction func sndDrain(sender: UIButton) {
-        drainPlayer.currentTime = 0
-        drainPlayer.play()
+        soundManager.sndDrain()
         }
 
     @IBAction func sndStop(sender: UIButton) {
-        fillPlayer.stop()
-        pourPlayer.stop()
-        drainPlayer.stop()
+        soundManager.sndStop()
         }
-
 
     }
 
