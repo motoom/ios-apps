@@ -103,7 +103,12 @@ class GameController: UIViewController {
             stateLabel.text = "move your finger from source to destination"
             }
         targetContent = puzzle.targetContent
-        targetLabel.text = "measure \(targetContent) litres"
+        if targetContent > 1 {
+            targetLabel.text = "measure \(targetContent) litres"
+            }
+        else {
+            targetLabel.text = "measure \(targetContent) litre"
+            }
         for i in 0 ..< puzzle.vesselCount {
             vessels[i].capacity = CGFloat(puzzle.capacity[i])
             vessels[i].contents = CGFloat(puzzle.content[i])
@@ -117,6 +122,19 @@ class GameController: UIViewController {
 
 
     // MARK: Player input
+
+    @IBAction func backFromSettings(segue: UIStoryboardSegue) {
+        }
+
+    @IBAction func newGame(sender: UIBarButtonItem) {
+        pouring = false
+        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: settingDifficulty)
+        updateVessels(fromPuzzle: puzzle)
+        }
+
+    @IBAction func hint(sender: UIBarButtonItem) {
+        // TODO: Solve and perform first move. Also show nr. of remaining pours for solution.
+        }
 
 
     @IBAction func three(sender: UIBarButtonItem) {
@@ -268,8 +286,12 @@ class GameController: UIViewController {
         // Test whether the end of the pour is reached.
         if vessels[source].contents <= CGFloat(sourceFinalContents) ||
             vessels[destination].contents >= CGFloat(destinationFinalContents) {
+                // Yes. Put the final contents into the vessels to evade floating point roundoff errors - and update the views again.
                 vessels[source].contents = CGFloat(sourceFinalContents)
                 vessels[destination].contents = CGFloat(destinationFinalContents)
+                vesselViews[source].contents = vessels[source].contents
+                vesselViews[destination].contents = vessels[destination].contents
+
                 pouring = false
                 if let tim = pourTimer {
                     tim.invalidate()
@@ -309,18 +331,18 @@ class GameController: UIViewController {
 
     // Small animation step, called about 20 times per second.
     func drainTick() {
-        // Drain a bit from all vessels
         var totalContents: CGFloat = 0
+        // Drain a bit from all vessels
         for i in 0 ..< activeVessels {
             vessels[i].contents -= litresPerTick
             if vessels[i].contents < 0 {
                 vessels[i].contents = 0
                 }
-            vesselViews[i].contents = vessels[i].contents
             totalContents += vessels[i].contents
+            vesselViews[i].contents = vessels[i].contents
             }
 
-        // Test whether the end of the pour is reached.
+        // Test whether the end of the drain is reached.
         if totalContents <= 0 {
             if let tim = drainTimer {
                 tim.invalidate()

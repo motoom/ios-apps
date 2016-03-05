@@ -17,6 +17,7 @@
 		CE1795B31C7B31630011B274 /* SolvedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B21C7B31630011B274 /* SolvedState.swift */; };
 		CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B41C7B316B0011B274 /* DrainingState.swift */; };
 		CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1795B61C7B31E50011B274 /* SetupState.swift */; };
+		CE5535F71C8B1FEB002309F6 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5535F61C8B1FEB002309F6 /* SettingsController.swift */; };
 		CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57651C79F91F00B137D4 /* GameController.swift */; };
 		CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A57671C79FA9000B137D4 /* MainController.swift */; };
 		CE82C1761C7F973C000AD815 /* Puzzles.dat in Resources */ = {isa = PBXBuildFile; fileRef = CE82C1751C7F973C000AD815 /* Puzzles.dat */; };
@@ -37,6 +38,7 @@
 		CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */; };
 		CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE521C715DDC00089E89 /* VesselView.swift */; };
 		CEDDB0EA1C87401000849016 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDB0E91C87401000849016 /* SoundManager.swift */; };
+		CEDDB0EC1C88A2E800849016 /* VesselConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,7 @@
 		CE1795B21C7B31630011B274 /* SolvedState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SolvedState.swift; sourceTree = "<group>"; };
 		CE1795B41C7B316B0011B274 /* DrainingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrainingState.swift; sourceTree = "<group>"; };
 		CE1795B61C7B31E50011B274 /* SetupState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupState.swift; sourceTree = "<group>"; };
+		CE5535F61C8B1FEB002309F6 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE5A57651C79F91F00B137D4 /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		CE5A57671C79FA9000B137D4 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		CE82C1751C7F973C000AD815 /* Puzzles.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Puzzles.dat; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		CEADDE4C1C715CFA00089E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEADDE521C715DDC00089E89 /* VesselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselView.swift; sourceTree = "<group>"; };
 		CEDDB0E91C87401000849016 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 				CE82C1751C7F973C000AD815 /* Puzzles.dat */,
 				CE1795841C7B12D20011B274 /* Vessel.swift */,
 				CE82C1771C7F9CA5000AD815 /* Puzzles.swift */,
+				CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */,
+				CE1795861C7B13390011B274 /* Design.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -116,6 +122,7 @@
 				CEADDE421C715CFA00089E89 /* PreviewController.swift */,
 				CE5A57671C79FA9000B137D4 /* MainController.swift */,
 				CE5A57651C79F91F00B137D4 /* GameController.swift */,
+				CE5535F61C8B1FEB002309F6 /* SettingsController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -162,17 +169,16 @@
 		CEADDE3F1C715CFA00089E89 /* Pour */ = {
 			isa = PBXGroup;
 			children = (
+				CEADDE441C715CFA00089E89 /* Main.storyboard */,
 				CE8BCBBD1C8387D200C1E26A /* Sounds */,
 				CE1795891C7B22CF0011B274 /* Views */,
 				CE1795881C7B22810011B274 /* Controllers */,
 				CE1795831C7B12960011B274 /* States */,
 				CE1795821C7B128D0011B274 /* Models */,
 				CEADDE401C715CFA00089E89 /* AppDelegate.swift */,
-				CEADDE441C715CFA00089E89 /* Main.storyboard */,
 				CEADDE471C715CFA00089E89 /* Assets.xcassets */,
 				CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */,
 				CEADDE4C1C715CFA00089E89 /* Info.plist */,
-				CE1795861C7B13390011B274 /* Design.swift */,
 				CE82C1791C7F9F4E000AD815 /* String+subscript.swift */,
 				CE8BCBBB1C8349B400C1E26A /* String+extents.swift */,
 			);
@@ -261,6 +267,7 @@
 				CE1795AB1C7B313B0011B274 /* TitleState.swift in Sources */,
 				CE1795AF1C7B31490011B274 /* SelectingState.swift in Sources */,
 				CE1795B11C7B31500011B274 /* PouringState.swift in Sources */,
+				CE5535F71C8B1FEB002309F6 /* SettingsController.swift in Sources */,
 				CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */,
 				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
 				CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */,
@@ -272,6 +279,7 @@
 				CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */,
 				CE8BCBBC1C8349B400C1E26A /* String+extents.swift in Sources */,
 				CE1795B51C7B316B0011B274 /* DrainingState.swift in Sources */,
+				CEDDB0EC1C88A2E800849016 /* VesselConfiguration.swift in Sources */,
 				CE1795871C7B13390011B274 /* Design.swift in Sources */,
 				CE5A57661C79F91F00B137D4 /* GameController.swift in Sources */,
 				CEADDE411C715CFA00089E89 /* AppDelegate.swift in Sources */,
