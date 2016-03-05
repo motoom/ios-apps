@@ -32,8 +32,7 @@ class GameController: UIViewController {
     var soundManager = SoundManager()
 
 
-    var firstRun = true
-    var settingDifficulty = 6
+    var difficulty = 6
     var targetContent = 0
 
     var needPositioning = true
@@ -48,25 +47,24 @@ class GameController: UIViewController {
     var sourceFinalContents = 0
     var destinationFinalContents = 0
     var pourTimer: NSTimer? = nil
-
     var initiateDrainTimer: NSTimer? = nil
     var drainTimer: NSTimer? = nil
-
+    var initiateNewGameTimer: NSTimer? = nil
 
     // MARK: Vessel initialisation.
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vesselViews[3].hidden = true
+        vesselViews[4].hidden = true
+        activeVessels = 3
+        initiateNewGameTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "initiateNewGame", userInfo: nil, repeats: false)
         }
 
 
     // This also gets called if label texts change. Inconvenient!
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if firstRun {
-            three(UIBarButtonItem()) // Initial puzzle.
-            firstRun = false
-            }
         if needPositioning {
             positionVessels()
             needPositioning = false
@@ -80,11 +78,11 @@ class GameController: UIViewController {
     func positionVessels() {
         let spacing: CGFloat = 4
         let aspect: CGFloat = 2.2
-        var vesselw = round((view.frame.width - 5 * spacing) / 5)
+        var vesselw = round((view.frame.width - CGFloat(activeVessels) * spacing) / CGFloat(activeVessels))
         var vesselh = vesselw * aspect
-        let availableh = view.frame.height - toolbar.frame.height
+        let availableh = view.frame.height - toolbar.frame.height // Todo: compensate for text labels, too
         if vesselh > availableh {
-            vesselh = availableh * 0.95
+            vesselh = availableh * 0.85
             vesselw = vesselh / aspect
             }
         let vesselsw = CGFloat(activeVessels) * (vesselw + spacing)
@@ -92,7 +90,8 @@ class GameController: UIViewController {
         height.constant = vesselh
         leading.constant = view.frame.width / 2 - vesselsw / 2 + 4
         top.constant = view.frame.height / 2 - toolbar.frame.height / 2 - vesselh / 2
-        // The other vessel views will position them after the first one.
+        // The other vessel views will position themselves after the first one.
+
         }
 
 
@@ -120,17 +119,60 @@ class GameController: UIViewController {
             }
         }
 
+    func recalcVessels() {
+        needPositioning = true
+        for vessel in vesselViews {
+            vessel.recalcMetrics()
+            }
+        view.setNeedsUpdateConstraints()
+        }
+
+
 
     // MARK: Player input
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let settings = segue.destinationViewController as? SettingsController {
+            settings.difficulty = difficulty
+            settings.vesselCount = activeVessels
+            }
+        }
+
     @IBAction func backFromSettings(segue: UIStoryboardSegue) {
+        if let settings = segue.sourceViewController as? SettingsController {
+            difficulty = settings.difficulty
+            activeVessels = settings.vesselCount
+            switch activeVessels {
+                case 4:
+                        vesselViews[3].hidden = false
+                        vesselViews[4].hidden = true
+                case 5:
+                        vesselViews[3].hidden = false
+                        vesselViews[4].hidden = false
+                default:
+                        vesselViews[3].hidden = true
+                        vesselViews[4].hidden = true
+                }
+            // recalcVessels()
+            newGame(UIBarButtonItem())
+            }
         }
 
     @IBAction func newGame(sender: UIBarButtonItem) {
+        initiateNewGameTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "initiateNewGame", userInfo: nil, repeats: false)
+        }
+
+    func initiateNewGame() {
+        if let tim = initiateNewGameTimer {
+            tim.invalidate()
+            initiateNewGameTimer = nil
+            }
         pouring = false
-        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: settingDifficulty)
+        let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: difficulty)
+        recalcVessels() // Hmmmm
         updateVessels(fromPuzzle: puzzle)
         }
+
 
     @IBAction func hint(sender: UIBarButtonItem) {
         // TODO: Solve and perform first move. Also show nr. of remaining pours for solution.
@@ -141,7 +183,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = true
         vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(3, difficulty: settingDifficulty)
+        let puzzle = puzzles.randomPuzzle(3, difficulty: difficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)
@@ -152,7 +194,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = true
-        let puzzle = puzzles.randomPuzzle(4, difficulty: settingDifficulty)
+        let puzzle = puzzles.randomPuzzle(4, difficulty: difficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)
@@ -163,7 +205,7 @@ class GameController: UIViewController {
         pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = false
-        let puzzle = puzzles.randomPuzzle(5, difficulty: settingDifficulty)
+        let puzzle = puzzles.randomPuzzle(5, difficulty: difficulty)
         needPositioning = true
         view.setNeedsUpdateConstraints()
         updateVessels(fromPuzzle: puzzle)

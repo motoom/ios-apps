@@ -12,11 +12,13 @@ class SettingsController: UIViewController {
     @IBAction func adjustVessels(sender: UISlider) {
         let roundedValue = round(sender.value)
         sender.value = roundedValue
+        vesselCount = Int(sender.value)
         }
 
     @IBAction func adjustDifficulty(sender: UISlider) {
         let roundedValue = round(sender.value)
         sender.value = roundedValue
+        difficulty = Int(sender.value)
         }
 
     override func viewDidLoad() {

@@ -44,6 +44,7 @@ class VesselView: UIView
         heightCapacityText = capacitytextsize // fontLineHeight(fontSize: capacitytextsize)
         pointsperliter = (frame.height - tilt * 2 - Design.insetmargin * 2 - heightContentsText - heightCapacityText) / Design.maxcapacity
         rim = pointsperliter * Design.rimHeight
+        // print("VesselView.recalcMetrics frame=", frame, " pointsperliter=", pointsperliter, " heightContentsText=", heightContentsText, " heightCapacityText=", heightCapacityText)
         }
 
     func debugRect(rect: CGRect, color: UIColor) {
@@ -56,6 +57,7 @@ class VesselView: UIView
     override func drawRect(rect: CGRect) {
         let paintrect = CGRectInset(rect, Design.insetmargin, Design.insetmargin)
         // debugRect(paintrect, color: UIColor.brownColor())
+        // print("VesselView.drawRect frame=", frame, " rect=", rect)
 
         var path: UIBezierPath!
 
@@ -73,6 +75,7 @@ class VesselView: UIView
             y: paintrect.origin.y + paintrect.height + Design.insetmargin - heightContentsText - tilt * 2 - capacity * pointsperliter - rim,
             width: paintrect.width,
             height: tilt * 2)
+        // debugRect(topRect, color: UIColor.orangeColor())
 
         // Textual capacity in liters
         let textCapacityRect = CGRect(
@@ -149,10 +152,10 @@ class VesselView: UIView
         while liter < capacity  {
             path.moveToPoint(CGPoint(
                 x: bottomRect.origin.x + bottomRect.width / 2 - tickwidth,
-                y: bottomRect.origin.y + tilt * 2 - liter * pointsperliter))
+                y: bottomRect.origin.y - Design.outlineWidth + tilt * 2 - liter * pointsperliter))
             path.addLineToPoint(CGPoint(
                 x: bottomRect.origin.x + bottomRect.width / 2 + tickwidth,
-                y: bottomRect.origin.y + tilt * 2 - liter * pointsperliter))
+                y: bottomRect.origin.y - Design.outlineWidth + tilt * 2 - liter * pointsperliter))
             liter += 1
             }
 
