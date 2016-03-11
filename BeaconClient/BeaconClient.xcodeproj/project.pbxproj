@@ -96,6 +96,11 @@
 				TargetAttributes = {
 					CE69D1FB1C9210840098C848 = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -286,6 +291,7 @@
 				CE69D2101C9210840098C848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

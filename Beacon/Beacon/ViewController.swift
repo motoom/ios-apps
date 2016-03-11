@@ -3,24 +3,23 @@ import UIKit
 import CoreBluetooth
 import CoreLocation
 
-import UIKit
-import CoreLocation
-import CoreBluetooth
+/* Reads
+
+http://www.blendedcocoa.com/blog/2013/11/02/mavericks-as-an-ibeacon/
+
+https://github.com/Instrument/Vicinity/issues/5
+
+*/
 
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
 
-    let uuid = NSUUID(UUIDString: "CB284D88-5317-4FB4-9621-C5A3A49E6155") // Same as Vicinity app.
-    var pmgr : CBPeripheralManager?
+    // let uuid = NSUUID(UUIDString: "CB284D88-5317-4FB4-9621-C5A3A49E6155") // UUID used in Vicinity app. (Vicinity detectes BLE devices, not iBeacons!)
+    let uuid = NSUUID(UUIDString: "D71842D3-376D-4C53-BB54-E1C041759305") // One of the UUIDs used in Particle Locator app.
+    var pmgr: CBPeripheralManager?
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        pmgr = CBPeripheralManager(delegate: self, queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-        if let mgr = pmgr {
-            mgr.delegate = self
-            }
-        else {
-            print("Can't get a peripheral manager")
-            }
+        pmgr = CBPeripheralManager(delegate: self, queue: nil)
         }
 
     func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?){
@@ -33,12 +32,21 @@ class ViewController: UIViewController, CBPeripheralManagerDelegate {
         }
 
     func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
-        peripheral.stopAdvertising()
         if peripheral.state == .PoweredOn {
+
+            // This works for Particle Detector, but not for Vicinity:
+            let region = CLBeaconRegion(proximityUUID: uuid!, major: 123, minor: 456, identifier: "motoom-beacon")
+
+            let ad: [String: AnyObject!] = region.peripheralDataWithMeasuredPower(nil) as NSDictionary as! [String : AnyObject!]
+
+            /*
+            // This works for Vicinity, but not for Particle Detector:
             let ad: [String: AnyObject!] = [
-                CBAdvertisementDataLocalNameKey : "Fridge with nice munchies",
-                CBAdvertisementDataManufacturerDataKey : NSBundle.mainBundle().bundleIdentifier!,
-                CBAdvertisementDataServiceUUIDsKey : [CBUUID(NSUUID: uuid!)]]
+                CBAdvertisementDataLocalNameKey: "vicinity-peripheral",
+                CBAdvertisementDataManufacturerDataKey: NSBundle.mainBundle().bundleIdentifier!,
+                CBAdvertisementDataServiceUUIDsKey: [CBUUID(NSUUID: uuid!)]]
+            */
+
             peripheral.startAdvertising(ad)
             }
         else {
