@@ -37,6 +37,7 @@
 		CEADDE481C715CFA00089E89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE471C715CFA00089E89 /* Assets.xcassets */; };
 		CEADDE4B1C715CFA00089E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEADDE491C715CFA00089E89 /* LaunchScreen.storyboard */; };
 		CEADDE531C715DDC00089E89 /* VesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADDE521C715DDC00089E89 /* VesselView.swift */; };
+		CECE78301C9C4A8F009CC4AC /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE782F1C9C4A8F009CC4AC /* Solver.swift */; };
 		CEDDB0EA1C87401000849016 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDB0E91C87401000849016 /* SoundManager.swift */; };
 		CEDDB0EC1C88A2E800849016 /* VesselConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		CEADDE4A1C715CFA00089E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEADDE4C1C715CFA00089E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEADDE521C715DDC00089E89 /* VesselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselView.swift; sourceTree = "<group>"; };
+		CECE782F1C9C4A8F009CC4AC /* Solver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		CEDDB0E91C87401000849016 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselConfiguration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 				CE82C1771C7F9CA5000AD815 /* Puzzles.swift */,
 				CEDDB0EB1C88A2E800849016 /* VesselConfiguration.swift */,
 				CE1795861C7B13390011B274 /* Design.swift */,
+				CECE782F1C9C4A8F009CC4AC /* Solver.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				TargetAttributes = {
 					CEADDE3C1C715CFA00089E89 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = T3XCCQ9UET;
 					};
 				};
 			};
@@ -268,6 +272,7 @@
 				CE1795AF1C7B31490011B274 /* SelectingState.swift in Sources */,
 				CE1795B11C7B31500011B274 /* PouringState.swift in Sources */,
 				CE5535F71C8B1FEB002309F6 /* SettingsController.swift in Sources */,
+				CECE78301C9C4A8F009CC4AC /* Solver.swift in Sources */,
 				CE1795B71C7B31E50011B274 /* SetupState.swift in Sources */,
 				CE5A57681C79FA9000B137D4 /* MainController.swift in Sources */,
 				CE82C1781C7F9CA5000AD815 /* Puzzles.swift in Sources */,
@@ -397,10 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.Pour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -408,10 +416,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Pour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.Pour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

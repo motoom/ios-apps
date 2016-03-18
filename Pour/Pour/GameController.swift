@@ -1,4 +1,7 @@
 
+// TODO: Vesselcount and difficulty Settings persist in NSUserDefaults
+// TODO: Better puzzle database format, takes too long to load on iPhone 4s
+
 import UIKit
 
 class GameController: UIViewController {
@@ -91,7 +94,6 @@ class GameController: UIViewController {
         leading.constant = view.frame.width / 2 - vesselsw / 2 + 4
         top.constant = view.frame.height / 2 - toolbar.frame.height / 2 - vesselh / 2
         // The other vessel views will position themselves after the first one.
-
         }
 
 
@@ -175,7 +177,34 @@ class GameController: UIViewController {
 
 
     @IBAction func hint(sender: UIBarButtonItem) {
-        // TODO: Solve and perform first move. Also show nr. of remaining pours for solution.
+        // Solve puzzle and TODO: perform first move. TODO: Also show nr. of remaining pours for solution.
+        var caps = [Int]()
+        var conts = [Int]()
+        for i in 0 ..< activeVessels {
+            caps.append(Int(vessels[i].capacity))
+            conts.append(Int(vessels[i].contents))
+            }
+        let capacities = CapacitiesConfig(capacity: caps)
+        let contents = ContentsConfig(content: conts)
+        let res = solve(capacities, contents, targetContent)
+        if let pourings = res {
+            if pourings.count > 0 {
+                initiatePouring(pourings[0].from, pourings[0].to)
+                let needed = pourings.count - 1
+                if needed == 0 {
+                    stateLabel.text = ""
+                    }
+                else if needed == 1 {
+                    stateLabel.text = "\(needed) more pouring needed"
+                    }
+                else {
+                    stateLabel.text = "\(needed) more pourings needed"
+                    }
+                }
+            }
+        else {
+            stateLabel.text = "No solution found"
+            }
         }
 
 
@@ -262,8 +291,9 @@ class GameController: UIViewController {
         }
 
 
-    @IBAction func start(sender: UIBarButtonItem) {
-        initiateRandomPouring()
+    @IBAction func undo(sender: UIBarButtonItem) {
+        // TODO: Undo stack
+        // initiateRandomPouring()
         }
 
 

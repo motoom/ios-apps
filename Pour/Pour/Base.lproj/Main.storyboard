@@ -439,9 +439,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OYh-kM-Mhl"/>
-                                    <barButtonItem systemItem="play" id="Th8-Iu-zdP" userLabel="Start">
+                                    <barButtonItem enabled="NO" systemItem="undo" id="Th8-Iu-zdP" userLabel="Start">
                                         <connections>
-                                            <action selector="start:" destination="2m1-Jn-KGc" id="4jw-mn-utz"/>
+                                            <action selector="undo:" destination="2m1-Jn-KGc" id="WTo-YS-YR1"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="w7D-mu-1gK"/>
