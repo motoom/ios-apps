@@ -28,8 +28,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="77L-Mf-ymB">
-                                        <rect key="frame" x="8" y="-19" width="120" height="79"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="77L-Mf-ymB">
+                                        <rect key="frame" x="16" y="-19" width="120" height="79"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="5VV-4m-dNf"/>
                                         </constraints>
@@ -39,7 +39,7 @@
                                 <constraints>
                                     <constraint firstItem="OKg-Xu-Lps" firstAttribute="centerY" secondItem="fhu-Zn-Gmr" secondAttribute="centerY" id="62I-Jv-Jqf"/>
                                     <constraint firstItem="OKg-Xu-Lps" firstAttribute="top" secondItem="fhu-Zn-Gmr" secondAttribute="top" id="7bk-oQ-0J9"/>
-                                    <constraint firstItem="77L-Mf-ymB" firstAttribute="leading" secondItem="fhu-Zn-Gmr" secondAttribute="leadingMargin" id="9qn-6S-OLt"/>
+                                    <constraint firstItem="77L-Mf-ymB" firstAttribute="leading" secondItem="fhu-Zn-Gmr" secondAttribute="leadingMargin" constant="8" id="9qn-6S-OLt"/>
                                     <constraint firstAttribute="trailing" secondItem="OKg-Xu-Lps" secondAttribute="trailing" constant="8" id="QzL-a4-0iy"/>
                                     <constraint firstAttribute="height" constant="40" id="pYb-lP-Gcs"/>
                                     <constraint firstItem="77L-Mf-ymB" firstAttribute="centerY" secondItem="fhu-Zn-Gmr" secondAttribute="centerY" id="t0h-iK-FAm"/>
@@ -99,8 +99,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="RCg-Mu-HpJ">
-                                        <rect key="frame" x="8" y="-19" width="120" height="79"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="RCg-Mu-HpJ">
+                                        <rect key="frame" x="16" y="-19" width="120" height="79"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="XBz-Cv-KRn"/>
                                         </constraints>
@@ -111,7 +111,7 @@
                                     <constraint firstItem="RCg-Mu-HpJ" firstAttribute="centerY" secondItem="aJr-hC-kzl" secondAttribute="centerY" id="4ka-zd-AQo"/>
                                     <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="aJr-hC-kzl" secondAttribute="top" id="Izl-rx-aeP"/>
                                     <constraint firstAttribute="height" constant="40" id="bea-iQ-cSI"/>
-                                    <constraint firstItem="RCg-Mu-HpJ" firstAttribute="leading" secondItem="aJr-hC-kzl" secondAttribute="leadingMargin" id="gof-Tz-zKx"/>
+                                    <constraint firstItem="RCg-Mu-HpJ" firstAttribute="leading" secondItem="aJr-hC-kzl" secondAttribute="leadingMargin" constant="8" id="gof-Tz-zKx"/>
                                     <constraint firstAttribute="trailing" secondItem="zEq-FU-wV5" secondAttribute="trailing" constant="8" id="gxw-Qe-tIU"/>
                                     <constraint firstItem="zEq-FU-wV5" firstAttribute="centerY" secondItem="aJr-hC-kzl" secondAttribute="centerY" id="j0H-NG-hGn"/>
                                 </constraints>
