@@ -57,6 +57,9 @@ class WebinarsController: UIViewController, UITableViewDelegate, UITableViewData
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = UITableViewCell(style: .Subtitle, reuseIdentifier: "cell")
+    // cell.textLabel!.lineBreakMode = .ByWordWrapping
+    // cell.textLabel!.numberOfLines = 0
+
     if let data = self.webinarData {
         let webinar = data[indexPath.row]
         if let naam = webinar["naam"] as? String {
@@ -71,5 +74,15 @@ class WebinarsController: UIViewController, UITableViewDelegate, UITableViewData
         }
     return cell
     }
+
+    /*
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        //    UIFont *cellFont = [UIFont fontWithName:@"Verdana" size:12.0];
+        //    CGSize boundingSize = CGSizeMake(1024, CGFLOAT_MAX);
+        //    CGSize requiredSize = [[self getRowData:indexPath.section] sizeWithFont:cellFont constrainedToSize:boundingSize lineBreakMode:UILineBreakModeWordWrap];
+        //    return requiredSize.height;
+        return 80
+        }
+    */
 
 }
