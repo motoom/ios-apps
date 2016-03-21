@@ -4,11 +4,9 @@ import CoreBluetooth
 import CoreLocation
 
 /* Reads
-
 http://www.blendedcocoa.com/blog/2013/11/02/mavericks-as-an-ibeacon/
-
 https://github.com/Instrument/Vicinity/issues/5
-
+https://willd.me/posts/getting-started-with-ibeacon-a-swift-tutorial
 */
 
 class ViewController: UIViewController, CBPeripheralManagerDelegate {
