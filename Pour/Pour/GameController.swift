@@ -43,7 +43,6 @@ class GameController: UIViewController {
     var destinationSelected: Int? // index of destination vessel selected by player, nil if not (yet) selected
     var instructionsGiven = false
 
-    var pouring: Bool = false // TODO: Eliminate. use nilness of pourTimer as flag whether a pour is ongoing or not.
     var litresPerTick: CGFloat = 0
     var source = 0 // index of source vessel during a pour
     var destination = 0 // index of destination vessel during a pour
@@ -162,19 +161,19 @@ class GameController: UIViewController {
 
     // Player taps 'new' button.
     @IBAction func newGame(sender: UIBarButtonItem) {
-        // Stop sounds and any animations
+        // Stop sounds and any animations.
         soundManager.sndStop()
-        if pouring {
-            if let tim = pourTimer {
-                tim.invalidate()
-                pourTimer = nil
-                }
-            pouring = false
-            }
-        if let tim = drainTimer {
+        stopPouring()
+        stopDraining()
+        if let tim = initiateDrainTimer {
             tim.invalidate()
-            drainTimer = nil
+            initiateDrainTimer = nil
             }
+        if let tim = initiateNewGameTimer {
+            tim.invalidate()
+            initiateNewGameTimer = nil
+            }
+        // Schedule a new game.
         initiateNewGameTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "initiateNewGame", userInfo: nil, repeats: false)
         }
 
@@ -183,7 +182,6 @@ class GameController: UIViewController {
             tim.invalidate()
             initiateNewGameTimer = nil
             }
-        pouring = false
         let puzzle = puzzles.randomPuzzle(activeVessels, difficulty: difficulty)
         recalcVessels() // Hmmmm
         updateVessels(fromPuzzle: puzzle)
@@ -191,7 +189,8 @@ class GameController: UIViewController {
 
 
     @IBAction func hint(sender: UIBarButtonItem) {
-        // Solve puzzle and TODO: perform first move. TODO: Also show nr. of remaining pours for solution.
+        // Solve puzzle and perform first move. Also show nr. of remaining pours for solution.
+        stopPouring()
         var caps = [Int]()
         var conts = [Int]()
         for i in 0 ..< activeVessels {
@@ -223,7 +222,6 @@ class GameController: UIViewController {
 
 
     @IBAction func three(sender: UIBarButtonItem) {
-        pouring = false
         vesselViews[3].hidden = true
         vesselViews[4].hidden = true
         let puzzle = puzzles.randomPuzzle(3, difficulty: difficulty)
@@ -234,7 +232,6 @@ class GameController: UIViewController {
 
 
     @IBAction func four(sender: UIBarButtonItem) {
-        pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = true
         let puzzle = puzzles.randomPuzzle(4, difficulty: difficulty)
@@ -245,7 +242,6 @@ class GameController: UIViewController {
 
 
     @IBAction func five(sender: UIBarButtonItem) {
-        pouring = false
         vesselViews[3].hidden = false
         vesselViews[4].hidden = false
         let puzzle = puzzles.randomPuzzle(5, difficulty: difficulty)
@@ -257,7 +253,7 @@ class GameController: UIViewController {
 
     @IBAction func pan(sender: UIPanGestureRecognizer) {
         // Dragging from source to destination vessel
-        if pouring {
+        if pourTimer != nil {
             return
             }
         if sender.state == .Began {
@@ -347,21 +343,26 @@ class GameController: UIViewController {
         source = src
         destination = dst
         litresPerTick = quantity / 10
-        pouring = true
         soundManager.sndPour()
 
         // Start pouring timer.
         if pourTimer == nil {
-            pourTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "timerTick", userInfo: nil, repeats: true)
+            pourTimer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "pourTick", userInfo: nil, repeats: true)
             }
         }
 
 
-    // Small animation step, called about 20 times per second.
-    func timerTick() {
-        if !pouring {
-            return
+    // Stop pouring animation, if any.
+    func stopPouring() {
+        if let tim = pourTimer {
+            tim.invalidate()
+            pourTimer = nil
             }
+        }
+
+
+    // Small animation step for pouring, called about 20 times per second.
+    func pourTick() {
         vessels[source].contents -= litresPerTick
         vessels[destination].contents += litresPerTick
 
@@ -377,13 +378,8 @@ class GameController: UIViewController {
                 vessels[destination].contents = CGFloat(destinationFinalContents)
                 vesselViews[source].contents = vessels[source].contents
                 vesselViews[destination].contents = vessels[destination].contents
-
-                pouring = false
-                if let tim = pourTimer {
-                    tim.invalidate()
-                    pourTimer = nil
-                    }
                 soundManager.sndStop()
+                stopPouring()
                 // Look if any vessel contains the target contents.
                 var winningVessel: Int?
                 for i in 0 ..< activeVessels {
@@ -430,15 +426,18 @@ class GameController: UIViewController {
 
         // Test whether the end of the drain is reached.
         if totalContents <= 0 {
-            if let tim = drainTimer {
-                tim.invalidate()
-                drainTimer = nil
-                }
+            stopDraining()
+            // Schedule a new game.
+            initiateNewGameTimer = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "initiateNewGame", userInfo: nil, repeats: false)
             }
         }
 
-
-
+    func stopDraining() {
+        if let tim = drainTimer {
+            tim.invalidate()
+            drainTimer = nil
+            }
+        }
 
     // MARK: Demo functions
 
