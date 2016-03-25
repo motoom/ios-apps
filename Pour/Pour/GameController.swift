@@ -43,7 +43,7 @@ class GameController: UIViewController {
     var destinationSelected: Int? // index of destination vessel selected by player, nil if not (yet) selected
     var instructionsGiven = false
 
-    var pouring: Bool = false
+    var pouring: Bool = false // TODO: Eliminate. use nilness of pourTimer as flag whether a pour is ongoing or not.
     var litresPerTick: CGFloat = 0
     var source = 0 // index of source vessel during a pour
     var destination = 0 // index of destination vessel during a pour
@@ -160,7 +160,21 @@ class GameController: UIViewController {
             }
         }
 
+    // Player taps 'new' button.
     @IBAction func newGame(sender: UIBarButtonItem) {
+        // Stop sounds and any animations
+        soundManager.sndStop()
+        if pouring {
+            if let tim = pourTimer {
+                tim.invalidate()
+                pourTimer = nil
+                }
+            pouring = false
+            }
+        if let tim = drainTimer {
+            tim.invalidate()
+            drainTimer = nil
+            }
         initiateNewGameTimer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: "initiateNewGame", userInfo: nil, repeats: false)
         }
 
