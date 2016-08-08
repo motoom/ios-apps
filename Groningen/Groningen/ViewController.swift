@@ -10,46 +10,51 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // print(mapView.bounds)
+        // print(mapView.frame)
+        // print(mapView.image)
         scroller.delegate = self
-        scroller.contentSize.width=5500;
-        scroller.contentSize.height=4388;
-        scroller.setContentOffset(CGPoint(x: 3060, y: 1280), animated: false)
+        // scroller.contentSize.width=5500;
+        // scroller.contentSize.height=4388;
+        scroller.contentSize.width=mapView.image!.size.width;
+        scroller.contentSize.height=mapView.image!.size.height;
+        scroller.setContentOffset(CGPoint(x: 3060, y: 1360), animated: false)
     }
 
     // Zooming
 
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        print("viewForZoomingInScrollView")
+        // print("zoom: viewForZoomingInScrollView")
         return mapView
         }
 
     func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
-        print("scrollViewWillBeginZooming")
+        print("zoom: scrollViewWillBeginZooming")
         }
 
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-        print("scrollViewDidEndZooming")
+        print("zoom: scrollViewDidEndZooming")
         }
 
     // Scrolling
 
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print("scrollViewDidScroll")
+        // print("scroll: scrollViewDidScroll")
         }
 
     func scrollViewDidScrollToTop(scrollView: UIScrollView) {
-        print("scrollViewDidScrollToTop")
+        print("scroll: scrollViewDidScrollToTop")
         }
 
 
     // Panning/dragging
 
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        print("scrollViewWillBeginDragging")
+        print("drag: scrollViewWillBeginDragging")
         }
 
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging")
+        print("drag: scrollViewDidEndDragging")
         }
 }
 

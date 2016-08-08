@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1909" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -17,27 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" minimumZoomScale="0.5" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="Tla-cs-1k1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" minimumZoomScale="0.0" maximumZoomScale="2" translatesAutoresizingMaskIntoConstraints="NO" id="Tla-cs-1k1">
+                                <rect key="frame" x="0.0" y="20" width="600" height="600"/>
                                 <subviews>
-                                    <imageView contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="groningen loon" translatesAutoresizingMaskIntoConstraints="NO" id="bF3-Em-Ep4">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="264"/>
+                                    <imageView contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="groningen loon" translatesAutoresizingMaskIntoConstraints="NO" id="bF3-Em-Ep4">
+                                        <rect key="frame" x="0.0" y="0.0" width="5389" height="4240"/>
                                     </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="bF3-Em-Ep4" secondAttribute="width" id="HgI-VD-sLm"/>
-                                    <constraint firstItem="bF3-Em-Ep4" firstAttribute="top" secondItem="Tla-cs-1k1" secondAttribute="top" id="KRE-4H-2Pe"/>
-                                    <constraint firstAttribute="height" secondItem="bF3-Em-Ep4" secondAttribute="height" id="WF4-zO-ga1"/>
-                                    <constraint firstItem="bF3-Em-Ep4" firstAttribute="leading" secondItem="Tla-cs-1k1" secondAttribute="leading" id="d4I-Kh-Ilx"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tla-cs-1k1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="H36-LV-IvE"/>
-                            <constraint firstItem="Tla-cs-1k1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JTt-fY-WXM"/>
-                            <constraint firstItem="Tla-cs-1k1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="LEH-xu-dp9"/>
-                            <constraint firstItem="Tla-cs-1k1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="t8X-MP-s2o"/>
+                            <constraint firstItem="Tla-cs-1k1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8CG-my-5ty"/>
+                            <constraint firstItem="Tla-cs-1k1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="W4e-PV-Ivg"/>
+                            <constraint firstItem="Tla-cs-1k1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vUx-NI-HN3"/>
+                            <constraint firstItem="Tla-cs-1k1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xJB-L5-dEa"/>
                         </constraints>
                     </view>
                     <connections>
