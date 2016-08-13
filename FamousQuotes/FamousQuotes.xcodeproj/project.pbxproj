@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CECCC4F81D5DC2FE0061460D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC4F71D5DC2FE0061460D /* AppDelegate.swift */; };
+		CECCC4FD1D5DC2FE0061460D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCC4FB1D5DC2FE0061460D /* Main.storyboard */; };
+		CECCC4FF1D5DC2FE0061460D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCC4FE1D5DC2FE0061460D /* Assets.xcassets */; };
+		CECCC50A1D5DC4240061460D /* QuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC5091D5DC4240061460D /* QuotesController.swift */; };
+		CECCC50C1D5DC48C0061460D /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC50B1D5DC48C0061460D /* QuoteCell.swift */; };
+		CECCC50E1D5DF5540061460D /* QuoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC50D1D5DF5540061460D /* QuoteController.swift */; };
+		CECCC5101D5DF6FA0061460D /* QuoteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC50F1D5DF6FA0061460D /* QuoteProtocol.swift */; };
+		CECCC5141D5E04DA0061460D /* QuotesDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC5131D5E04DA0061460D /* QuotesDatabase.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CECCC4F41D5DC2FE0061460D /* FamousQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamousQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECCC4F71D5DC2FE0061460D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CECCC4FC1D5DC2FE0061460D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CECCC4FE1D5DC2FE0061460D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CECCC5031D5DC2FE0061460D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CECCC5091D5DC4240061460D /* QuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuotesController.swift; path = QuotesController.swift; sourceTree = "<group>"; };
+		CECCC50B1D5DC48C0061460D /* QuoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
+		CECCC50D1D5DF5540061460D /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
+		CECCC50F1D5DF6FA0061460D /* QuoteProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteProtocol.swift; sourceTree = "<group>"; };
+		CECCC5131D5E04DA0061460D /* QuotesDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesDatabase.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CECCC4F11D5DC2FE0061460D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CECCC4EB1D5DC2FE0061460D = {
+			isa = PBXGroup;
+			children = (
+				CECCC4F61D5DC2FE0061460D /* FamousQuotes */,
+				CECCC4F51D5DC2FE0061460D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CECCC4F51D5DC2FE0061460D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CECCC4F41D5DC2FE0061460D /* FamousQuotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CECCC4F61D5DC2FE0061460D /* FamousQuotes */ = {
+			isa = PBXGroup;
+			children = (
+				CECCC5091D5DC4240061460D /* QuotesController.swift */,
+				CECCC4F71D5DC2FE0061460D /* AppDelegate.swift */,
+				CECCC4FB1D5DC2FE0061460D /* Main.storyboard */,
+				CECCC50D1D5DF5540061460D /* QuoteController.swift */,
+				CECCC50B1D5DC48C0061460D /* QuoteCell.swift */,
+				CECCC4FE1D5DC2FE0061460D /* Assets.xcassets */,
+				CECCC5031D5DC2FE0061460D /* Info.plist */,
+				CECCC50F1D5DF6FA0061460D /* QuoteProtocol.swift */,
+				CECCC5131D5E04DA0061460D /* QuotesDatabase.swift */,
+			);
+			path = FamousQuotes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CECCC4F31D5DC2FE0061460D /* FamousQuotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CECCC5061D5DC2FE0061460D /* Build configuration list for PBXNativeTarget "FamousQuotes" */;
+			buildPhases = (
+				CECCC4F01D5DC2FE0061460D /* Sources */,
+				CECCC4F11D5DC2FE0061460D /* Frameworks */,
+				CECCC4F21D5DC2FE0061460D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FamousQuotes;
+			productName = FamousQuotes;
+			productReference = CECCC4F41D5DC2FE0061460D /* FamousQuotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CECCC4EC1D5DC2FE0061460D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = motoom;
+				TargetAttributes = {
+					CECCC4F31D5DC2FE0061460D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = CECCC4EF1D5DC2FE0061460D /* Build configuration list for PBXProject "FamousQuotes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CECCC4EB1D5DC2FE0061460D;
+			productRefGroup = CECCC4F51D5DC2FE0061460D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CECCC4F31D5DC2FE0061460D /* FamousQuotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CECCC4F21D5DC2FE0061460D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECCC4FF1D5DC2FE0061460D /* Assets.xcassets in Resources */,
+				CECCC4FD1D5DC2FE0061460D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CECCC4F01D5DC2FE0061460D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECCC5101D5DF6FA0061460D /* QuoteProtocol.swift in Sources */,
+				CECCC50C1D5DC48C0061460D /* QuoteCell.swift in Sources */,
+				CECCC50A1D5DC4240061460D /* QuotesController.swift in Sources */,
+				CECCC5141D5E04DA0061460D /* QuotesDatabase.swift in Sources */,
+				CECCC50E1D5DF5540061460D /* QuoteController.swift in Sources */,
+				CECCC4F81D5DC2FE0061460D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CECCC4FB1D5DC2FE0061460D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CECCC4FC1D5DC2FE0061460D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CECCC5041D5DC2FE0061460D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CECCC5051D5DC2FE0061460D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CECCC5071D5DC2FE0061460D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FamousQuotes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.FamousQuotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CECCC5081D5DC2FE0061460D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FamousQuotes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.motoom.FamousQuotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CECCC4EF1D5DC2FE0061460D /* Build configuration list for PBXProject "FamousQuotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CECCC5041D5DC2FE0061460D /* Debug */,
+				CECCC5051D5DC2FE0061460D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CECCC5061D5DC2FE0061460D /* Build configuration list for PBXNativeTarget "FamousQuotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CECCC5071D5DC2FE0061460D /* Debug */,
+				CECCC5081D5DC2FE0061460D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CECCC4EC1D5DC2FE0061460D /* Project object */;
+}
