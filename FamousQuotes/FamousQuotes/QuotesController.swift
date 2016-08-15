@@ -27,7 +27,7 @@ class QuotesController: UITableViewController, QuoteProtocol {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return db.quoteCount()
-            }
+        }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("QuoteCell", forIndexPath: indexPath) as! QuoteCell
@@ -35,6 +35,15 @@ class QuotesController: UITableViewController, QuoteProtocol {
         cell.authorLabel.text = author
         cell.quoteLabel.text = quote
         return cell
+        }
+
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true;
+        }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        db.delete(indexPath.row)
+        tableView.reloadData()
         }
 
     var quoteId: Int? = nil

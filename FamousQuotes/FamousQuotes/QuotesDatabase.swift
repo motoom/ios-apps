@@ -51,6 +51,6 @@ class QuotesDatabase {
         }
 
     func delete(id: Int) {
-        // TODO
+        quotes.removeAtIndex(id)
         }
     }
