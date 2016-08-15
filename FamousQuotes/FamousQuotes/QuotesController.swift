@@ -41,8 +41,10 @@ class QuotesController: UITableViewController, QuoteProtocol {
         }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        db.delete(indexPath.row)
-        tableView.reloadData()
+        if editingStyle == .Delete {
+            db.delete(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
         }
 
     var quoteId: Int? = nil
