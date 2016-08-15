@@ -11,8 +11,7 @@ class QuotesController: UITableViewController, QuoteProtocol {
         super.viewDidLoad()
 
         // De database
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        db = appDelegate.quotesDatabase
+        db = QuotesDatabase.sharedInstance
 
         // Dynamically sized table cells.
         tableView.estimatedRowHeight = tableView.rowHeight

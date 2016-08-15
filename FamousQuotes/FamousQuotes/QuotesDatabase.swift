@@ -4,6 +4,8 @@
 import Foundation
 
 class QuotesDatabase {
+    static let sharedInstance = QuotesDatabase()
+
     var quotes = [
         ("Zenyatta", "Repetition is the path to mastery."),
         ("Ayn Rand", "A creative man is motivated by the desire to achieve, not by the desire to beat others."),
