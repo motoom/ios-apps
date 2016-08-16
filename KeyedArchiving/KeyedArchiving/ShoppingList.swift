@@ -9,19 +9,16 @@ class ShoppingListItem: NSObject, NSCoding {
     var name = ""
     var quantity = 0
 
-    struct Keys {
-        static let name = "name"
-        static let quantity = "quantity"
-        }
-
     init(_ name: String, _ quantity: Int) {
         self.name = name
         self.quantity = quantity
         }
 
-    func encodeWithCoder(archiver: NSCoder) {
-        archiver.encodeObject(name, forKey: Keys.name)
-        archiver.encodeObject(quantity, forKey: Keys.quantity)
+    // MARK: Persistence
+
+    struct Keys {
+        static let name = "name"
+        static let quantity = "quantity"
         }
 
     required init(coder unarchiver: NSCoder) {
@@ -29,6 +26,12 @@ class ShoppingListItem: NSObject, NSCoding {
         name = unarchiver.decodeObjectForKey(Keys.name) as! String
         quantity = unarchiver.decodeObjectForKey(Keys.quantity) as! Int
         }
+
+    func encodeWithCoder(archiver: NSCoder) {
+        archiver.encodeObject(name, forKey: Keys.name)
+        archiver.encodeObject(quantity, forKey: Keys.quantity)
+        }
+
     }
 
 
@@ -39,30 +42,10 @@ class ShoppingList: NSObject, NSCoding {
     var when = NSDate()
     var items = [ShoppingListItem]()
 
-    struct Keys {
-        static let shop = "shop"
-        static let when = "when"
-        static let items = "items"
-        }
-
     init(_ shop: String, _ when: NSDate) {
         self.shop = shop
         self.when = when
         }
-
-    func encodeWithCoder(archiver: NSCoder) {
-        archiver.encodeObject(shop, forKey: Keys.shop)
-        archiver.encodeObject(when, forKey: Keys.when)
-        archiver.encodeObject(items, forKey: Keys.items)
-        }
-
-    required init(coder unarchiver: NSCoder) {
-        super.init()
-        shop = unarchiver.decodeObjectForKey(Keys.shop) as! String
-        when = unarchiver.decodeObjectForKey(Keys.when) as! NSDate
-        items = unarchiver.decodeObjectForKey(Keys.items) as! [ShoppingListItem]
-        }
-
 
     func addItem(item: ShoppingListItem) {
         items.append(item)
@@ -79,6 +62,28 @@ class ShoppingList: NSObject, NSCoding {
         print("    ----")
         print("")
         }
+
+    // MARK: Persistence
+
+    struct Keys {
+        static let shop = "shop"
+        static let when = "when"
+        static let items = "items"
+        }
+
+    required init(coder unarchiver: NSCoder) {
+        super.init()
+        shop = unarchiver.decodeObjectForKey(Keys.shop) as! String
+        when = unarchiver.decodeObjectForKey(Keys.when) as! NSDate
+        items = unarchiver.decodeObjectForKey(Keys.items) as! [ShoppingListItem]
+        }
+
+    func encodeWithCoder(archiver: NSCoder) {
+        archiver.encodeObject(shop, forKey: Keys.shop)
+        archiver.encodeObject(when, forKey: Keys.when)
+        archiver.encodeObject(items, forKey: Keys.items)
+        }
+
     }
 
 
