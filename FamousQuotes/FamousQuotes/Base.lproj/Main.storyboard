@@ -149,6 +149,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QC6-U7-b98">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.99688667058944702" green="0.85470283031463623" blue="0.59384208917617798" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
