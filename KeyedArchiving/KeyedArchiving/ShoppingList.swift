@@ -34,12 +34,38 @@ class ShoppingListItem: NSObject, NSCoding {
 
     }
 
+/*
+struct Shopper {
+    var name: String
+    }
+*/
 
+class Shopper: NSObject, NSCoding {
+    var name = ""
+
+    init(_ name: String) {
+        self.name = name
+        }
+
+    struct Keys {
+        static let name = "name"
+        }
+
+    required init(coder unarchiver: NSCoder) {
+        super.init()
+        name = unarchiver.decodeObjectForKey(Keys.name) as! String
+        }
+
+    func encodeWithCoder(archiver: NSCoder) {
+        archiver.encodeObject(name, forKey: Keys.name)
+        }
+    }
 
 class ShoppingList: NSObject, NSCoding {
 
     var shop = ""
     var when = NSDate()
+    var shopper: Shopper? // = Shopper(name: "Michiel")
     var items = [ShoppingListItem]()
 
     init(_ shop: String, _ when: NSDate) {
@@ -53,7 +79,7 @@ class ShoppingList: NSObject, NSCoding {
 
     func printMe() {
         print("    ----")
-        print("    I'm a shoppinglist for \(shop) with \(items.count) items, to be purchased on \(when):")
+        print("    I'm a shoppinglist for \(shop) with \(items.count) items, to be purchased on \(when) by \(shopper?.name):")
         for item in items {
             print ("        \(item.quantity)x \(item.name)")
             }
@@ -68,19 +94,22 @@ class ShoppingList: NSObject, NSCoding {
     struct Keys {
         static let shop = "shop"
         static let when = "when"
+        static let shopper = "shopper"
         static let items = "items"
         }
 
     required init(coder unarchiver: NSCoder) {
         super.init()
-        shop = unarchiver.decodeObjectForKey(Keys.shop) as! String
+        shop = unarchiver.decodeObjectForKey("shop") as! String
         when = unarchiver.decodeObjectForKey(Keys.when) as! NSDate
+        shopper = unarchiver.decodeObjectForKey(Keys.shopper) as? Shopper
         items = unarchiver.decodeObjectForKey(Keys.items) as! [ShoppingListItem]
         }
 
     func encodeWithCoder(archiver: NSCoder) {
-        archiver.encodeObject(shop, forKey: Keys.shop)
+        archiver.encodeObject(shop, forKey: "shop")
         archiver.encodeObject(when, forKey: Keys.when)
+        archiver.encodeObject(shopper, forKey: Keys.shopper)
         archiver.encodeObject(items, forKey: Keys.items)
         }
 

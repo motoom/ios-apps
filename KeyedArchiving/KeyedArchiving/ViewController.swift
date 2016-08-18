@@ -8,8 +8,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // ShoppingListTest()
+        
         // Create and show the shopping list.
         let first = ExampleShoppingList()
+        first.shopper = Shopper("Mary")
         print("The first list, the one that is going to be saved in an archive, is:")
         first.printMe()
 
