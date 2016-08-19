@@ -109,6 +109,7 @@ class ShoppingList: NSObject, NSCoding {
     func encodeWithCoder(archiver: NSCoder) {
         archiver.encodeObject(shop, forKey: "shop")
         archiver.encodeObject(when, forKey: Keys.when)
+        // archiver.encodeObject(shopper!.name, forKey: Keys.shopper)
         archiver.encodeObject(shopper, forKey: Keys.shopper)
         archiver.encodeObject(items, forKey: Keys.items)
         }
