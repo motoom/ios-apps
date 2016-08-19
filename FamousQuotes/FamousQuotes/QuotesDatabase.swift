@@ -6,10 +6,13 @@ import Foundation
 class QuotesDatabase {
     static let sharedInstance = QuotesDatabase()
 
+    // TODO: dictionary ipv. array, keyen op record-id  34 -> Quote("Aap", "Noot")
+
     var quotes = [
-        ("Zenyatta", "Repetition is the path to mastery."),
-        ("Ayn Rand", "A creative man is motivated by the desire to achieve, not by the desire to beat others."),
-        ("Ayn Rand", "The smallest minority on earth is the individual. Those who deny individual rights cannot claim to be defenders of minorities."),
+        Quote("Zenyatta", "Repetition is the path to mastery."),
+        Quote("Ayn Rand", "A creative man is motivated by the desire to achieve, not by the desire to beat others."),
+        Quote("Ayn Rand", "The smallest minority on earth is the individual. Those who deny individual rights cannot claim to be defenders of minorities."),
+        /*
         ("Albert Einstein", "Everything should be made as simple as possible, but not simpler."),
         ("Artistotle", "Pleasure in the job puts perfection in the work."),
         ("Albert Einstein", "Imagination is more important than knowledge."),
@@ -32,24 +35,27 @@ class QuotesDatabase {
         ("Albert Einstein", "Anyone who has never made a mistake has never tried anything new."),
         ("Zenyatta", "If you do not bend... you break."),
         ("Artistotle", "It is the mark of an educated mind to be able to entertain a thought without accepting it."),
+        */
         ]
 
     func quoteCount() -> Int {
         return quotes.count
         }
 
+    // TODO: fetch(filter?) -> levert array op van quotes, al dan niet gefilterd
+
     // Mimic SQL's SELECT, INSERT INTO, UPDATE, DELETE FROM.
-    func select(id: Int) -> (String, String) {
+    func select(id: Int) -> Quote {
         return quotes[id]
         }
 
     func insert(author: String, _ quote: String) -> Int {
-        quotes.append((author, quote))
+        quotes.append(Quote(author, quote))
         return quotes.count - 1
         }
 
     func update(id: Int, _ author: String, _ quote: String) {
-        quotes[id] = (author, quote)
+        quotes[id] = Quote(author, quote)
         }
 
     func delete(id: Int) {

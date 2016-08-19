@@ -30,9 +30,9 @@ class QuotesController: UITableViewController, QuoteProtocol {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("QuoteCell", forIndexPath: indexPath) as! QuoteCell
-        let (author, quote) = db.select(indexPath.row)
-        cell.authorLabel.text = author
-        cell.quoteLabel.text = quote
+        let q = db.select(indexPath.row)
+        cell.authorLabel.text = q.author
+        cell.quoteLabel.text = q.quote
         return cell
         }
 
@@ -66,7 +66,7 @@ class QuotesController: UITableViewController, QuoteProtocol {
         return self.quoteId
         }
 
-    func getQuote(id: Int) -> (String, String) {
+    func getQuote(id: Int) -> Quote {
         return db.select(id)
         }
 

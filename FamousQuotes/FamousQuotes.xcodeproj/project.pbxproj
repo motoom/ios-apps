@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE53D1551D67718B00077F5E /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53D1541D67718B00077F5E /* Quote.swift */; };
 		CECCC4F81D5DC2FE0061460D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCC4F71D5DC2FE0061460D /* AppDelegate.swift */; };
 		CECCC4FD1D5DC2FE0061460D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCC4FB1D5DC2FE0061460D /* Main.storyboard */; };
 		CECCC4FF1D5DC2FE0061460D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECCC4FE1D5DC2FE0061460D /* Assets.xcassets */; };
@@ -18,12 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE53D1541D67718B00077F5E /* Quote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		CECCC4F41D5DC2FE0061460D /* FamousQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamousQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCC4F71D5DC2FE0061460D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECCC4FC1D5DC2FE0061460D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CECCC4FE1D5DC2FE0061460D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CECCC5031D5DC2FE0061460D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CECCC5091D5DC4240061460D /* QuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuotesController.swift; path = QuotesController.swift; sourceTree = "<group>"; };
+		CECCC5091D5DC4240061460D /* QuotesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesController.swift; sourceTree = "<group>"; };
 		CECCC50B1D5DC48C0061460D /* QuoteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
 		CECCC50D1D5DF5540061460D /* QuoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteController.swift; sourceTree = "<group>"; };
 		CECCC50F1D5DF6FA0061460D /* QuoteProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteProtocol.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				CECCC5031D5DC2FE0061460D /* Info.plist */,
 				CECCC50F1D5DF6FA0061460D /* QuoteProtocol.swift */,
 				CECCC5131D5E04DA0061460D /* QuotesDatabase.swift */,
+				CE53D1541D67718B00077F5E /* Quote.swift */,
 			);
 			path = FamousQuotes;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				CECCC50A1D5DC4240061460D /* QuotesController.swift in Sources */,
 				CECCC5141D5E04DA0061460D /* QuotesDatabase.swift in Sources */,
 				CECCC50E1D5DF5540061460D /* QuoteController.swift in Sources */,
+				CE53D1551D67718B00077F5E /* Quote.swift in Sources */,
 				CECCC4F81D5DC2FE0061460D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +292,7 @@
 				CECCC5081D5DC2FE0061460D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
