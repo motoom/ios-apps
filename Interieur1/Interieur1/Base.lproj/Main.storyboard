@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1909" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BT3-9O-1rd">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Hoofd Controller-->
+        <scene sceneID="s3t-NX-75l">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="BT3-9O-1rd" customClass="HoofdController" customModule="Interieur1" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ueD-E6-48k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="304" y="398"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ErU-SF-i7q">
+            <objects>
+                <viewController storyboardIdentifier="eetkamer" id="aMa-Sd-CzJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0KS-zX-Ku2"/>
+                        <viewControllerLayoutGuide type="bottom" id="8C1-Nf-p5N"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rca-Bk-4zv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interieur-eetkamer" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-Rk-vZr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mu3-Rk-vZr" secondAttribute="trailing" id="ht9-wm-EM4"/>
+                            <constraint firstItem="Mu3-Rk-vZr" firstAttribute="leading" secondItem="rca-Bk-4zv" secondAttribute="leading" id="qZh-gc-rxU"/>
+                            <constraint firstItem="Mu3-Rk-vZr" firstAttribute="bottom" secondItem="8C1-Nf-p5N" secondAttribute="top" id="s4e-0a-LDn"/>
+                            <constraint firstItem="Mu3-Rk-vZr" firstAttribute="top" secondItem="rca-Bk-4zv" secondAttribute="top" id="zzM-go-9LY"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lN-V1-jpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="688" y="398"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tNt-dy-1Ye">
+            <objects>
+                <viewController storyboardIdentifier="ikea" id="lcz-rI-Crh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y8u-JX-6dd"/>
+                        <viewControllerLayoutGuide type="bottom" id="wFH-Ii-D3T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="als-Nh-PwR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interieur-ikea" translatesAutoresizingMaskIntoConstraints="NO" id="F28-UJ-2EB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IKEA buro €120" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFa-27-38X">
+                                <rect key="frame" x="0.0" y="418" width="320" height="62"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.35000000000000003" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="Bwk-Lz-KVD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="37"/>
+                                <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F28-UJ-2EB" firstAttribute="bottom" secondItem="wFH-Ii-D3T" secondAttribute="top" id="BVs-BO-lUM"/>
+                            <constraint firstItem="hFa-27-38X" firstAttribute="leading" secondItem="F28-UJ-2EB" secondAttribute="leading" id="EGM-Ij-0FA"/>
+                            <constraint firstAttribute="trailing" secondItem="F28-UJ-2EB" secondAttribute="trailing" id="IDU-97-ZZ2"/>
+                            <constraint firstItem="hFa-27-38X" firstAttribute="trailing" secondItem="F28-UJ-2EB" secondAttribute="trailing" id="K8H-9I-103"/>
+                            <constraint firstItem="F28-UJ-2EB" firstAttribute="top" secondItem="als-Nh-PwR" secondAttribute="top" id="WH0-3a-huc"/>
+                            <constraint firstItem="F28-UJ-2EB" firstAttribute="leading" secondItem="als-Nh-PwR" secondAttribute="leading" id="jaa-yE-wnZ"/>
+                            <constraint firstItem="hFa-27-38X" firstAttribute="bottom" secondItem="wFH-Ii-D3T" secondAttribute="top" id="yAz-s3-Owb"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICo-tB-KBZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="398"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pzV-yr-R0O">
+            <objects>
+                <viewController storyboardIdentifier="klassiek" id="J04-rY-U2B" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DFJ-dT-sNb"/>
+                        <viewControllerLayoutGuide type="bottom" id="dxx-YK-fZr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zvX-wj-03k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interieur-klassiek" translatesAutoresizingMaskIntoConstraints="NO" id="PTf-jE-NAw">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Klassieke eettafel €800" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRF-al-7aQ">
+                                <rect key="frame" x="60" y="28" width="201" height="24"/>
+                                <color key="backgroundColor" red="0.21967718005180359" green="0.38452515006065369" blue="0.98662477731704712" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" red="1" green="0.99994057416915894" blue="0.99998033046722412" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.63" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TRF-al-7aQ" firstAttribute="centerX" secondItem="PTf-jE-NAw" secondAttribute="centerX" id="5pZ-rx-05T"/>
+                            <constraint firstItem="TRF-al-7aQ" firstAttribute="top" secondItem="DFJ-dT-sNb" secondAttribute="bottom" constant="8" symbolic="YES" id="T9s-dz-a4g"/>
+                            <constraint firstItem="PTf-jE-NAw" firstAttribute="top" secondItem="zvX-wj-03k" secondAttribute="top" id="fuC-HM-iIr"/>
+                            <constraint firstAttribute="trailing" secondItem="PTf-jE-NAw" secondAttribute="trailing" id="uHh-E1-C1f"/>
+                            <constraint firstItem="PTf-jE-NAw" firstAttribute="bottom" secondItem="dxx-YK-fZr" secondAttribute="top" id="w40-qw-m1t"/>
+                            <constraint firstItem="PTf-jE-NAw" firstAttribute="leading" secondItem="zvX-wj-03k" secondAttribute="leading" id="xnx-ZB-fDO"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbt-hq-cmi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="398"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="interieur-eetkamer" width="512" height="545"/>
+        <image name="interieur-ikea" width="587" height="680"/>
+        <image name="interieur-klassiek" width="522" height="633"/>
+    </resources>
+</document>

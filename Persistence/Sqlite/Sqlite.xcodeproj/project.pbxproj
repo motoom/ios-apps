@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1B0E0D1D69E93F00F182F3 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		CECC236B1D687A6900354A96 /* Sqlite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sqlite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC236E1D687A6900354A96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECC23701D687A6900354A96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		CECC23621D687A6900354A96 = {
 			isa = PBXGroup;
 			children = (
+				CE1B0E0D1D69E93F00F182F3 /* Header.h */,
 				CECC236D1D687A6900354A96 /* Sqlite */,
 				CECC236C1D687A6900354A96 /* Products */,
 			);
@@ -308,6 +310,7 @@
 				CECC237F1D687A6900354A96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

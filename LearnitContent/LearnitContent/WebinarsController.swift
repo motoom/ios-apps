@@ -6,6 +6,7 @@
 // Doorgangsgaranties (met zoek + uitklap UI)
 // Locaties (met UIMapView en routeplanner integratie?)
 
+// network spinner in phone status bar: application.networkActivityIndicatorVisible: Bool
 import UIKit
 
 class WebinarsController: UIViewController, UITableViewDelegate, UITableViewDataSource {

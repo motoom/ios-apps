@@ -28,7 +28,7 @@
                                     <action selector="done" destination="BYZ-38-t0r" eventType="touchUpInside" id="T4p-6Z-rjD"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hier een lange tekst." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JqM-Ag-G4S">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hier een lange tekst. Boeoeoe ejjeje ejejeje" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JqM-Ag-G4S">
                                 <rect key="frame" x="20" y="58" width="280" height="402"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="387"/>
+            <point key="canvasLocation" x="-26" y="502"/>
         </scene>
     </scenes>
 </document>

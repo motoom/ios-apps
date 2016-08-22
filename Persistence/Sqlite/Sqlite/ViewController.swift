@@ -11,6 +11,8 @@
 6. Sleep 'SqliteDb.swift' in je project.
 */
 
+// Uitzoeken: Hoe ga je om met INTEGER, DOUBLE, DECIMALS en DATE velden in je tabel?
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -34,11 +36,8 @@ class ViewController: UIViewController {
         if !db.tableExists("Nummers") {
             print("Tabel 'Nummers' bestaat nog niet, aanmaken dus.")
             db.execute("create table Nummers(naam text, nummer text)")
-            db.execute("insert into Nummers values('Koen', '06-1273281')")
-            db.execute("insert into Nummers values('Piet', '020-128723')")
-            }
-        else {
-            // db.execute("drop table Nummers")
+            db.execute("insert into Nummers values('Koen', '061273281')")
+            db.execute("insert into Nummers values('Piet', '020128723')")
             }
         updateUI()
         }

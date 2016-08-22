@@ -3,6 +3,8 @@
 
 import UIKit
 
+// Uitzoeken: Is het ook mogelijk om gesavede documenten in andere apps op te vragen? Bijvoorbeeld Pages.
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextView!

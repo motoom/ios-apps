@@ -3,6 +3,8 @@
 
 import UIKit
 
+// Nog uitzoeken: Hoe ga je om met schemawijzigingen in je property lists?
+
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var artikelEdit: UITextField! {
