@@ -9,9 +9,9 @@ class HoofdController: UIPageViewController, UIPageViewControllerDataSource  {
 
 
     override func viewDidLoad() {
-        self.dataSource = self
+        dataSource = self
         for identifier in ["eetkamer", "ikea", "klassiek"] {
-            if let sub = self.storyboard?.instantiateViewControllerWithIdentifier(identifier) {
+            if let sub = storyboard?.instantiateViewControllerWithIdentifier(identifier) {
                 bladzijden.append(sub)
                 }
             }
