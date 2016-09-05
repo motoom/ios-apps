@@ -6,6 +6,8 @@ import UIKit
 class QuotesController: UITableViewController, QuoteProtocol {
 
     var db: QuotesDatabase!
+    var quoteids: [Int] = []
+    var needids = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +27,25 @@ class QuotesController: UITableViewController, QuoteProtocol {
         }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return db.quoteCount()
+        // Fetch array of quote id's to show
+        if needids {
+            quoteids = db.select("")
+            needids = false
+            print(quoteids)
+            }
+        return quoteids.count
         }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("QuoteCell", forIndexPath: indexPath) as! QuoteCell
-        let q = db.select(indexPath.row)
-        cell.authorLabel.text = q.author
-        cell.quoteLabel.text = q.quote
+        if let q = db.fetchone(quoteids[indexPath.row]) { // TODO: Record id
+            cell.authorLabel.text = q.author
+            cell.quoteLabel.text = q.quote
+            }
+        else {
+            cell.authorLabel.text = "Program error"
+            cell.quoteLabel.text = "Record id #\(indexPath.row) not found in database"
+            }
         return cell
         }
 
@@ -42,7 +55,8 @@ class QuotesController: UITableViewController, QuoteProtocol {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            db.delete(indexPath.row)
+            db.delete(quoteids[indexPath.row])
+            quoteids.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
         }
@@ -54,7 +68,7 @@ class QuotesController: UITableViewController, QuoteProtocol {
             vc.delegate = self
             if segue.identifier == "Edit" {
                 let tableView = self.view as! UITableView
-                self.quoteId = tableView.indexPathForSelectedRow!.row
+                self.quoteId = quoteids[tableView.indexPathForSelectedRow!.row]
                 }
             else if segue.identifier == "Add" {
                 self.quoteId = nil
@@ -66,24 +80,28 @@ class QuotesController: UITableViewController, QuoteProtocol {
         return self.quoteId
         }
 
-    func getQuote(id: Int) -> Quote {
-        return db.select(id)
+    func getQuote(id: Int) -> Quote? {
+        return db.fetchone(id)
         }
 
     func updateQuote(id: Int, _ author: String, _ quote: String) {
         db.update(id, author, quote)
-        let indexPath = NSIndexPath(forRow: id, inSection: 0)
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        if let quoterow = quoteids.indexOf(id) {
+            let indexPath = NSIndexPath(forRow: quoterow, inSection: 0)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            }
         }
 
     func addQuote(author: String, _ quote: String) -> Int {
-        let index = db.insert(author, quote)
+        let recordid = db.insert(author, quote)
+        quoteids.append(recordid)
+        print(quoteids)
         tableView.reloadData()
-        let indexPath = NSIndexPath(forRow: index , inSection: 0)
+        let indexPath = NSIndexPath(forRow: quoteids.count - 1, inSection: 0)
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Middle, animated: true)
             })
-        return index
+        return recordid
         }
 
     }

@@ -17,9 +17,14 @@ class QuoteController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         if let id = delegate!.getId() {
             title =  "Edit quote"
-            let q = delegate!.getQuote(id)
-            authorText.text = q.author
-            quoteText.text = q.quote
+            if let q = delegate!.getQuote(id) {
+                authorText.text = q.author
+                quoteText.text = q.quote
+                }
+            else {
+                authorText.text = "Program error"
+                quoteText.text = "Record id #\(id) not found"
+                }
             }
         else {
             title = "Add quote"
