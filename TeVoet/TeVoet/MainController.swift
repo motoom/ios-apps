@@ -1,10 +1,6 @@
-//
+
 //  MainController.swift
-//  TeVoet
-//
-//  Created by User on 2016-09-05.
-//  Copyright © 2016 motoom. All rights reserved.
-//
+// Software by Michiel Overtoom, motoom@xs4all.nl
 
 import UIKit
 import CoreMotion
@@ -14,9 +10,10 @@ class MainController: UIViewController {
     // https://developer.apple.com/reference/coremotion/cmpedometer
     // http://pinkstone.co.uk/how-to-access-the-step-counter-and-pedometer-data-in-ios-9/
 
-    var pd = CMPedometer() // Alleen in iPhone 5s en hoger...
+    var pd: CMPedometer? = nil // Alleen in iPhone 5s en hoger...
     var errorgiven = false
-
+    var stappen = 0 // Aantal stappen vandaag gezet
+    
     @IBOutlet weak var voetstappenLabel: UILabel!
     
     // Balk van de NavigationController verbergen op het eerste scherm.
@@ -32,6 +29,9 @@ class MainController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pd = CMPedometer()
+        
         /*
         print("Availability:")
         print("StepCounting", CMPedometer.isStepCountingAvailable())
@@ -40,33 +40,42 @@ class MainController: UIViewController {
         print("Pace", CMPedometer.isPaceAvailable())
         print("Cadence", CMPedometer.isCadenceAvailable())
         */
+        
+        let yyyymmdd = NSDateFormatter()
+        yyyymmdd.dateFormat = "YYYY-MM-DD"
+        let vandaag = yyyymmdd.stringFromDate(NSDate())
+        let vandaagheelvroeg = vandaag + " 00:01"
+        
+        let yyyymmddhhmm = NSDateFormatter()
+        yyyymmddhhmm.dateFormat = "YYYY-MM-DD HH:mm"
+        let start = yyyymmddhhmm.dateFromString(vandaagheelvroeg)!
 
-        let from = "2016-01-01 00:00"
-        let fmt = NSDateFormatter()
-        fmt.dateFormat = "YYYY-MM-DD HH:mm"
-        print(fmt.stringFromDate(NSDate()))
-
-        let start = fmt.dateFromString(from)!
-        let end = NSDate()
-
+        // Initieel aantal stappen ophalen.
         // CMErrorDomain 104 betekent Feature not supported
-        pd.queryPedometerDataFromDate(start, toDate: end) {
+        // Pedometer update: Optional(CMPedometerData,<startDate 2016-09-05 15:07:15 +0000, endDate 2016-09-05 15:07:26 +0000, steps 15, distance 13.12999999999988
+        pd?.queryPedometerDataFromDate(start, toDate: NSDate()) {
             (data, error) -> Void in
-                if error != nil {
-                    // self.voetstappenLabel.text = "stappenteller niet beschikbaar"
+                if error == nil && data != nil {
+                    self.stappen = Int(data!.numberOfSteps)
                     }
-                else {
-                    self.voetstappenLabel.text = "6.285 van de 12.000"
-                    }
+                self.verfrisVoetstappenLabels()
             }
 
-        pd.startPedometerUpdatesFromDate(NSDate()) {
+        // En daarna ook periodiek aantal stappen sinds 00:01 vandaag ophalen.
+        pd?.startPedometerUpdatesFromDate(start) {
             (data, error) -> Void in
-                print("Pedometer update:", data, error)
-                if error == nil {
-                    self.voetstappenLabel.text = "XYZ van de 12.000"
+                if error == nil && data != nil {
+                    self.stappen = Int(data!.numberOfSteps)
+                    self.verfrisVoetstappenLabels()
                     }
                 }
+        }
+
+    func verfrisVoetstappenLabels() {
+        // Nu is er nog maar één label met het aantal voetstappen, maar dat worden er meer.
+        dispatch_async(dispatch_get_main_queue()) {
+            self.voetstappenLabel.text = "\(self.stappen) van de 12000"
+            }
         }
 
     override func viewDidAppear(animated: Bool) {
