@@ -54,6 +54,7 @@ class MainController: UIViewController {
             (data, error) -> Void in
                 if error != nil {
                     // self.voetstappenLabel.text = "stappenteller niet beschikbaar"
+                    print(data)
                     }
                 else {
                     self.voetstappenLabel.text = "6.285 van de 12.000"
