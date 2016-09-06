@@ -4,8 +4,9 @@
 
 import UIKit
 import CoreMotion
+import CoreLocation
 
-class MainController: UIViewController {
+class MainController: UIViewController, CLLocationManagerDelegate {
 
     // https://developer.apple.com/reference/coremotion/cmpedometer
     // http://pinkstone.co.uk/how-to-access-the-step-counter-and-pedometer-data-in-ios-9/
@@ -13,9 +14,10 @@ class MainController: UIViewController {
     var pd: CMPedometer? = nil // Alleen in iPhone 5s en hoger...
     var errorgiven = false
     var stappen = 0 // Aantal stappen vandaag gezet.
-    
+
     @IBOutlet weak var voetstappenLabel: UILabel!
-    
+
+
     // Balk van de NavigationController verbergen op het eerste scherm.
     // TODO: misschien de balk op de vervolgschermen transparant maken, en niet-interactief (behalve de Back button, dan).
     override func viewWillAppear(animated: Bool) {
@@ -31,7 +33,7 @@ class MainController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.voetstappenLabel.text = ""
+        // self.voetstappenLabel.text = ""
 
         /*
         print("Availability:")
@@ -93,8 +95,39 @@ class MainController: UIViewController {
             }
         }
 
+
+    func initLocationManager() {
+        let status = CLLocationManager.authorizationStatus()
+        if status == .Restricted || status == .Denied {
+            return
+            }
+        let apd = UIApplication.sharedApplication().delegate as! AppDelegate
+        if apd.lm != nil {
+            return
+            }
+        apd.lm = CLLocationManager()
+        apd.lm?.delegate = self
+
+        if status == .NotDetermined {
+            apd.lm?.requestWhenInUseAuthorization() //  or requestAlwaysAuthorization
+            }
+
+        // Pas wanneer we gaan tracken
+        // if lm?.locationServicesEnabled {
+        //   lm?.desiredAccuracy =
+        //   lm?.distanceFilter =
+        }
+
+    /*
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("didChangeAuthorizationStatus:", status)
+        }
+    */
+    
     override func viewDidAppear(animated: Bool) {
         initPedometer()
+        initLocationManager()
+
         /*
         if !CMPedometer.isStepCountingAvailable() && !errorgiven {
             let alert = UIAlertController(title: "Sorry",  message: "Deze iPhone bevat geen voetstappenteller", preferredStyle: .Alert)

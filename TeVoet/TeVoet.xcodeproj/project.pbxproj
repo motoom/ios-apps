@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEDA500B1D7E1CCB0059FB96 /* WandelingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */; };
+		CEDA500D1D7E1FDE0059FB96 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDA500C1D7E1FDE0059FB96 /* MapKit.framework */; };
+		CEDA500F1D7E96100059FB96 /* VorigeWandelingenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */; };
 		CEEF80431D7D457700C968BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF80421D7D457700C968BD /* AppDelegate.swift */; };
 		CEEF80451D7D457700C968BD /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF80441D7D457700C968BD /* MainController.swift */; };
 		CEEF80481D7D457700C968BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEEF80461D7D457700C968BD /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandelingController.swift; sourceTree = "<group>"; };
+		CEDA500C1D7E1FDE0059FB96 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VorigeWandelingenController.swift; sourceTree = "<group>"; };
 		CEEF803F1D7D457700C968BD /* TeVoet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeVoet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEEF80421D7D457700C968BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEEF80441D7D457700C968BD /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -29,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDA500D1D7E1FDE0059FB96 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +45,7 @@
 		CEEF80361D7D457600C968BD = {
 			isa = PBXGroup;
 			children = (
+				CEDA500C1D7E1FDE0059FB96 /* MapKit.framework */,
 				CEEF80411D7D457700C968BD /* TeVoet */,
 				CEEF80401D7D457700C968BD /* Products */,
 			);
@@ -56,7 +64,9 @@
 			children = (
 				CEEF80421D7D457700C968BD /* AppDelegate.swift */,
 				CEEF80441D7D457700C968BD /* MainController.swift */,
+				CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */,
 				CEEF80461D7D457700C968BD /* Main.storyboard */,
+				CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */,
 				CEEF80491D7D457700C968BD /* Assets.xcassets */,
 				CEEF804B1D7D457700C968BD /* LaunchScreen.storyboard */,
 				CEEF804E1D7D457700C968BD /* Info.plist */,
@@ -96,6 +106,14 @@
 				TargetAttributes = {
 					CEEF803E1D7D457600C968BD = {
 						CreatedOnToolsVersion = 7.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -135,7 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDA500F1D7E96100059FB96 /* VorigeWandelingenController.swift in Sources */,
 				CEEF80451D7D457700C968BD /* MainController.swift in Sources */,
+				CEDA500B1D7E1CCB0059FB96 /* WandelingController.swift in Sources */,
 				CEEF80431D7D457700C968BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +304,7 @@
 				CEEF80531D7D457700C968BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
