@@ -49,12 +49,12 @@ class MainController: UIViewController, CLLocationManagerDelegate {
 
         // Vandaag, net na middernacht, dus heel vroeg: "2016-10-30 00:01".
         let yyyymmdd = NSDateFormatter()
-        yyyymmdd.dateFormat = "YYYY-MM-DD"
+        yyyymmdd.dateFormat = "yyyy-MM-dd"
         let vandaag = yyyymmdd.stringFromDate(NSDate())
         let vandaagheelvroeg = vandaag + " 00:01"
 
         let yyyymmddhhmm = NSDateFormatter()
-        yyyymmddhhmm.dateFormat = "YYYY-MM-DD HH:mm"
+        yyyymmddhhmm.dateFormat = "yyyy-MM-dd HH:mm"
         let start = yyyymmddhhmm.dateFromString(vandaagheelvroeg)!
 
         // Initieel aantal stappen ophalen.
