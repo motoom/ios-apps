@@ -45,3 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+        /*
+        print("Availability:")
+        print("StepCounting", CMPedometer.isStepCountingAvailable())
+        print("Distance", CMPedometer.isDistanceAvailable())
+        print("FloorCounting", CMPedometer.isFloorCountingAvailable())
+        print("Pace", CMPedometer.isPaceAvailable())
+        print("Cadence", CMPedometer.isCadenceAvailable())
+        */

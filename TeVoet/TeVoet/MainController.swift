@@ -33,16 +33,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.voetstappenLabel.text = ""
-
-        /*
-        print("Availability:")
-        print("StepCounting", CMPedometer.isStepCountingAvailable())
-        print("Distance", CMPedometer.isDistanceAvailable())
-        print("FloorCounting", CMPedometer.isFloorCountingAvailable())
-        print("Pace", CMPedometer.isPaceAvailable())
-        print("Cadence", CMPedometer.isCadenceAvailable())
-        */
+        // self.voetstappenLabel.text = "" // Ga ervanuit dat dit device géén pedometer heeft.
         }
 
 
@@ -67,8 +58,6 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         let start = yyyymmddhhmm.dateFromString(vandaagheelvroeg)!
 
         // Initieel aantal stappen ophalen.
-        // CMErrorDomain 104 betekent Feature not supported
-        // Pedometer update: Optional(CMPedometerData,<startDate 2016-09-05 15:07:15 +0000, endDate 2016-09-05 15:07:26 +0000, steps 15, distance 13.1
         pd?.queryPedometerDataFromDate(start, toDate: NSDate()) {
             (data, error) -> Void in
                 if error == nil && data != nil {
@@ -77,7 +66,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
                     }
             }
 
-        // En daarna ook periodiek aantal stappen sinds 00:01 vandaag ophalen.
+        // En daarna ook periodiek aantal stappen ophalen.
         pd?.startPedometerUpdatesFromDate(start) {
             (data, error) -> Void in
                 if error == nil && data != nil {
@@ -106,16 +95,9 @@ class MainController: UIViewController, CLLocationManagerDelegate {
             return
             }
         apd.lm = CLLocationManager()
-        apd.lm?.delegate = self
-
         if status == .NotDetermined {
             apd.lm?.requestWhenInUseAuthorization() //  or requestAlwaysAuthorization
             }
-
-        // Pas wanneer we gaan tracken
-        // if lm?.locationServicesEnabled {
-        //   lm?.desiredAccuracy =
-        //   lm?.distanceFilter =
         }
 
     /*
