@@ -7,13 +7,14 @@ import UIKit
 import MapKit
 import CoreLocation
 
-let standaardIgnoreUpdates = 2
+let standaardIgnoreUpdates = 3
 
 class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
 
     var locations = [CLLocation]()
+    var locationsBuffer = [CLLocation]() // for collecting locations while in background state
     var ignoreUpdates = standaardIgnoreUpdates // de eerste 'ignoreupdates' meldingen negeren, vanwege initiele onnauwkeurigheid
     var prevpolyline: MKPolyline? = nil
 
@@ -47,7 +48,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             lm.activityType = .Fitness
             lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters // of '-Best'
             lm.distanceFilter = 10 // default is dit None
-            // lm.allowDeferredLocationUpdatesUntilTraveled() // in combinatie met eerst de locationsupdates in een aparte buffer te loggen, ipv. ze direct in het totaal te verwerken
+            lm.allowsBackgroundLocationUpdates = true
             lm.startUpdatingLocation()
             ignoreUpdates = standaardIgnoreUpdates
             // print("Location updating started") // Ook te zien aan het pijltje in de statusbalk.
@@ -55,13 +56,30 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations newLocations: [CLLocation]) {
+        // TODO: Dit moet beter. Bijvoorbeeld alle updates weggooien totdat ze een stabiele loopsnelheid laten zien.
+        // Of de eerste vijf seconden niets opslaan, of onnauwkeurige (>10m) locatiefixes negeren
         if ignoreUpdates > 0 {
             ignoreUpdates -= 1
-                // print("Genegeerde location update:", locations)
+                // print("didUpdateLocations: Genegeerde location update:", locations)
                 return
             }
+        // Checken of in backgroundstate. Zoja, bufferen en verder niets doen.
+        if UIApplication.sharedApplication().applicationState == .Background {
+            locationsBuffer.appendContentsOf(newLocations)
+            // print("didUpdateLocations: \(newLocations.count) locations recorded in background buffer")
+            return
+            }
+
+        // In foreground: eventueel eerder opgenomen locations in background buffer appenden.
+        if locationsBuffer.count > 0 {
+            locations.appendContentsOf(locationsBuffer)
+            // print("didUpdateLocations: retrieved \(locationsBuffer.count) locations from background buffer")
+            locationsBuffer.removeAll()
+            }
+        // En daarna de nieuw binnenkomende locaties.
         locations.appendContentsOf(newLocations)
-        // print("Location update:", locations)
+        // print("didUpdateLocations: foreground update with \(newLocations.count) locations")
+
         // print("Aantal waypoints:", locations.count)
         // Nog goed lezen: http://stackoverflow.com/questions/27129639/rendering-multiple-polylines-on-mapview
         var polylinecoords = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
@@ -82,7 +100,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
                 // print("Delta van ", prevLocation, "naar", location, "is", delta, "meter, cumulatief=", totaal)
                 prevLocation = location
                 dispatch_async(dispatch_get_main_queue()) {
-                    let saf = self.sjiekeAfstand(self.totaal)
+                    let saf = sjiekeAfstand(self.totaal)
                     self.statusLabel.text = "afgelegd: \(saf)"
                     }
                 }
@@ -111,6 +129,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let filenaam = "\(tijdstamp).v1.locations" // v1 = versie file format
         let fullfilenaam = docdirfilenaam(filenaam)
         // Saven. TODO: Ook als CSV saven? Of een conversie-utility schrijven?
+        // TODO: Saven als dict met keys "meta", "pedometer" en "locations"?
         let data = NSKeyedArchiver.archivedDataWithRootObject(locations) // TODO: Ook pedometer data saven
         data.writeToFile(fullfilenaam, atomically: true)
         }
@@ -128,17 +147,5 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
 
 
-    func sjiekeAfstand(m: Double) -> String {
-        let fmt = NSNumberFormatter()
-        if m < 1000 {
-            fmt.minimumFractionDigits = 1
-            fmt.maximumFractionDigits = 0
-            return fmt.stringFromNumber(m)! + "m"
-            }
-        else {
-            fmt.minimumFractionDigits = 1
-            fmt.maximumFractionDigits = 1
-            return fmt.stringFromNumber(m/1000)! + "km"
-            }
-        }
+
     }
