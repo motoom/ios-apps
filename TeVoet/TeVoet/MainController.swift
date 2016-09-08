@@ -1,5 +1,6 @@
 
-//  MainController.swift
+// MainController.swift
+//
 // Software by Michiel Overtoom, motoom@xs4all.nl
 
 import UIKit
@@ -8,11 +9,7 @@ import CoreLocation
 
 class MainController: UIViewController, CLLocationManagerDelegate {
 
-    // https://developer.apple.com/reference/coremotion/cmpedometer
-    // http://pinkstone.co.uk/how-to-access-the-step-counter-and-pedometer-data-in-ios-9/
-
     var pd: CMPedometer? = nil // Alleen in iPhone 5s en hoger...
-    var errorgiven = false
     var stappen = 0 // Aantal stappen vandaag gezet.
 
     @IBOutlet weak var voetstappenLabel: UILabel!
@@ -100,25 +97,10 @@ class MainController: UIViewController, CLLocationManagerDelegate {
             }
         }
 
-    /*
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print("didChangeAuthorizationStatus:", status)
-        }
-    */
-    
+
     override func viewDidAppear(animated: Bool) {
         initPedometer()
         initLocationManager()
-
-        /*
-        if !CMPedometer.isStepCountingAvailable() && !errorgiven {
-            let alert = UIAlertController(title: "Sorry",  message: "Deze iPhone bevat geen voetstappenteller", preferredStyle: .Alert)
-            let ok = UIAlertAction(title: "Ok", style: .Default, handler: nil)
-            alert.addAction(ok)
-            presentViewController(alert, animated: true, completion: nil)
-            self.errorgiven = true
-            }
-        */
         }
 
 }

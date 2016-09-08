@@ -1,10 +1,7 @@
-//
+
 //  AppDelegate.swift
-//  TeVoet
 //
-//  Created by User on 2016-09-05.
-//  Copyright © 2016 motoom. All rights reserved.
-//
+// Software by Michiel Overtoom, motoom@xs4all.nl
 
 import UIKit
 import CoreLocation
@@ -44,6 +41,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+    /*
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("didChangeAuthorizationStatus:", status)
+        }
+    */
+    
+
+    // https://developer.apple.com/reference/coremotion/cmpedometer
+    // http://pinkstone.co.uk/how-to-access-the-step-counter-and-pedometer-data-in-ios-9/
+
+
+        /*
+        var errorgiven = false
+
+        if !CMPedometer.isStepCountingAvailable() && !errorgiven {
+            let alert = UIAlertController(title: "Sorry",  message: "Deze iPhone bevat geen voetstappenteller", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+            alert.addAction(ok)
+            presentViewController(alert, animated: true, completion: nil)
+            self.errorgiven = true
+            }
+        */
+        
+
+        /*
+        // Totaal gelopen afstand bepalen (in meters).
+        // TODO: Als running total bijhouden in de class, want ook leuk om tussendoor te laten zien.
+        print("\nAfstandberekening met", locations.count, "waypoints")
+        var totaal = 0.0
+        var prevwaypoint: CLLocation? = nil
+        for waypoint in locations {
+            if prevwaypoint ==  nil {
+                prevwaypoint = waypoint
+                }
+            else {
+                let delta = waypoint.distanceFromLocation(prevwaypoint!)
+                totaal += delta
+                print("Delta van ", prevwaypoint, "naar", waypoint, "is", delta, "meter, cumulatief=", totaal)
+                prevwaypoint = waypoint
+                }
+            }
+        print("Totaal afgelegd: \(totaal)")
+        */
+
 
 
         /*
