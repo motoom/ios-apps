@@ -17,10 +17,13 @@ func saveWaypoints(locations: [CLLocation]) {
     let tijdstamp = filenametimestamp(locations)
     let filenaam = "\(tijdstamp).v1.locations" // v1 = versie file format
     let fullfilenaam = docdirfilenaam(filenaam)
-    // Saven.
-    // Saven als dict met keys "meta" met pedometerdata, en "locations"?
-    let data = NSKeyedArchiver.archivedDataWithRootObject(locations) // TODO: Ook pedometer data saven
-    data.writeToFile(fullfilenaam, atomically: true)
+    // Saven. TODO: Saven als dict met keys "meta" met pedometerdata, en "locations"?
+    NSKeyedArchiver.archivedDataWithRootObject(locations).writeToFile(fullfilenaam, atomically: true)
+    }
+
+
+func loadWaypoints(filename: String) -> [CLLocation]? {
+    return NSKeyedUnarchiver.unarchiveObjectWithFile(docdirfilenaam(filename)) as? [CLLocation]
     }
 
 
@@ -29,7 +32,7 @@ func saveWaypointsCSV(locations: [CLLocation]) {
     let filenaam = "\(tijdstamp).csv"
     let fullfilenaam = docdirfilenaam(filenaam)
     // CSV header
-    var csv = "\"unix timestamp\", \"datetime\", \"latitude\", \"longitude\", \"horizontal accuracy\", \"altitude\", \"vertical accuracy\"\n"
+    var csv = "\"unix timestamp\", \"datetime\", \"latitude\", \"longitude\", \"horizontal accuracy\", \"altitude\", \"vertical accuracy\", \"distance\", \"cumulative distance\"\n"
     var cumulDistance: Double = 0, delta: Double = 0
     var prevLocation: CLLocation?
     for location in locations {

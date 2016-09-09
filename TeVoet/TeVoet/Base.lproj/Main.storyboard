@@ -293,7 +293,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="bOY-n8-OUU" kind="show" id="Hxj-n0-ZZd"/>
+                                            <segue destination="bOY-n8-OUU" kind="show" identifier="ShowWalk" id="Hxj-n0-ZZd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -339,7 +339,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="berm" translatesAutoresizingMaskIntoConstraints="NO" id="BxS-r1-4vg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titel van de wandeling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsI-mN-INz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hier komt informatie over de wandeling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsI-mN-INz">
                                 <rect key="frame" x="20" y="72" width="560" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="AVs-eY-Y7l"/>
@@ -372,6 +372,9 @@
                             <constraint firstItem="WL2-VL-FEc" firstAttribute="trailing" secondItem="TsI-mN-INz" secondAttribute="trailing" id="uhY-Og-DKY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="WL2-VL-FEc" id="01t-Zc-Nn3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HV8-2s-cHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

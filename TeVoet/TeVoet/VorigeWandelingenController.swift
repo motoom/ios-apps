@@ -77,4 +77,14 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
             }
         }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowWalk" {
+            let showWalkVC = segue.destinationViewController as! BekijkWandelingController
+            let selectedCell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(selectedCell)!
+            showWalkVC.filenaam = files[indexPath.row]
+            }
+        }
+
+
     }

@@ -7,11 +7,14 @@ import UIKit
 import MapKit
 import CoreLocation
 
+let standaardIgnoreUpdates = 3
+
 class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
 
     var locations = [CLLocation]()
+    var ignoreUpdates = standaardIgnoreUpdates // de eerste 'ignoreupdates' meldingen negeren, vanwege initiele onnauwkeurigheid
     var locationsBackgroundBuffer = [CLLocation]() // for collecting locations while in background state
     var prevpolyline: MKPolyline? = nil
 
@@ -49,12 +52,20 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters // or '-Best'
             lm.distanceFilter = 10 // default None, but then many locations arrive, even without moving
             lm.allowsBackgroundLocationUpdates = true
+            ignoreUpdates = standaardIgnoreUpdates
             lm.startUpdatingLocation()
             // print("Location updating started") // Ook te zien aan het pijltje in de statusbalk.
             }
         }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations newLocations: [CLLocation]) {
+        // TODO: Dit moet beter. Bijvoorbeeld alle updates weggooien totdat ze een stabiele loopsnelheid laten zien.
+        // Of de eerste vijf seconden niets opslaan, of onnauwkeurige (>10m) locatiefixes negeren
+        if ignoreUpdates > 0 {
+            ignoreUpdates -= 1
+                // print("didUpdateLocations: Genegeerde location update:", locations)
+                return
+            }
         // Checken of in backgroundstate. Zoja, zo snel mogelijk bufferen en verder niets doen.
         if UIApplication.sharedApplication().applicationState == .Background {
             locationsBackgroundBuffer.appendContentsOf(newLocations)
