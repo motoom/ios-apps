@@ -129,7 +129,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let filenaam = "\(tijdstamp).v1.locations" // v1 = versie file format
         let fullfilenaam = docdirfilenaam(filenaam)
         // Saven. TODO: Ook als CSV saven? Of een conversie-utility schrijven?
-        // TODO: Saven als dict met keys "meta", "pedometer" en "locations"?
+        // TODO: Saven als dict met keys "meta" met pedometerdata, en "locations"?
         let data = NSKeyedArchiver.archivedDataWithRootObject(locations) // TODO: Ook pedometer data saven
         data.writeToFile(fullfilenaam, atomically: true)
         }

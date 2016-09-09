@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE48C8111D7F1F690045461E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE48C8101D7F1F690045461E /* Utils.swift */; };
+		CEC0F1CE1D82609700F36ACB /* BekijkWandelingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC0F1CD1D82609700F36ACB /* BekijkWandelingController.swift */; };
 		CEDA500B1D7E1CCB0059FB96 /* WandelingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */; };
 		CEDA500D1D7E1FDE0059FB96 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDA500C1D7E1FDE0059FB96 /* MapKit.framework */; };
 		CEDA500F1D7E96100059FB96 /* VorigeWandelingenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		CE48C8101D7F1F690045461E /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		CEC0F1CD1D82609700F36ACB /* BekijkWandelingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BekijkWandelingController.swift; sourceTree = "<group>"; };
 		CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WandelingController.swift; sourceTree = "<group>"; };
 		CEDA500C1D7E1FDE0059FB96 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VorigeWandelingenController.swift; sourceTree = "<group>"; };
@@ -67,8 +69,9 @@
 				CEEF80421D7D457700C968BD /* AppDelegate.swift */,
 				CEEF80441D7D457700C968BD /* MainController.swift */,
 				CEDA500A1D7E1CCB0059FB96 /* WandelingController.swift */,
-				CEEF80461D7D457700C968BD /* Main.storyboard */,
 				CEDA500E1D7E96100059FB96 /* VorigeWandelingenController.swift */,
+				CEC0F1CD1D82609700F36ACB /* BekijkWandelingController.swift */,
+				CEEF80461D7D457700C968BD /* Main.storyboard */,
 				CEEF80491D7D457700C968BD /* Assets.xcassets */,
 				CEEF804B1D7D457700C968BD /* LaunchScreen.storyboard */,
 				CEEF804E1D7D457700C968BD /* Info.plist */,
@@ -159,6 +162,7 @@
 				CE48C8111D7F1F690045461E /* Utils.swift in Sources */,
 				CEDA500F1D7E96100059FB96 /* VorigeWandelingenController.swift in Sources */,
 				CEEF80451D7D457700C968BD /* MainController.swift in Sources */,
+				CEC0F1CE1D82609700F36ACB /* BekijkWandelingController.swift in Sources */,
 				CEDA500B1D7E1CCB0059FB96 /* WandelingController.swift in Sources */,
 				CEEF80431D7D457700C968BD /* AppDelegate.swift in Sources */,
 			);

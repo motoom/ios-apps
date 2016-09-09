@@ -13,7 +13,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
     var stappen = 0 // Aantal stappen vandaag gezet.
 
     @IBOutlet weak var voetstappenLabel: UILabel!
-
+    @IBOutlet weak var goalVoetstappenLabel: UILabel!
 
     // Balk van de NavigationController verbergen op het eerste scherm.
     // TODO: misschien de balk op de vervolgschermen transparant maken, en niet-interactief (behalve de Back button, dan).
@@ -31,6 +31,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // self.voetstappenLabel.text = "" // Ga ervanuit dat dit device géén pedometer heeft.
+        // self.goalVoetstappenLabel.text = ""
         }
 
 
@@ -77,7 +78,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
     func verfrisVoetstappenLabels() {
         // Nu is er nog maar één label met het aantal voetstappen, maar dat worden er meer.
         dispatch_async(dispatch_get_main_queue()) {
-            self.voetstappenLabel.text = "\(self.stappen) van de 2000"
+            self.voetstappenLabel.text = String(self.stappen) // TODO: Netjes localized number
             }
         }
 

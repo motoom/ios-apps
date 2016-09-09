@@ -3,6 +3,11 @@
 //
 // Software by Michiel Overtoom, motoom@xs4all.nl
 
+// TODO: Alle filenamen, typenamen, variablene, outlets etc... in English
+// TODO: i18n and l10n naar Dutch
+// TODO: Delete of selected walks
+
+
 import UIKit
 import CoreLocation
 
