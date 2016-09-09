@@ -23,7 +23,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.setUserTrackingMode(.Follow, animated: true)
+        mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
         mapView.delegate = self
         }
 
