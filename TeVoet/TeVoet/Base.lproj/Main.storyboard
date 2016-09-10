@@ -156,12 +156,21 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arx-Xm-QNr">
                                 <rect key="frame" x="20" y="109" width="560" height="471"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzw-lF-bfD" userLabel="Status Button">
+                                <rect key="frame" x="20" y="72" width="560" height="29"/>
+                                <connections>
+                                    <action selector="titleButton:" destination="IcL-6J-5fI" eventType="touchUpInside" id="cW1-9K-crm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fzw-lF-bfD" firstAttribute="centerY" secondItem="be2-dN-fdz" secondAttribute="centerY" id="2BN-aE-vk2"/>
+                            <constraint firstItem="Fzw-lF-bfD" firstAttribute="centerX" secondItem="be2-dN-fdz" secondAttribute="centerX" id="40y-ml-gBD"/>
                             <constraint firstItem="arx-Xm-QNr" firstAttribute="trailing" secondItem="be2-dN-fdz" secondAttribute="trailing" id="HIo-Et-Er3"/>
                             <constraint firstItem="be2-dN-fdz" firstAttribute="leading" secondItem="arx-Xm-QNr" secondAttribute="leading" id="JE0-V1-fOq"/>
                             <constraint firstItem="be2-dN-fdz" firstAttribute="top" secondItem="sec-ha-g6G" secondAttribute="bottom" constant="8" symbolic="YES" id="NiG-R8-WEd"/>
+                            <constraint firstItem="Fzw-lF-bfD" firstAttribute="width" secondItem="be2-dN-fdz" secondAttribute="width" id="QBe-FH-Wwi"/>
                             <constraint firstItem="arx-Xm-QNr" firstAttribute="top" secondItem="be2-dN-fdz" secondAttribute="bottom" constant="8" symbolic="YES" id="SXz-Bl-DCo"/>
                             <constraint firstItem="fYt-q1-8p1" firstAttribute="bottom" secondItem="yE3-dg-wGy" secondAttribute="top" id="Ufr-k5-kaK"/>
                             <constraint firstItem="fYt-q1-8p1" firstAttribute="leading" secondItem="FKy-si-KHd" secondAttribute="leading" id="VUG-PT-y27"/>
@@ -169,6 +178,7 @@
                             <constraint firstItem="be2-dN-fdz" firstAttribute="centerX" secondItem="fYt-q1-8p1" secondAttribute="centerX" id="cLg-od-d4f"/>
                             <constraint firstItem="fYt-q1-8p1" firstAttribute="top" secondItem="FKy-si-KHd" secondAttribute="top" id="d5x-wH-wFu"/>
                             <constraint firstAttribute="trailing" secondItem="fYt-q1-8p1" secondAttribute="trailing" id="eJC-c3-ZzG"/>
+                            <constraint firstItem="Fzw-lF-bfD" firstAttribute="height" secondItem="be2-dN-fdz" secondAttribute="height" id="p4Q-Cy-cfw"/>
                             <constraint firstAttribute="bottom" secondItem="arx-Xm-QNr" secondAttribute="bottom" constant="20" symbolic="YES" id="tF2-5l-bkO"/>
                         </constraints>
                     </view>
@@ -280,14 +290,14 @@
                                                     <rect key="frame" x="15" y="5" width="32" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5n-xf-vxH">
                                                     <rect key="frame" x="15" y="25" width="41" height="14"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -350,7 +360,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WL2-VL-FEc">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WL2-VL-FEc">
                                 <rect key="frame" x="20" y="109" width="560" height="471"/>
                                 <connections>
                                     <outlet property="delegate" destination="bOY-n8-OUU" id="P9k-ju-Svo"/>

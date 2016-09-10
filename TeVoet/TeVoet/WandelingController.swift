@@ -8,6 +8,7 @@ import MapKit
 import CoreLocation
 
 let standaardIgnoreUpdates = 3
+let minimumDistance: CLLocationDistance = 10
 
 class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var statusLabel: UILabel!
@@ -23,7 +24,8 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.setUserTrackingMode(.FollowWithHeading, animated: true)
+        mapView.showsCompass = false
+        mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
         mapView.delegate = self
         }
 
@@ -50,7 +52,8 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             lm.delegate = self
             lm.activityType = .Fitness
             lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters // or '-Best'
-            lm.distanceFilter = 10 // default None, but then many locations arrive, even without moving
+            // lm.desiredAccuracy = kCLLocationAccuracyBest
+            lm.distanceFilter = minimumDistance // standard 10, default None, but then many locations arrive, even without moving
             lm.allowsBackgroundLocationUpdates = true
             ignoreUpdates = standaardIgnoreUpdates
             lm.startUpdatingLocation()
@@ -60,7 +63,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
     func locationManager(manager: CLLocationManager, didUpdateLocations newLocations: [CLLocation]) {
         // TODO: Dit moet beter. Bijvoorbeeld alle updates weggooien totdat ze een stabiele loopsnelheid laten zien.
-        // Of de eerste vijf seconden niets opslaan, of onnauwkeurige (>10m) locatiefixes negeren
+        // TODO: De eerste tien seconden niets opslaan, zodat de location services zich eerst kunnen stabiliseren.
         if ignoreUpdates > 0 {
             ignoreUpdates -= 1
                 // print("didUpdateLocations: Genegeerde location update:", locations)
@@ -73,18 +76,24 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             return
             }
 
-        // In foreground: eventueel eerder opgenomen locations in background buffer appenden.
-        if locationsBackgroundBuffer.count > 0 {
-            locations.appendContentsOf(locationsBackgroundBuffer.filter{$0.horizontalAccuracy < 11})
-            // print("didUpdateLocations: retrieved \(locationsBuffer.count) locations from background buffer")
-            locationsBackgroundBuffer.removeAll()
-            }
-        // En daarna de nieuw binnenkomende locaties.
-        locations.appendContentsOf(newLocations.filter{$0.horizontalAccuracy < 11})
-        // print("didUpdateLocations: foreground update with \(newLocations.count) locations")
+        // We're in foreground
 
-        // print("Aantal waypoints:", locations.count)
-        // Nog goed lezen: http://stackoverflow.com/questions/27129639/rendering-multiple-polylines-on-mapview
+        // Locations that need to be processed for updating distance
+        var locationsToProcess = [CLLocation]()
+
+        // Are there any locations previously recorded while we were in the background? If so, we have to deal with them first.
+        if locationsBackgroundBuffer.count > 0 {
+            let filteredLocations = locationsBackgroundBuffer.filter{$0.horizontalAccuracy <= minimumDistance && $0.verticalAccuracy <= 10}
+            locationsBackgroundBuffer.removeAll()
+            locations.appendContentsOf(filteredLocations) // Record for storage
+            locationsToProcess.appendContentsOf(filteredLocations) // Record for distance processing
+            }
+        // Now deal with the new locations incoming to this invocation.
+        let filteredLocations = newLocations.filter{$0.horizontalAccuracy <= minimumDistance && $0.verticalAccuracy <= 10}
+        locations.appendContentsOf(filteredLocations) // For storage
+        locationsToProcess.appendContentsOf(filteredLocations) // For distance processing
+
+        // Update the polyline overlay. TODO: Read again http://stackoverflow.com/questions/27129639/rendering-multiple-polylines-on-mapview
         var polylinecoords = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
         let polyline = MKPolyline(coordinates: &polylinecoords, count: locations.count)
         if let pp = prevpolyline {
@@ -92,8 +101,9 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             }
         mapView.addOverlay(polyline)
         prevpolyline = polyline
-        // Running totaal bijhouden.
-        for location in newLocations {
+
+        // Running totals like distance walked.
+        for location in locationsToProcess {
             if prevLocation ==  nil {
                 prevLocation = location
                 }
@@ -118,7 +128,6 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let apd = UIApplication.sharedApplication().delegate as! AppDelegate
         if let lm = apd.lm {
             lm.stopUpdatingLocation()
-            // print("Location updating stopped")
             }
         }
 
@@ -134,6 +143,22 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         return nil
         }
 
+    func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
+            if mode == .None {
+                statusLabel.text = "kaart volgt niet"
+                }
+            else {
+                statusLabel.text = "kaart volgt"
+                }
+            }
+
+    @IBAction func titleButton(sender: UIButton) {
+        if mapView.userTrackingMode != .FollowWithHeading {
+            mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
+            }
+        }
+
 
 
     }
+

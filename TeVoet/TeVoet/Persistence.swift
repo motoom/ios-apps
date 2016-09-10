@@ -17,7 +17,7 @@ func saveWaypoints(locations: [CLLocation]) {
     let tijdstamp = filenametimestamp(locations)
     let filenaam = "\(tijdstamp).v1.locations" // v1 = versie file format
     let fullfilenaam = docdirfilenaam(filenaam)
-    // Saven. TODO: Saven als dict met keys "meta" met pedometerdata, en "locations"?
+    // Saven. TODO: Saven als dict met keys "meta" met pedometerdata, en "locations", en opname kwaliteit (nearest10m, best, bestfornavigation en reporting distance). Meta ook exporteren naar CSV. 
     NSKeyedArchiver.archivedDataWithRootObject(locations).writeToFile(fullfilenaam, atomically: true)
     }
 
