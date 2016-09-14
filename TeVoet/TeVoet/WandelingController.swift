@@ -22,6 +22,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
     var totaal = 0.0 // Actueel totaal aantal meters afgelegd.
     var prevLocation: CLLocation? = nil // De laatst verwerkte location in 'totaal'.
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.showsCompass = false
@@ -29,9 +30,11 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         mapView.delegate = self
         }
 
+
     override func viewDidAppear(animated: Bool) {
         startTracking()
         }
+
 
     override func viewWillDisappear(animated: Bool) {
         stopTracking()
@@ -40,6 +43,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             saveWaypointsCSV(locations)
             }
         }
+
 
     // Zie ook  allowDeferredLocationUpdatesUntilTraveled:timeout: en deferredLocationUpdatesAvailable
     func startTracking() {
@@ -60,6 +64,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             // print("Location updating started") // Ook te zien aan het pijltje in de statusbalk.
             }
         }
+
 
     func locationManager(manager: CLLocationManager, didUpdateLocations newLocations: [CLLocation]) {
         // TODO: Dit moet beter. Bijvoorbeeld alle updates weggooien totdat ze een stabiele loopsnelheid laten zien.
@@ -143,6 +148,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         return nil
         }
 
+
     func mapView(mapView: MKMapView, didChangeUserTrackingMode mode: MKUserTrackingMode, animated: Bool) {
             if mode == .None {
                 statusLabel.text = "kaart volgt niet"
@@ -152,12 +158,12 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
                 }
             }
 
+
     @IBAction func titleButton(sender: UIButton) {
         if mapView.userTrackingMode != .FollowWithHeading {
             mapView.setUserTrackingMode(.FollowWithHeading, animated: false)
             }
         }
-
 
 
     }

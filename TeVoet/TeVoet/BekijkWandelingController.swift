@@ -17,7 +17,9 @@ class BekijkWandelingController: UIViewController {
             }
         }
 
+
     @IBOutlet weak var mapView: MKMapView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +53,19 @@ class BekijkWandelingController: UIViewController {
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

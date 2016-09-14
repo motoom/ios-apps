@@ -19,6 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         print("didChangeAuthorizationStatus:", status)

@@ -15,12 +15,14 @@ class MainController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var voetstappenLabel: UILabel!
     @IBOutlet weak var goalVoetstappenLabel: UILabel!
 
+
     // Balk van de NavigationController verbergen op het eerste scherm.
     // TODO: misschien de balk op de vervolgschermen transparant maken, en niet-interactief (behalve de Back button, dan).
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
         }
+
 
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -65,6 +67,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
             }
 
         // En daarna ook periodiek aantal stappen ophalen.
+        // TODO: Bug when date wraps around to next day, the count should be the steps TODAY, not since YESTERDAY
         pd?.startPedometerUpdatesFromDate(start) {
             (data, error) -> Void in
                 if error == nil && data != nil {

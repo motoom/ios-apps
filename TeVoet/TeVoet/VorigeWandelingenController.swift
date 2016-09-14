@@ -6,45 +6,21 @@
 import UIKit
 
 
-func documentfiles() -> [String] {
-    let directory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-    if let urlArray = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(directory, includingPropertiesForKeys: [NSURLNameKey], options: NSDirectoryEnumerationOptions.SkipsHiddenFiles) {
-        return urlArray.map{$0.lastPathComponent!}.filter{$0.hasSuffix(".v1.locations")}.sort()
-        }
-    else {
-        return []
-        }
-    }
-
-
-// "yyyymmddhhmm" -> "23 aug 2016, 12:03"
-func nicedatetime(s: String) -> String
-{
-    let yyyymmddhhmm = NSDateFormatter()
-    yyyymmddhhmm.dateFormat = "yyyyMMddHHmm"
-    if let stamp = yyyymmddhhmm.dateFromString(s) {
-        return NSDateFormatter.localizedStringFromDate(stamp, dateStyle: .MediumStyle, timeStyle: .ShortStyle)
-        }
-    else {
-        return s
-        }
-}
-
-
-
-
 class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var files = [String]()
 
     @IBOutlet weak var tableView: UITableView!
 
+
     override func viewDidLoad() {
         files = documentfiles()
         }
 
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return files.count
         }
+
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("FileCell")
@@ -58,10 +34,12 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
         return cell!
         }
 
+
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
-    }
+        }
     
+
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             do {
@@ -76,6 +54,7 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
                 }
             }
         }
+
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowWalk" {
