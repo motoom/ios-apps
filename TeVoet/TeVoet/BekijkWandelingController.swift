@@ -9,6 +9,10 @@ class BekijkWandelingController: UIViewController {
 
     var locations = [CLLocation]()
 
+    var rotatorStrings = [String]()
+    var rotatorPhase = 0
+    var rotatorTimer: NSTimer? = nil
+
     var filenaam: String = "" {
         didSet {
             if let locs = loadWaypoints(filenaam) {
@@ -26,8 +30,23 @@ class BekijkWandelingController: UIViewController {
         super.viewDidLoad()
         mapView.showsCompass = false
 
-        // Show the distance
-        infoLabel.text = sjiekeAfstand(totalDistance(locations))
+        // Texts to show
+        let begin = locations.first
+        let end = locations.last
+
+        let walkDate = NSDateFormatter.localizedStringFromDate((begin?.timestamp)!, dateStyle: .LongStyle, timeStyle: .NoStyle)
+        var walkTimes = NSDateFormatter.localizedStringFromDate((begin?.timestamp)!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+        walkTimes += " - "
+        walkTimes += NSDateFormatter.localizedStringFromDate((end?.timestamp)!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+
+        // Prepare & start information label rotator.
+        rotatorStrings.removeAll()
+        rotatorStrings.append(sjiekeAfstand(totalDistance(locations)))
+        rotatorStrings.append(walkDate)
+        rotatorStrings.append(walkTimes)
+        infoLabel.text = rotatorStrings.first
+        rotatorPhase = 1
+        rotatorTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "rotatorNext", userInfo: nil, repeats: true)
 
         // Create the route as a polyline overlay.
         var polylinecoords = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
@@ -44,6 +63,11 @@ class BekijkWandelingController: UIViewController {
         mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(150,150,150,150), animated: true)
         }
 
+    override func viewWillDisappear(animated: Bool) {
+        rotatorTimer?.invalidate()
+        }
+
+
     // Draw the polyline.
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
         if overlay is MKPolyline {
@@ -55,6 +79,21 @@ class BekijkWandelingController: UIViewController {
             }
         return nil
         }
+
+
+    func rotatorNext() {
+        if rotatorPhase >= rotatorStrings.count {
+            rotatorPhase = 0
+            }
+        if rotatorPhase < rotatorStrings.count {
+            infoLabel.text = rotatorStrings[rotatorPhase]
+            }
+        else {
+            infoLabel.text = ""
+            }
+        rotatorPhase += 1
+        }
+
 
     }
 
