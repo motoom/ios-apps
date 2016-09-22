@@ -18,12 +18,16 @@ class BekijkWandelingController: UIViewController {
         }
 
 
+    @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.showsCompass = false
+
+        // Show the distance
+        infoLabel.text = sjiekeAfstand(totalDistance(locations))
 
         // Create the route as a polyline overlay.
         var polylinecoords = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})

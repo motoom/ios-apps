@@ -2,6 +2,7 @@
 //  Utils.swift
 
 import UIKit
+import CoreLocation
 
 
 func docdirfilenaam(filenaam: String) -> String {
@@ -56,4 +57,21 @@ func documentfiles() -> [String] {
         return []
         }
     }
+
+
+func totalDistance(locations: [CLLocation]) -> Double {
+    var total = 0.0
+    var prevLocation: CLLocation? = nil
+    for location in locations {
+            if prevLocation ==  nil {
+                prevLocation = location
+                }
+            else {
+                total += location.distanceFromLocation(prevLocation!)
+                prevLocation = location
+                }
+        }
+    return total
+    }
+
 

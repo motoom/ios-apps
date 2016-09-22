@@ -383,6 +383,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoLabel" destination="TsI-mN-INz" id="nW0-Ie-vre"/>
                         <outlet property="mapView" destination="WL2-VL-FEc" id="01t-Zc-Nn3"/>
                     </connections>
                 </viewController>
