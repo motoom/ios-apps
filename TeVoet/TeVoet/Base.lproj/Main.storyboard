@@ -347,7 +347,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="berm" translatesAutoresizingMaskIntoConstraints="NO" id="BxS-r1-4vg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hier komt informatie over de wandeling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsI-mN-INz">
                                 <rect key="frame" x="20" y="72" width="560" height="29"/>
@@ -382,6 +382,8 @@
                             <constraint firstItem="WL2-VL-FEc" firstAttribute="trailing" secondItem="TsI-mN-INz" secondAttribute="trailing" id="uhY-Og-DKY"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoLabel" destination="TsI-mN-INz" id="nW0-Ie-vre"/>
                         <outlet property="mapView" destination="WL2-VL-FEc" id="01t-Zc-Nn3"/>

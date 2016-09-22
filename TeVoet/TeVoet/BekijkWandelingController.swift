@@ -30,6 +30,14 @@ class BekijkWandelingController: UIViewController {
         super.viewDidLoad()
         mapView.showsCompass = false
 
+        // Multiple buttons:
+        // let b = UIBarButtonItem(title: "A", style: .Plain, target: self, action: "myMethod")
+        // let c = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "BOEJ")
+        // navigationItem.setRightBarButtonItems([b, c], animated: false)
+
+        let m = UIBarButtonItem(image: UIImage(named: "menu3"), style: .Plain, target: self, action: "cycleMapType")
+        self.navigationItem.rightBarButtonItem = m
+
         // Texts to show
         let begin = locations.first
         let end = locations.last
@@ -63,10 +71,22 @@ class BekijkWandelingController: UIViewController {
         mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(150,150,150,150), animated: true)
         }
 
+
     override func viewWillDisappear(animated: Bool) {
         rotatorTimer?.invalidate()
         }
 
+
+    func cycleMapType() {
+        switch (mapView.mapType) {
+            case .Standard:
+                mapView.mapType = .Hybrid
+            case .Hybrid:
+                mapView.mapType = .Satellite
+            default: // must be .Satellite
+                mapView.mapType = .Standard
+            }
+        }
 
     // Draw the polyline.
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
