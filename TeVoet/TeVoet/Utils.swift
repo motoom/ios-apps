@@ -12,6 +12,7 @@ func docdirfilenaam(filenaam: String) -> String {
 
 func sjiekeAfstand(m: Double) -> String {
     let fmt = NSNumberFormatter()
+    fmt.usesGroupingSeparator = true
     if m < 1000 {
         fmt.minimumFractionDigits = 1
         fmt.maximumFractionDigits = 0
@@ -22,6 +23,13 @@ func sjiekeAfstand(m: Double) -> String {
         fmt.maximumFractionDigits = 1
         return fmt.stringFromNumber(m/1000)! + "km"
         }
+    }
+
+
+func localizedInt(i: Int) -> String {
+    let fmt = NSNumberFormatter()
+    fmt.usesGroupingSeparator = true
+    return fmt.stringFromNumber(i)!
     }
 
 
