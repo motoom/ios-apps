@@ -121,7 +121,7 @@ class MainController: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidAppear(animated: Bool) {
         if initPedometer() {
-            self.voetstappenLabel.text = "0"
+            self.voetstappenLabel.text = localizedInt(footsteps)
             self.goalVoetstappenLabel.text = "van de " + localizedInt(footstepsGoal)
             }
         else {
