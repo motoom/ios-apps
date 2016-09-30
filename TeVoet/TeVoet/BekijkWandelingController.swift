@@ -30,15 +30,11 @@ class BekijkWandelingController: UIViewController {
         super.viewDidLoad()
         mapView.showsCompass = false
 
-        // Multiple buttons:
-        // let b = UIBarButtonItem(title: "A", style: .Plain, target: self, action: "myMethod")
-        // let c = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "BOEJ")
-        // navigationItem.setRightBarButtonItems([b, c], animated: false)
-
+        // Statusbar button to cycle map type.
         let m = UIBarButtonItem(image: UIImage(named: "menu3"), style: .Plain, target: self, action: "cycleMapType")
         self.navigationItem.rightBarButtonItem = m
 
-        // Texts to show
+        // Texts for rotator.
         let begin = locations.first
         let end = locations.last
 
