@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UserDefaults" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qdx-Vb-13f">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="old-Vz-H10">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzu-fg-c9w">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="112" id="a28-KA-ibd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Omschrijving" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dar-rA-9XJ">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5da-Bc-1FP">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvw-8C-m3j">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="wqv-lq-3JO"/>
+                                </constraints>
+                                <state key="normal" title="Klaar"/>
+                                <connections>
+                                    <action selector="klaar" destination="BYZ-38-t0r" eventType="touchUpInside" id="SzH-gv-eo3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5da-Bc-1FP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1hG-17-CgW"/>
+                            <constraint firstItem="Qdx-Vb-13f" firstAttribute="top" secondItem="5da-Bc-1FP" secondAttribute="bottom" constant="8" symbolic="YES" id="63Z-Sz-TdF"/>
+                            <constraint firstItem="5da-Bc-1FP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="8tv-CP-L3r"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="leading" secondItem="dar-rA-9XJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Git-mi-0Ys"/>
+                            <constraint firstItem="5da-Bc-1FP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IpA-BH-ga5"/>
+                            <constraint firstItem="rzu-fg-c9w" firstAttribute="leading" secondItem="5da-Bc-1FP" secondAttribute="leading" id="J2n-qg-hxb"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="trailing" secondItem="Qdx-Vb-13f" secondAttribute="trailing" id="JPf-Q7-mf1"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="baseline" secondItem="dar-rA-9XJ" secondAttribute="baseline" id="Lgn-dr-GLh"/>
+                            <constraint firstItem="Qdx-Vb-13f" firstAttribute="leading" secondItem="rzu-fg-c9w" secondAttribute="trailing" constant="8" symbolic="YES" id="Mn4-2X-8sA"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="top" secondItem="Qdx-Vb-13f" secondAttribute="bottom" constant="8" symbolic="YES" id="MtW-Tm-Tc9"/>
+                            <constraint firstItem="dar-rA-9XJ" firstAttribute="leading" secondItem="rzu-fg-c9w" secondAttribute="leading" id="U0R-IX-dhb"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="leading" secondItem="Qdx-Vb-13f" secondAttribute="leading" id="WXS-RY-m9S"/>
+                            <constraint firstItem="old-Vz-H10" firstAttribute="trailing" secondItem="cvw-8C-m3j" secondAttribute="trailing" id="b93-qO-qBT"/>
+                            <constraint firstItem="cvw-8C-m3j" firstAttribute="top" secondItem="old-Vz-H10" secondAttribute="bottom" constant="8" symbolic="YES" id="dIf-ts-xDe"/>
+                            <constraint firstItem="Qdx-Vb-13f" firstAttribute="trailing" secondItem="5da-Bc-1FP" secondAttribute="trailing" id="dKb-5f-wKR"/>
+                            <constraint firstItem="rzu-fg-c9w" firstAttribute="baseline" secondItem="Qdx-Vb-13f" secondAttribute="baseline" id="oXX-nE-lnW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="naamText" destination="Qdx-Vb-13f" id="9rw-Nu-io4"/>
+                        <outlet property="omschrijvingText" destination="old-Vz-H10" id="db9-Le-0eg"/>
+                        <outlet property="titelLabel" destination="5da-Bc-1FP" id="MaS-fZ-Xq3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="461" y="439"/>
+        </scene>
+    </scenes>
+</document>
