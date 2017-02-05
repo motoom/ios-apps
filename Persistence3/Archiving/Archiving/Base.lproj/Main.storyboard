@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1909" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Archiving" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Archiving" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-du-trS">
+                                <rect key="frame" x="0.0" y="20" width="320" height="60"/>
+                                <color key="backgroundColor" red="0.99904388189315796" green="0.95017987489700317" blue="0.73055881261825562" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="XIK-nl-sL0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C0Z-8l-Dok">
+                                <rect key="frame" x="16" y="119" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ImF-fr-OkG">
+                                <rect key="frame" x="16" y="157" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Plaats" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IQA-Fb-FIj">
+                                <rect key="frame" x="16" y="195" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-xc-44X">
+                                <rect key="frame" x="133" y="256" width="54" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="save:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bk3-nP-yv0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="C0Z-8l-Dok" secondAttribute="trailing" id="14d-eb-VUM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ImF-fr-OkG" secondAttribute="trailing" id="AcL-Au-Ghx"/>
+                            <constraint firstItem="3ch-xc-44X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="117" id="B0s-hh-Fzf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3ch-xc-44X" secondAttribute="trailing" constant="117" id="B0v-jf-TW1"/>
+                            <constraint firstItem="3ch-xc-44X" firstAttribute="top" secondItem="IQA-Fb-FIj" secondAttribute="bottom" constant="31" id="FR5-o2-nE6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IQA-Fb-FIj" secondAttribute="trailing" id="Icq-fa-3Lo"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="IQA-Fb-FIj" secondAttribute="leading" id="JEe-Rq-GRg"/>
+                            <constraint firstAttribute="trailing" secondItem="CGb-du-trS" secondAttribute="trailing" id="Meg-Te-wdb"/>
+                            <constraint firstItem="C0Z-8l-Dok" firstAttribute="top" secondItem="CGb-du-trS" secondAttribute="bottom" constant="39" id="Sdp-OT-VhQ"/>
+                            <constraint firstItem="CGb-du-trS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VOw-SO-Eo0"/>
+                            <constraint firstItem="CGb-du-trS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Wgi-iU-Cnd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="C0Z-8l-Dok" secondAttribute="leading" id="Y2j-Cs-3he"/>
+                            <constraint firstItem="ImF-fr-OkG" firstAttribute="top" secondItem="C0Z-8l-Dok" secondAttribute="bottom" constant="8" id="lsa-mV-BqU"/>
+                            <constraint firstItem="IQA-Fb-FIj" firstAttribute="top" secondItem="ImF-fr-OkG" secondAttribute="bottom" constant="8" id="sg2-MY-M8y"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ImF-fr-OkG" secondAttribute="leading" id="t0z-ja-CFW"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="adresText" destination="ImF-fr-OkG" id="nuW-Pd-uDP"/>
+                        <outlet property="naamText" destination="C0Z-8l-Dok" id="AeM-wC-mCG"/>
+                        <outlet property="plaatsText" destination="IQA-Fb-FIj" id="cER-eT-K8d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="387"/>
+        </scene>
+    </scenes>
+</document>

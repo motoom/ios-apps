@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1909" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Sqlite" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="naam" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WXo-zz-Jpj">
+                                <rect key="frame" x="16" y="20" width="121" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="nummer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TWb-Wa-t6U">
+                                <rect key="frame" x="151" y="20" width="120" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7b-6g-aam">
+                                <rect key="frame" x="279" y="19" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="add" destination="BYZ-38-t0r" eventType="touchUpInside" id="9xU-i4-X0m"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Hier komt een lijst." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-8Q-ksS">
+                                <rect key="frame" x="12" y="69" width="292" height="391"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="s7b-6g-aam" secondAttribute="trailing" constant="-5" id="04i-Aw-Dwb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2rS-8Q-ksS" secondAttribute="bottom" constant="20" id="213-Wm-bLW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="WXo-zz-Jpj" secondAttribute="leading" id="6mA-DY-Rub"/>
+                            <constraint firstItem="WXo-zz-Jpj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Hdk-64-IKi"/>
+                            <constraint firstItem="WXo-zz-Jpj" firstAttribute="width" secondItem="TWb-Wa-t6U" secondAttribute="width" id="Huk-V6-0mG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2rS-8Q-ksS" secondAttribute="trailing" id="Mdx-5v-R3q"/>
+                            <constraint firstItem="s7b-6g-aam" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-1" id="WZR-Zb-Ndp"/>
+                            <constraint firstItem="s7b-6g-aam" firstAttribute="leading" secondItem="TWb-Wa-t6U" secondAttribute="trailing" constant="8" id="ZWz-uU-DN1"/>
+                            <constraint firstItem="2rS-8Q-ksS" firstAttribute="top" secondItem="WXo-zz-Jpj" secondAttribute="bottom" constant="19" id="dbX-Lx-PYY"/>
+                            <constraint firstItem="TWb-Wa-t6U" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hcj-OX-ZYc"/>
+                            <constraint firstItem="2rS-8Q-ksS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="i4S-jQ-IQW"/>
+                            <constraint firstItem="TWb-Wa-t6U" firstAttribute="leading" secondItem="WXo-zz-Jpj" secondAttribute="trailing" constant="14" id="uCn-Cq-kuV"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="naamText" destination="WXo-zz-Jpj" id="c1z-xx-mNc"/>
+                        <outlet property="nummerText" destination="TWb-Wa-t6U" id="AkS-et-h6x"/>
+                        <outlet property="overzichtView" destination="2rS-8Q-ksS" id="zN5-gC-52D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="316" y="135"/>
+        </scene>
+    </scenes>
+</document>
