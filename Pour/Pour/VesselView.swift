@@ -1,14 +1,15 @@
 
 import UIKit
 
+@IBDesignable
 class VesselView: UIView
 {
-    var capacity: CGFloat = 8 {
+    @IBInspectable var capacity: CGFloat = 8 {
         didSet {
             self.setNeedsDisplay()
             }
         }
-    var contents: CGFloat = 4 {
+    @IBInspectable var contents: CGFloat = 4 {
         didSet {
             self.setNeedsDisplay()
             }
@@ -55,7 +56,13 @@ class VesselView: UIView
         }
 
     override func drawRect(rect: CGRect) {
+        if tickwidth == 0 {
+            // Make it work in Interface Builder
+            recalcMetrics() 
+            }
+
         let paintrect = CGRectInset(rect, Design.insetmargin, Design.insetmargin)
+
         // debugRect(paintrect, color: UIColor.brownColor())
         // print("VesselView.drawRect frame=", frame, " rect=", rect)
 
