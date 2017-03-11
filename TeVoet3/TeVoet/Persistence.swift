@@ -15,15 +15,32 @@ func filenametimestamp(_ locations: [CLLocation]) -> String {
 func saveWaypoints(_ locations: [CLLocation]) {
     // Filename voor save bepalen
     let tijdstamp = filenametimestamp(locations)
-    let filenaam = "\(tijdstamp).v1.locations" // v1 = versie file format
+    let filenaam = "\(tijdstamp).v2.locations" // v2 = versie file format
     let fullfilenaam = docdirfilenaam(filenaam)
-    // Saven. TODO: Saven als dict met keys "meta" met pedometerdata, afgelegde afstand, en "locations", en opname kwaliteit (nearest10m, best, bestfornavigation en reporting distance). Meta ook exporteren naar CSV.
-    try? NSKeyedArchiver.archivedData(withRootObject: locations).write(to: URL(fileURLWithPath: fullfilenaam), options: [.atomic])
+    // Determine some metadata.
+    let (walkDate, walkTimes) = prettyDateTimes(locations.first, locations.last)
+    let distance = totalDistance(locations)
+    // Save as dict containing the metadata (in its own separate dict), and locations array.
+    var d = [String: Any]()
+    var meta = [String: Any]()
+    meta["walkDate"] = walkDate
+    meta["walkTimes"] = walkTimes
+    meta["totalDistance"] = sjiekeAfstand(distance)
+    d["meta"] = meta
+    d["locations"] = locations
+    try? NSKeyedArchiver.archivedData(withRootObject: d).write(to: URL(fileURLWithPath: fullfilenaam), options: [.atomic])
     }
 
 
-func loadWaypoints(_ filename: String) -> [CLLocation]? {
-    return NSKeyedUnarchiver.unarchiveObject(withFile: docdirfilenaam(filename)) as? [CLLocation]
+func loadWaypoints(_ filename: String) -> ([CLLocation], [String: Any]) {
+    if let d = NSKeyedUnarchiver.unarchiveObject(withFile: docdirfilenaam(filename)) as? [String: Any] {
+        let locs = d["locations"] as! [CLLocation]
+        let meta = d["meta"] as! [String: Any]
+        return (locs, meta)
+        }
+    else {
+        return ([CLLocation](), [:])
+        }
     }
 
 

@@ -51,7 +51,7 @@ func nicedatetime(_ s: String) -> String
 func documentfiles() -> [String] {
     let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     if let urlArray = try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: [URLResourceKey.nameKey], options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles) {
-        return urlArray.map{$0.lastPathComponent}.filter{$0.hasSuffix(".v1.locations")}.sorted()
+        return urlArray.map{$0.lastPathComponent}.filter{$0.hasSuffix(".v2.locations")}.sorted()
         }
     else {
         return []
@@ -72,6 +72,15 @@ func totalDistance(_ locations: [CLLocation]) -> Double {
                 }
         }
     return total
+    }
+
+
+func prettyDateTimes(_ begin: CLLocation?, _ end: CLLocation?) -> (String, String) {
+    let walkDate = DateFormatter.localizedString(from: (begin?.timestamp)!, dateStyle: .long, timeStyle: .none)
+    var walkTimes = DateFormatter.localizedString(from: (begin?.timestamp)!, dateStyle: .none, timeStyle: .short)
+    walkTimes += " - "
+    walkTimes += DateFormatter.localizedString(from: (end?.timestamp)!, dateStyle: .none, timeStyle: .short)
+    return (walkDate, walkTimes)
     }
 
 

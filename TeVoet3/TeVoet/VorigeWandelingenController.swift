@@ -27,10 +27,18 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "FileCell")
             }
-        cell?.detailTextLabel?.text = files[indexPath.row]
+        // Determine filename, read in metadata from saved locations file.
         let fn = files[indexPath.row]
-        let stamp = fn.substring(to: fn.characters.index(fn.startIndex, offsetBy: 12))
-        cell?.textLabel?.text = nicedatetime(stamp)
+        let (_, meta) = loadWaypoints(fn)
+        // Nice title and detail text to display.
+        let distance = meta["totalDistance"]!
+        let walkDate = meta["walkDate"]!
+        let walkTimes = meta["walkTimes"]!
+        let title = "\(walkDate), \(walkTimes)"
+        let detail = "\(distance)"
+        //
+        cell?.textLabel?.text = title
+        cell?.detailTextLabel?.text = detail
         return cell!
         }
 

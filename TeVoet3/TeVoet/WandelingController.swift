@@ -38,9 +38,10 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
     override func viewWillDisappear(_ animated: Bool) {
         stopTracking()
+        // TODO: See if there is connectivity to retrieve location names for certain points of the route. If there is, determine the location names for some points on the route to synthesize a description (or the furthest point reached). Try this for a few seconds before giving up & saving without location names.
         if locations.count >= 2 {
             saveWaypoints(locations)
-            // TODO: alleen als debug: saveWaypointsCSV(locations)
+            // saveWaypointsCSV(locations) // Used for debugging.
             }
         }
 
@@ -61,7 +62,6 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             lm.allowsBackgroundLocationUpdates = true
             ignoreUpdates = standaardIgnoreUpdates
             lm.startUpdatingLocation()
-            // print("Location updating started") // Ook te zien aan het pijltje in de statusbalk.
             }
         }
 
@@ -71,17 +71,17 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         // TODO: De eerste tien seconden niets opslaan, zodat de location services zich eerst kunnen stabiliseren.
         if ignoreUpdates > 0 {
             ignoreUpdates -= 1
-                // print("didUpdateLocations: Genegeerde location update:", locations)
                 return
             }
         // Checken of in backgroundstate. Zoja, zo snel mogelijk bufferen en verder niets doen.
         if UIApplication.shared.applicationState == .background {
             locationsBackgroundBuffer.append(contentsOf: newLocations)
-            // print("didUpdateLocations: \(newLocations.count) locations recorded in background buffer")
             return
             }
 
         // We're in foreground
+
+        // TODO: Query pedometer and remove any local notifications when appropriate.
 
         // Locations that need to be processed for updating distance
         var locationsToProcess = [CLLocation]()
@@ -98,7 +98,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         locations.append(contentsOf: filteredLocations) // For storage
         locationsToProcess.append(contentsOf: filteredLocations) // For distance processing
 
-        // Update the polyline overlay. TODO: Read again http://stackoverflow.com/questions/27129639/rendering-multiple-polylines-on-mapview
+        // Update the polyline overlay.
         var polylinecoords = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
         let polyline = MKPolyline(coordinates: &polylinecoords, count: locations.count)
         if let pp = prevpolyline {
@@ -115,7 +115,6 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             else {
                 let delta = location.distance(from: prevLocation!)
                 totaal += delta
-                // print("Delta van ", prevLocation, "naar", location, "is", delta, "meter, cumulatief=", totaal)
                 prevLocation = location
                 DispatchQueue.main.async {
                     let saf = sjiekeAfstand(self.totaal)

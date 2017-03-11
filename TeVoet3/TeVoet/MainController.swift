@@ -7,6 +7,7 @@
 Todo: in fileformaat ook een dict wegsaven met meta informatie (afstand, #stappen, beschrijving van verst bereikte punt, beschrijving van drie punten, van-tot tijd, etc...)
 Todo: Alle nederlandse comments en varnamen omzetten in engels.
 Idee: met locatieservices uitvissen waar de wandeling langs voerde (iddekingestraat - shell station - stellingmarkt) 25% 50% 75%
+Todo: Also determine number of steps taken during a walk (with midnight wraparound, if applicable).
 */
 
 import UIKit
@@ -103,9 +104,9 @@ class MainController: UIViewController, CLLocationManagerDelegate {
 
 
     func verfrisVoetstappenLabels() {
-        // Nu is er nog maar één label met het aantal voetstappen, maar dat worden er meer.
+        // Nu is er nog maar één label met het aantal voetstappen, maar dat worden er misschien meer.
         DispatchQueue.main.async {
-            self.voetstappenLabel.text = String(self.footsteps) // TODO: Netjes localized number
+            self.voetstappenLabel.text = localizedInt(self.footsteps)
             }
         }
 

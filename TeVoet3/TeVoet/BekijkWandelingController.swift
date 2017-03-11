@@ -8,6 +8,7 @@ import CoreLocation
 class BekijkWandelingController: UIViewController {
 
     var locations = [CLLocation]()
+    var meta = [String: Any]()
 
     var rotatorStrings = [String]()
     var rotatorPhase = 0
@@ -15,9 +16,7 @@ class BekijkWandelingController: UIViewController {
 
     var filenaam: String = "" {
         didSet {
-            if let locs = loadWaypoints(filenaam) {
-                locations = locs
-                }
+            (locations, meta) = loadWaypoints(filenaam)
             }
         }
 
@@ -35,13 +34,7 @@ class BekijkWandelingController: UIViewController {
         self.navigationItem.rightBarButtonItem = m
 
         // Texts for rotator.
-        let begin = locations.first
-        let end = locations.last
-
-        let walkDate = DateFormatter.localizedString(from: (begin?.timestamp)!, dateStyle: .long, timeStyle: .none)
-        var walkTimes = DateFormatter.localizedString(from: (begin?.timestamp)!, dateStyle: .none, timeStyle: .short)
-        walkTimes += " - "
-        walkTimes += DateFormatter.localizedString(from: (end?.timestamp)!, dateStyle: .none, timeStyle: .short)
+        let (walkDate, walkTimes) = prettyDateTimes(locations.first, locations.last)
 
         // Prepare & start information label rotator.
         rotatorStrings.removeAll()

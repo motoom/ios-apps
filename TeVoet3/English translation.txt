@@ -11,8 +11,6 @@ Robyduck123 - Today at 1:27 PM
 I'm pretty sure using the word walking would give it away anyway
 Ridehalgh148 - Today at 1:28 PM
 But tbh I'd probably just say I walked there
-Jessicarrrrrrrr - Today at 1:28 PM
-itsa bout an hour by car to get to the station
 Michiel - Today at 1:28 PM
 I made an iPhone walking app called 'Te Voet' (which is Dutch) and I am curious what a correct English translation would be. 'On Foot' it will be :wink:
 Ridehalgh148 - Today at 1:28 PM
@@ -24,24 +22,17 @@ Michiel - Today at 1:29 PM
 ROFL!
 Ridehalgh148 - Today at 1:29 PM
 Yeah, if you were to put "Half an hour on foot" it would make more sense
-Michiel - Today at 1:30 PM
-brb need to do some shopping
 
 
 
 
 http://stackoverflow.com/questions/10300086/release-one-ios-app-with-multiple-foreign-lang-names
 
-Is it possible to re-release an existing iOS app with a different title?
+Q:
 
-The app supports multiple languages, but only has an English title in the app store. My thinking, which could very likely be wayward, is that my potential Russian/Indian/Chinese/French audiences have no visibility of it.
+Is it possible to re-release an existing iOS app with a different title? The app supports multiple languages, but only has an English title in the app store. My thinking, which could very likely be wayward, is that my potential Russian/Indian/Chinese/French audiences have no visibility of it. Doesn't sound like something Apple would support, but thought I'd ask anyway. If in the slim chance it is do-able, what would I need in the way of bundle id's/prov profiles/dist certificates? One of each per app?
 
-Doesn't sound like something Apple would support, but thought I'd ask anyway.
-
-If in the slim chance it is do-able, what would I need in the way of bundle id's/prov profiles/dist certificates? One of each per app?
-
-thanks in advance.
-
+A:
 
 Yes you can - just localise the value of CFBundleDisplayName:
 
