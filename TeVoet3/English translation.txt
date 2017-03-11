@@ -1,0 +1,82 @@
+
+Michiel - Today at 1:27 PM
+When you go walking somewhere, do you travel 'on foot' or 'by foot'? (English grammar question)
+Ridehalgh148 - Today at 1:27 PM
+on foot imo
+Robyduck123 - Today at 1:27 PM
+On foot
+Michiel - Today at 1:27 PM
+Thanks for your input!
+Robyduck123 - Today at 1:27 PM
+I'm pretty sure using the word walking would give it away anyway
+Ridehalgh148 - Today at 1:28 PM
+But tbh I'd probably just say I walked there
+Jessicarrrrrrrr - Today at 1:28 PM
+itsa bout an hour by car to get to the station
+Michiel - Today at 1:28 PM
+I made an iPhone walking app called 'Te Voet' (which is Dutch) and I am curious what a correct English translation would be. 'On Foot' it will be :wink:
+Ridehalgh148 - Today at 1:28 PM
+not too bad then
+Sounds interesting
+Jessicarrrrrrrr - Today at 1:29 PM
+by foot sounds like you travelling inside a massive foot
+Michiel - Today at 1:29 PM
+ROFL!
+Ridehalgh148 - Today at 1:29 PM
+Yeah, if you were to put "Half an hour on foot" it would make more sense
+Michiel - Today at 1:30 PM
+brb need to do some shopping
+
+
+
+
+http://stackoverflow.com/questions/10300086/release-one-ios-app-with-multiple-foreign-lang-names
+
+Is it possible to re-release an existing iOS app with a different title?
+
+The app supports multiple languages, but only has an English title in the app store. My thinking, which could very likely be wayward, is that my potential Russian/Indian/Chinese/French audiences have no visibility of it.
+
+Doesn't sound like something Apple would support, but thought I'd ask anyway.
+
+If in the slim chance it is do-able, what would I need in the way of bundle id's/prov profiles/dist certificates? One of each per app?
+
+thanks in advance.
+
+
+Yes you can - just localise the value of CFBundleDisplayName:
+
+Open your project in Xcode
+Make sure the Project Navigator is in view (View > Navigators > Show Project Navigators, or CMD+1)
+Make sure the File Inspector is in view (View > Utilities > Show File Inspector, or OPT+CMD+1)
+Select InfoPlist.strings in the Project Navigator
+In the File Inspector, under Localization click the + button and add the language you want to translate into (e.g. French)
+In the Project Navigator, expand the disclosure triangle that now appears next to InfoPlist.strings and select InfoPlist.string (French)
+Add the following line:
+CFBundleDisplayName = "Translated app name here";
+
+<ScREENSHOT>
+
+As @runmad has suggested, you can also provide localised marketing content in iTunes Connect, including a localised app name. This is not obligatory, although it does make sense. Note however that iTunes Connect only supports a small set of languages. The languages currently support for localisation in iTunes Connect at listed in Apple's iTunes Connect Developer Guide (PDF) which can be found at:
+
+	https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Chapters/About.html
+
+As of the current version of that document (7.4) the languages supported are:
+
+Australian English
+Brazilian Portuguese
+Canadian English
+Dutch
+...
+Swedish
+UK English
+
+If you want to localise the app name to a language outside that list (let's say, Hungarian) you can do that just fine using the process outlined above in Xcode, and the name you provide in Xcode is the name that a Hungarian user will see when they install your app on their device, but in the Hungarian App Store the app will be listed under (I assume) its English name.
+
+
+
+
+------------
+
+
+TeVoet/OnFoot: Localize your App Store metadata. Localize your app name and update your App Store metadata, such as your app description, keywords, and screenshots, for each of the countries in which you offer your app. Beyond directly translating your app description, research what users from different markets value in an app in your category. For details on localizing metadata, keywords, and screenshots, read the iTunes Connect Developer Guide.
+
