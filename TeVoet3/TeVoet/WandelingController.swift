@@ -40,7 +40,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         stopTracking()
         if locations.count >= 2 {
             saveWaypoints(locations)
-            saveWaypointsCSV(locations)
+            // TODO: alleen als debug: saveWaypointsCSV(locations)
             }
         }
 
@@ -137,7 +137,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         }
 
 
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer! {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolyline {
             let route: MKPolyline = overlay as! MKPolyline
             let routeRenderer = MKPolylineRenderer(polyline:route)
@@ -145,7 +145,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             routeRenderer.strokeColor = UIColor.red
             return routeRenderer
             }
-        return nil
+        return MKOverlayRenderer()
         }
 
 

@@ -3,15 +3,21 @@
 //
 // Software by Michiel Overtoom, motoom@xs4all.nl
 
+/*
+Todo: in fileformaat ook een dict wegsaven met meta informatie (afstand, #stappen, beschrijving van verst bereikte punt, beschrijving van drie punten, van-tot tijd, etc...)
+Todo: Alle nederlandse comments en varnamen omzetten in engels.
+Idee: met locatieservices uitvissen waar de wandeling langs voerde (iddekingestraat - shell station - stellingmarkt) 25% 50% 75%
+*/
+
 import UIKit
 import CoreMotion
 import CoreLocation
 
 class MainController: UIViewController, CLLocationManagerDelegate {
 
-    var pd: CMPedometer? = nil // Alleen in iPhone 5s en hoger...
-    var footsteps = 0 // Aantal stappen vandaag gezet.
-    var footstepsGoal = 11000 // Nr. of footsteps to set every day.
+    var pd: CMPedometer? = nil // Only in iPhone 5s and up.
+    var footsteps = 0 // Nr. of footsteps walked today.
+    var footstepsGoal = 0 // Nr. of footsteps to walk every day.
 
     let yyyymmdd = DateFormatter()
     let yyyymmddhhmm = DateFormatter()
@@ -39,6 +45,8 @@ class MainController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         yyyymmdd.dateFormat = "yyyy-MM-dd"
         yyyymmddhhmm.dateFormat = "yyyy-MM-dd HH:mm"
+        footstepsGoal = UserDefaults.standard.intForKey(key: "footstepsGoal", defaultValue: 5000)
+        // TODO: Notifications
         }
 
 
@@ -128,8 +136,35 @@ class MainController: UIViewController, CLLocationManagerDelegate {
             self.voetstappenLabel.text = ""
             self.goalVoetstappenLabel.text = ""
             }
+
+        // TEST Toch altijd pedometer labels tonen
+        self.voetstappenLabel.text = localizedInt(1100)
+        self.goalVoetstappenLabel.text = "van de " + localizedInt(footstepsGoal)
+
         initLocationManager()
         }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Instellingen" {
+            let dvc = segue.destination as? SettingsViewController
+            dvc?.settingDelegate = self
+            }
+        }
+
+
 }
 
+
+
+extension MainController: SettingsProtocol {
+
+    func getFootstepsGoal() -> Int {
+        return footstepsGoal
+        }
+
+    func setFootstepsGoal(value: Int) {
+        footstepsGoal = value
+        UserDefaults.standard.set(footstepsGoal, forKey: "footstepsGoal")
+        }
+
+    }
