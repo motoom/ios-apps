@@ -78,27 +78,26 @@ class MainController: UIViewController, CLLocationManagerDelegate {
 
         // En daarna ook periodiek aantal stappen ophalen.
         lastPedometerUpdateStart = today
-        pd?.startUpdates(from: start, withHandler: updateFootsteps as! CMPedometerHandler)
-
+        pd?.startUpdates(from: start, withHandler: updateFootsteps)
         return true
         }
 
 
-    func updateFootsteps(_ data: CMPedometerData?, error: NSError?) {
+    func updateFootsteps(_ data: CMPedometerData?, error: Error?) {
         if error != nil || data == nil {
             return
             }
         self.footsteps = Int(data!.numberOfSteps)
         self.verfrisVoetstappenLabels()
         // Detect when date wraps around to next day, since the count should be the steps today, not since yesterday or some day earlier.
-        let today = yyyymmdd.string(from: Date())
-        if lastPedometerUpdateStart != today {
-            pd?.stopUpdates()
+        let today = self.yyyymmdd.string(from: Date())
+        if self.lastPedometerUpdateStart != today {
+            self.pd?.stopUpdates()
             // Restart updating from today.
             let todayVeryEarly = today + " 00:01"
-            let start = yyyymmddhhmm.date(from: todayVeryEarly)!
-            pd?.startUpdates(from: start, withHandler:  updateFootsteps as! CMPedometerHandler)
-            lastPedometerUpdateStart = today
+            let start = self.yyyymmddhhmm.date(from: todayVeryEarly)!
+            self.pd?.startUpdates(from: start, withHandler:  self.updateFootsteps )
+            self.lastPedometerUpdateStart = today
             }
         }
 
