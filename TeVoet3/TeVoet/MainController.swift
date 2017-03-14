@@ -6,8 +6,9 @@
 /*
 Todo: in fileformaat ook een dict wegsaven met meta informatie (afstand, #stappen, beschrijving van verst bereikte punt, beschrijving van drie punten, van-tot tijd, etc...)
 Todo: Alle nederlandse comments en varnamen omzetten in engels.
-Idee: met locatieservices uitvissen waar de wandeling langs voerde (iddekingestraat - shell station - stellingmarkt) 25% 50% 75%
+Idee: met locatieservices uitvissen waar de wandeling langs voerde (iddekingestraat - shell station - stellingmarkt) 25% 50% 75%. Eventueel pas achteraf tijdens presenteren van lijst met wandelingen.
 Todo: Also determine number of steps taken during a walk (with midnight wraparound, if applicable).
+Todo: Een of twee 'Example Walk' meegeven in app bundel als er geen zelf opgenomen walks zijn.
 */
 
 import UIKit
@@ -137,9 +138,9 @@ class MainController: UIViewController, CLLocationManagerDelegate {
             self.goalVoetstappenLabel.text = ""
             }
 
-        // TEST Toch altijd pedometer labels tonen
-        self.voetstappenLabel.text = localizedInt(1100)
-        self.goalVoetstappenLabel.text = "van de " + localizedInt(footstepsGoal)
+        // TEST (Voor op simulator) Toch altijd pedometer labels tonen
+        // self.voetstappenLabel.text = localizedInt(1100)
+        // self.goalVoetstappenLabel.text = "van de " + localizedInt(footstepsGoal)
 
         initLocationManager()
         }
