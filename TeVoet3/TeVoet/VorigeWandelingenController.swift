@@ -31,11 +31,63 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
         let fn = files[indexPath.row]
         let (_, meta) = loadWaypoints(fn)
         // Nice title and detail text to display.
-        let distance = meta["totalDistance"]!
+        /*
+        var distance = 0.0
+        if let d = meta["distance"] {
+            if let di = d as? Double {
+                distance = di
+                }
+            }
+        var steps = 0
+        if let s = meta["steps"] {
+            if let st = s as? Int {
+                steps = st
+                }
+            }
+        */
+        let distance = meta["distance"]! as! Double
+        let steps = meta["steps"]! as! Int
+
+        let start = meta["start"]
+        let end = meta["end"]
+
         let walkDate = meta["walkDate"]!
         let walkTimes = meta["walkTimes"]!
+        //
+        let prettyDistance = sjiekeAfstand(distance)
+        let prettySteps = localizedInt(steps)
+        //
         let title = "\(walkDate), \(walkTimes)"
-        let detail = "\(distance)"
+        var detail = ""
+        if distance > 0 {
+            detail += "\(prettyDistance)"
+            // speed: km/hr
+            if let st = start, let en = end {
+                if let s = st as? Date, let e = en as? Date {
+                    let durationSeconds = e.timeIntervalSince(s)
+                    let durationHours = durationSeconds / 3600.0
+                    let distanceKilometers = distance / 1000.0
+                    let speed = distanceKilometers / durationHours
+                    let fmt = NumberFormatter()
+                    fmt.usesGroupingSeparator = true
+                    fmt.minimumFractionDigits = 0
+                    fmt.maximumFractionDigits = 1
+                    let prettySpeed = fmt.string(from: NSNumber(value: speed))!
+                    detail += ", \(prettySpeed) km/hr"
+                    }
+                }
+
+            }
+        if steps > 0 {
+            detail += ", \(prettySteps) stappen"
+            // Calculate (and display, if not outrageous), the stride: m/footstep
+            let stride = distance / Double(steps)
+            if stride < 2 {
+                let prettyStride = sjiekeAfstand(stride)
+                detail += ", \(prettyStride)/stap "
+                }
+            }
+
         //
         cell?.textLabel?.text = title
         cell?.detailTextLabel?.text = detail

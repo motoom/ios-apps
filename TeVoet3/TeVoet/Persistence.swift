@@ -12,7 +12,7 @@ func filenametimestamp(_ locations: [CLLocation]) -> String {
     }
 
 
-func saveWaypoints(_ locations: [CLLocation]) {
+func saveWaypoints(_ locations: [CLLocation], _ footsteps: Int, _ start: Date?, _ end: Date?) {
     // Filename voor save bepalen
     let tijdstamp = filenametimestamp(locations)
     let filenaam = "\(tijdstamp).v2.locations" // v2 = versie file format
@@ -23,9 +23,12 @@ func saveWaypoints(_ locations: [CLLocation]) {
     // Save as dict containing the metadata (in its own separate dict), and locations array.
     var d = [String: Any]()
     var meta = [String: Any]()
+    meta["start"] = start
+    meta["end"] = end
     meta["walkDate"] = walkDate
     meta["walkTimes"] = walkTimes
-    meta["totalDistance"] = sjiekeAfstand(distance)
+    meta["distance"] = distance
+    meta["steps"] = footsteps
     d["meta"] = meta
     d["locations"] = locations
     try? NSKeyedArchiver.archivedData(withRootObject: d).write(to: URL(fileURLWithPath: fullfilenaam), options: [.atomic])

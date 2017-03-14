@@ -2,8 +2,8 @@
 //  Utils.swift
 
 import UIKit
+import CoreMotion
 import CoreLocation
-
 
 func docdirfilenaam(_ filenaam: String) -> String {
     let docdir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -14,7 +14,12 @@ func docdirfilenaam(_ filenaam: String) -> String {
 func sjiekeAfstand(_ m: Double) -> String {
     let fmt = NumberFormatter()
     fmt.usesGroupingSeparator = true
-    if m < 1000 {
+    if m < 2 {
+        fmt.minimumFractionDigits = 0
+        fmt.maximumFractionDigits = 0
+        return fmt.string(from: NSNumber(value: m * 100))! + "cm"
+        }
+    else if m < 1000 {
         fmt.minimumFractionDigits = 1
         fmt.maximumFractionDigits = 0
         return fmt.string(from: NSNumber(value: m))! + "m"
@@ -82,5 +87,36 @@ func prettyDateTimes(_ begin: CLLocation?, _ end: CLLocation?) -> (String, Strin
     walkTimes += DateFormatter.localizedString(from: (end?.timestamp)!, dateStyle: .none, timeStyle: .short)
     return (walkDate, walkTimes)
     }
+
+
+    // Determines number of footsteps done between two points in time. This function blocks.
+    // Return 0 if it can't be determined (either there is no pedometer in the device, or querying the pedometer takes too long).
+    func footstepsbetween(_ start: Date, _ end: Date) -> Int {
+        if !CMPedometer.isStepCountingAvailable() {
+            return -1
+            }
+        let pd = CMPedometer()
+
+        var footstepsBetweenDone = false
+        var footstepsBetween = -1
+
+        pd.queryPedometerData(from: start, to: end) {
+            (data, error) -> Void in
+                if error == nil && data != nil {
+                    footstepsBetween = Int(data!.numberOfSteps)
+                    footstepsBetweenDone = true
+                    }
+            }
+
+        for _ in 0...20 {
+            if footstepsBetweenDone {
+                break
+                }
+            Thread.sleep(forTimeInterval: 0.1)
+            }
+
+        return footstepsBetween
+        }
+
 
 
