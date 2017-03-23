@@ -12,7 +12,10 @@ func filenametimestamp(_ locations: [CLLocation]) -> String {
     }
 
 
-func saveWaypoints(_ locations: [CLLocation], _ footsteps: Int, _ start: Date?, _ end: Date?) {
+func saveWaypoints(_ locations: [CLLocation], _ footsteps: Int) {
+    if locations.count < 2 {
+        return
+        }
     // Filename voor save bepalen
     let tijdstamp = filenametimestamp(locations)
     let filenaam = "\(tijdstamp).v2.locations" // v2 = versie file format
@@ -23,8 +26,8 @@ func saveWaypoints(_ locations: [CLLocation], _ footsteps: Int, _ start: Date?, 
     // Save as dict containing the metadata (in its own separate dict), and locations array.
     var d = [String: Any]()
     var meta = [String: Any]()
-    meta["start"] = start
-    meta["end"] = end
+    meta["start"] = locations.first!.timestamp
+    meta["end"] = locations.last!.timestamp
     meta["walkDate"] = walkDate
     meta["walkTimes"] = walkTimes
     meta["distance"] = distance

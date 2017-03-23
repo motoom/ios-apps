@@ -22,17 +22,11 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
     var totaal = 0.0 // Actueel totaal aantal meters afgelegd.
     var prevLocation: CLLocation? = nil // De laatst verwerkte location in 'totaal'.
 
-    // TODO: walkStart and walkEnd could be determined from locations (first and last timestamp)
-    var walkStart: Date? // date/time of start of walk, for detemining number of steps.
-    var walkEnd: Date? // idem, end.
-
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.showsCompass = false
         mapView.setUserTrackingMode(.followWithHeading, animated: false)
         mapView.delegate = self
-        walkStart = nil
-        walkEnd = nil
         }
 
 
@@ -46,10 +40,10 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         // TODO: See if there is connectivity to retrieve location names for certain points of the route. If there is, determine the location names for some points on the route to synthesize a description (or the furthest point reached). Try this for a few seconds before giving up & saving without location names.
         if locations.count >= 2 {
             var footsteps = -1
-            if let start = walkStart, let end = walkEnd {
+            if let start = locations.first?.timestamp, let end = locations.last?.timestamp {
                 footsteps = footstepsbetween(start, end)
                 }
-            saveWaypoints(locations, footsteps, walkStart, walkEnd)
+            saveWaypoints(locations, footsteps)
             // saveWaypointsCSV(locations) // Used for debugging.
             }
         }
@@ -70,7 +64,6 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
             lm.allowsBackgroundLocationUpdates = true
             ignoreUpdates = standaardIgnoreUpdates
             lm.startUpdatingLocation()
-            walkStart = Date()
             }
         }
 
@@ -141,7 +134,6 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         let apd = UIApplication.shared.delegate as! AppDelegate
         if let lm = apd.lm {
             lm.stopUpdatingLocation()
-            walkEnd = Date()
             }
         }
 

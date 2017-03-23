@@ -36,9 +36,18 @@ class BekijkWandelingController: UIViewController {
         // Texts for rotator.
         let (walkDate, walkTimes) = prettyDateTimes(locations.first, locations.last)
 
+        var prettySteps = ""
+        let steps = meta["steps"]! as? Int ?? 0
+        if steps > 0 {
+            prettySteps = localizedInt(steps) + " stappen"
+            }
+
         // Prepare & start information label rotator.
         rotatorStrings.removeAll()
         rotatorStrings.append(sjiekeAfstand(totalDistance(locations)))
+        if prettySteps != "" {
+            rotatorStrings.append(prettySteps)
+            }
         rotatorStrings.append(walkDate)
         rotatorStrings.append(walkTimes)
         infoLabel.text = rotatorStrings.first
