@@ -28,4 +28,4 @@ def createappicons(fn):
         ofn = "%s-%s%s" % (basename, suffix, extension)
         im.save(ofn, "png")
         
-createappicons("babyfeet.png")
+createappicons("vectorsneakers")

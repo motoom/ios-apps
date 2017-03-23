@@ -4,6 +4,9 @@
 // Software by Michiel Overtoom, motoom@xs4all.nl
 
 /*
+Monkey: dubbelklik op picker moet ook 'Back' doen.
+Bug: Bij openen van bestaande wandeling, juist inzoomen.
+Todo: translatie van plist authorisatie strings
 Todo: in fileformaat ook een dict wegsaven met meta informatie (afstand, #stappen, beschrijving van verst bereikte punt, beschrijving van drie punten, van-tot tijd, etc...)
 Todo: Alle nederlandse comments en varnamen omzetten in engels.
 Idee: met locatieservices uitvissen waar de wandeling langs voerde (iddekingestraat - shell station - stellingmarkt) 25% 50% 75%. Eventueel pas achteraf tijdens presenteren van lijst met wandelingen.
