@@ -21,6 +21,8 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
 
     var totaal = 0.0 // Actueel totaal aantal meters afgelegd.
     var prevLocation: CLLocation? = nil // De laatst verwerkte location in 'totaal'.
+
+    // TODO: walkStart and walkEnd could be determined from locations (first and last timestamp)
     var walkStart: Date? // date/time of start of walk, for detemining number of steps.
     var walkEnd: Date? // idem, end.
 
@@ -63,8 +65,7 @@ class WandelingController: UIViewController, CLLocationManagerDelegate, MKMapVie
         if let lm = apd.lm {
             lm.delegate = self
             lm.activityType = .fitness
-            lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters // or '-Best'
-            // lm.desiredAccuracy = kCLLocationAccuracyBest
+            lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             lm.distanceFilter = minimumDistance // standard 10, default None, but then many locations arrive, even without moving
             lm.allowsBackgroundLocationUpdates = true
             ignoreUpdates = standaardIgnoreUpdates
