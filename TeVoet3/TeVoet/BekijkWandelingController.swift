@@ -57,7 +57,7 @@ class BekijkWandelingController: UIViewController {
             let pointRect = MKMapRectMake(annotationPoint.x - 0.5, annotationPoint.y - 0.5, 1, 1)
             zoomRect = MKMapRectUnion(zoomRect, pointRect)
             }
-        mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(150,150,150,150), animated: true)
+        mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(15,15,15,15), animated: true)
         }
 
 

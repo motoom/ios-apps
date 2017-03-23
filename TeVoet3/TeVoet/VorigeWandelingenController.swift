@@ -70,6 +70,7 @@ class VorigeWandelingenController: UIViewController, UITableViewDataSource, UITa
                     let speed = distanceKilometers / durationHours
                     let fmt = NumberFormatter()
                     fmt.usesGroupingSeparator = true
+                    fmt.minimumIntegerDigits = 1
                     fmt.minimumFractionDigits = 0
                     fmt.maximumFractionDigits = 1
                     let prettySpeed = fmt.string(from: NSNumber(value: speed))!
